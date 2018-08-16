@@ -59,23 +59,22 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D6BC243565
 RUN "deb http://miktex.org/download/ubuntu xenial universe" | sudo tee /etc/apt/sources.list.d/miktex.list
 RUN apt-get update
 RUN apt-get install miktex -y
-
-#USER $NEWUSER
-#WORKDIR /home/$NEWUSER
-
-#RUN apt-get update 
-#RUN apt-get install -y \
-#    pandoc \
-#    pandoc-citeproc
+ 
+RUN apt-get install -y \
+    pandoc \
+    pandoc-citeproc
     #libcurl4-gnutls-dev \
     #libcairo2-dev/unstable \
     #libxt-dev
-#RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION -O "version.txt"
-#RUN VERSION=$(cat version.txt)
-#RUN wget --no-verbose "https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-$VERSION-amd64.deb" -O ss-latest.deb
-#RUN gdebi -n ss-latest.deb
-#RUN rm -f version.txt ss-latest.deb
-#RUN R -e "install.packages(c('shiny', 'rmarkdown'), repos='https://cran.rstudio.com/')" 
-#RUN cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
-#RUN rm -rf /var/lib/apt/lists/*
-#COPY shiny-customized.config /etc/shiny-server/shiny-server.conf
+RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION -O "version.txt"
+RUN VERSION=$(cat version.txt)
+RUN wget --no-verbose "https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-$VERSION-amd64.deb" -O ss-latest.deb
+RUN gdebi -n ss-latest.deb
+RUN rm -f version.txt ss-latest.deb
+RUN R -e "install.packages(c('shiny', 'rmarkdown'), repos='https://cran.rstudio.com/')" 
+RUN cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
+RUN rm -rf /var/lib/apt/lists/*
+COPY shiny-customized.config /etc/shiny-server/shiny-server.conf
+
+USER $NEWUSER
+WORKDIR /home/$NEWUSER
