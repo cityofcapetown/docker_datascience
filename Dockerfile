@@ -38,8 +38,8 @@ RUN jupyter labextension install @jupyterlab/hub-extension
 #RUN sed -i "/c.Spawner.cmd/c\c.Spawner.cmd = ['jupyter-labhub']" ~/jupyterhub_config.py
 
 #RUN cp ~/jupyterhub_config.py /etc/jupyterhub/
-RUN chown root:root /etc/jupyterhub/jupyterhub_config.yp
-RUN chmod 0644 /etc/jupyterhub/jupyterhub_config.py
+#RUN chown root:root /etc/jupyterhub/jupyterhub_config.yp
+#RUN chmod 0644 /etc/jupyterhub/jupyterhub_config.py
 
 COPY jupyterhub.service /
 RUN mv /jupyterhub.service /etc/systemd/system/jupyterhub.service
