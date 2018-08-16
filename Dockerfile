@@ -4,6 +4,12 @@ EXPOSE 8000
 EXPOSE 8787
 EXPOSE 3838
 
+ENV NEWUSER=newuser
+ENV PASSWD=password
+RUN useradd -ms /bin/bash $NEWUSER
+RUN echo 'newuser:password' | chpasswd
+RUN adduser $NEWUSER sudo
+
 RUN apt-get update
 RUN apt-get install -y \
     git \
@@ -54,11 +60,6 @@ RUN "deb http://miktex.org/download/ubuntu xenial universe" | sudo tee /etc/apt/
 RUN apt-get update
 RUN apt-get install miktex -y
 
-#ENV NEWUSER=newuser
-#ENV PASSWD=passwd
-#RUN useradd -ms /bin/bash $NEWUSER
-#RUN echo 'newuser:password' | chpasswd
-#RUN adduser $NEWUSER sudo
 #USER $NEWUSER
 #WORKDIR /home/$NEWUSER
 
