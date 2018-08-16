@@ -17,9 +17,9 @@ RUN echo 'newuser:password' | chpasswd
 RUN adduser $NEWUSER sudo
 RUN apt-get install htop -y
 RUN apt-get install python3-pip -y
-RUN apt-get install npm nodejs-legacy -y
+RUN apt-get install npm -y
 
-RUN npm -v
+#RUN npm -v
 RUN npm cache clean -f
 #RUN n stable
 RUN npm -v
