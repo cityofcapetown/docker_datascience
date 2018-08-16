@@ -19,7 +19,7 @@ RUN apt-get install npm nodejs-legacy -y
 
 RUN npm -v
 RUN npm cache clean -f
-RUN n stable
+#RUN n stable
 RUN npm -v
 
 RUN npm install -g configurable-http-proxy
