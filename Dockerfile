@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 RUN apt install -y \
     git \
-    cron \
+    cron
     
 ENV NEWUSER=newuser
 ENV PASSWD=passwd
