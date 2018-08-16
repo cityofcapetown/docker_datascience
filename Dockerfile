@@ -6,7 +6,8 @@ RUN apt-get install -y \
     cron \
     sudo \
     nano \
-    wget
+    wget \
+    nodejs
     
 ENV NEWUSER=newuser
 ENV PASSWD=passwd
