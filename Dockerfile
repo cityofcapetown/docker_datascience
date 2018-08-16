@@ -40,6 +40,7 @@ RUN jupyter labextension install @jupyterlab/hub-extension
 RUN sed -i "/c.Authenticator.admin_users/c\c.Authenticator.admin_users = {\'$newuser\'}" /jupyterhub_config.py
 RUN sed -i "/c.Spawner.default_url/c\c.Spawner.default_url = '/lab'" /jupyterhub_config.py
 RUN sed -i "/c.Spawner.cmd/c\c.Spawner.cmd = ['jupyter-labhub']" /jupyterhub_config.py
+RUN mkdir /etc/jupyterhub
 RUN mv /jupyterhub_config.py /etc/jupyterhub/
 RUN chown root:root /etc/jupyterhub/jupyterhub_config.yp
 RUN chmod 0644 /etc/jupyterhub/jupyterhub_config.py
