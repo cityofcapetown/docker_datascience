@@ -34,7 +34,7 @@ RUN jupyter labextension install @jupyterlab/hub-extension
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
 RUN echo "# CRAN Repo" | sudo tee -a /etc/apt/sources.list
-RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu xenial/" | sudo tee -a /etc/apt/sources.list
+RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" | sudo tee -a /etc/apt/sources.list
 
 RUN apt-get update
 RUN apt-get install r-base -y
