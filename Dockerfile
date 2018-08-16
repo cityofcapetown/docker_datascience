@@ -4,7 +4,8 @@ RUN apt-get update
 RUN apt-get install -y \
     git \
     cron \
-    sudo
+    sudo \
+    nano
     
 ENV NEWUSER=newuser
 ENV PASSWD=passwd
