@@ -70,6 +70,7 @@ RUN apt-get install miktex -y
 #RUN R -e "install.packages(c('shiny', 'rmarkdown'), repos='https://cran.rstudio.com/')" 
 #RUN cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
 #RUN rm -rf /var/lib/apt/lists/*
+#COPY shiny-customized.config /etc/shiny-server/shiny-server.conf
 
 #RUN sed -i "/c.Authenticator.admin_users/c\c.Authenticator.admin_users = {\'$newuser\'}" ~/jupyterhub_config.py
 #RUN sed -i "/c.Spawner.default_url/c\c.Spawner.default_url = '/lab'" ~/jupyterhub_config.py
