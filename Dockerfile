@@ -10,6 +10,7 @@ RUN useradd -ms /bin/bash $NEWUSER
 RUN echo 'newuser:password' | chpasswd
 RUN adduser $NEWUSER sudo
 
+RUN export DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get install -y \
     git \
@@ -51,8 +52,12 @@ RUN echo "# CRAN Repo" | sudo tee -a /etc/apt/sources.list
 RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" | sudo tee -a /etc/apt/sources.list
 
 RUN apt-get update
+RUN apt-get install -y tzdata
+RUN ln -fs /usr/share/zoneinfo/Africa/Johannesburg /etc/localtime
+
 RUN apt-get install r-base -y
 RUN apt-get install gdebi-core dpkg -y
+RUN dpkg-reconfigure --frontend noninteractive tzdata
 RUN wget https://download2.rstudio.org/rstudio-server-1.1.456-amd64.deb
 RUN gdebi --non-interactive rstudio-server-1.1.456-amd64.deb
 
