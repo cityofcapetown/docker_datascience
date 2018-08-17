@@ -35,7 +35,9 @@ RUN apt-get install -y \
 # Install jupyterhub dependencies
 RUN apt-get install -y \
     nodejs \
-    python3-pip \
+    python3-pip && \
+    apt-get clean
+RUN apt-get install -y \
     npm && \
     apt-get clean
     
@@ -97,8 +99,8 @@ RUN rm -rf /var/lib/apt/lists/*
 # You can comment out these three bash scripts and still have a working container
 #RUN sudo pip3 install minio
 COPY apt_additions.sh .
-COPY R_additions.r .
-COPY Python_additions.sh .
+COPY R_additions.R .
+COPY python_additions.sh .
 
 RUN bash apt_additions.sh
 RUN bash python_additions.sh
@@ -111,19 +113,25 @@ RUN chmod +x /tini
 ENTRYPOINT ["/tini", "--"]
 
 # Build startup script
+# Create new user
 RUN echo 'useradd -ms /bin/bash $NEWUSER' >> /run.sh
+# Change user password from default
 RUN echo 'echo $NEWUSER:$PASSWD | chpasswd' >> /run.sh
+# Grant new user sudo
 RUN echo 'adduser $NEWUSER sudo' >> /run.sh
-RUN echo "su $NEWUSER -c 'git config --global credential.helper cache' &" >> /run.sh
-RUN echo "su $NEWUSER -c 'git config --global credential.helper cache --timeout=86400' &" >> /run.sh
-#RUN echo "git config --global user.email 'Disposable Container' &" >> /run.sh
-#RUN echo "git config --global user.name 'Disposable Container' &" >> /run.sh
-RUN echo "cd /home/$NEWUSER && /usr/bin/git clone $GITREPO &" >>  /run.sh
-RUN echo "chown -R $NEWUSER:$NEWUSER /home/$NEWUSER &" >> /run.sh
+# Clone a project git repo into the /home/$NEWUSER folder
+RUN echo "cd /home/$NEWUSER && /usr/bin/git clone $GITREPO" >>  /run.sh
+# Sort out permissions
+RUN echo "chown -R $NEWUSER:$NEWUSER /home/$NEWUSER" >> /run.sh
+# Run shiny
 RUN echo "shiny-server &" >> /run.sh
+# Run rstudio
 RUN echo "rstudio-server start &" >> /run.sh
+# Run jupyter
 RUN echo "jupyterhub -f /etc/jupyterhub/jupyterhub_config.py" >> /run.sh
 RUN chmod +x /run.sh
+
+# Run startup script on runtime
 #CMD ["/run.sh"]
 
 
@@ -134,6 +142,6 @@ RUN chmod +x /run.sh
 # ISSUES #
 # RUN MORE SECURELY, NOT AS ROOT
 # DROP DOWN PRIVILEGES TO UNPRIVILEGED USER
-# ALLOW FOR PASSWORD CHANGE FOR ADMIN USER
+# ALLOW FOR PASSWORD CHANGE FOR ADMIN USER AT RUNTIME
 # ADD ENV VARIABLES TO CHOOSE WHAT SERVICES TO EXPOSE
 # CLONE GIT REPO AUTOMATICALLY

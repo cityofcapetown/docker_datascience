@@ -4,23 +4,25 @@ This docker image is based on `Ubuntu 18.04`.
 
 It contains the following environments, installed according to each project's documented installation instructions:
 
-1. Jupyterhub with jupyter lab enabled
-2. RStudio Server with MikTex
-3. Shiny Server * TO DO: SERVE APPS FROM /home/<user>/ShinyApps folders...
-4. h2o
+1. `Jupyterhub` with `jupyter lab` enabled
+2. `RStudio Server` with `MikTex`
+3. `Shiny Server` * TO DO: SERVE APPS FROM /home/<user>/ShinyApps folders...
+4. `h2o`
 
-It also has a whole lot of `R` and `python` packages installed. For a list, look at the `python_additions.sh and R_additions.R files.
+It also has a whole lot of `R` and `python` packages installed. For a list, look at the `python_additions.sh` and `R_additions.R` files.
 
 ## Usage
 
 The default user has sudo privileges. The default username is `newuser` and the password is `password`.
 
-To change the defaults, change the environment variables $NEWUSER and $PASSWD -
+To change the defaults, change the environment variables `$NEWUSER` and `$PASSWD` -
 
-`docker run -rm \
+```
+docker run -rm \
 -e $NEWUSER=neweruser \
 -e $PASSWD=newpassword \
-riazarbi/docker_datascience'
+riazarbi/docker_datascience
+```
 
 None of these environments are configured to spin up at runtime. Rather, use enviroment flages to enable services. You'll need to map the ports as well. For instance -
 
