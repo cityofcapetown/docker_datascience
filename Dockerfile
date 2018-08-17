@@ -81,6 +81,19 @@ RUN R -e "install.packages(c('shiny', 'rmarkdown'), repos='https://cran.rstudio.
 RUN cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
 RUN rm -rf /var/lib/apt/lists/*
 #COPY shiny-customized.config /etc/shiny-server/shiny-server.conf
+#RUN adduser $NEWUSER shiny
 
-USER $NEWUSER
-WORKDIR /home/$NEWUSER
+# Add Tini
+ENV TINI_VERSION v0.18.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+ENTRYPOINT ["/tini", "--"]
+
+RUN echo "shiny-server &" >> /run.sh
+RUN echo "rstudio-server start" >> /run.sh
+RUN echo "jupyterhub -f /etc/jupyterhub/jupyterhub_config.py" >> /run.sh
+RUN chmod +x /run.sh
+CMD ["/run.sh"]
+
+#USER $NEWUSER
+#WORKDIR /home/$NEWUSER
