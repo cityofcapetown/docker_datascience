@@ -24,7 +24,7 @@ docker run -rm \
 riazarbi/docker_datascience
 ```
 
-None of these environments are configured to spin up at runtime. Rather, use enviroment flages to enable services. You'll need to map the ports as well. For instance -
+None of these environments are configured to spin up at runtime. Rather, use enviroment flags to enable services. You'll need to map the ports as well. For instance -
 
 ```
 <first part of docker command>
@@ -37,7 +37,7 @@ None of these environments are configured to spin up at runtime. Rather, use env
 -p 3838:3838 # shiny \
 -p 54321:54321 # h2o \
 -p 54322:54321 # h2o \
-riazarbi/docker_datascience'
+riazarbi/docker_datascience
 ```
 
 Finally, you can clone a git repository into the `$NEWUSER` home directory by specifying the url. 

@@ -67,14 +67,16 @@ RUN chmod 0644 /etc/jupyterhub/jupyterhub_config.py
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 && \
     echo "# CRAN Repo" | sudo tee -a /etc/apt/sources.list && \
     echo "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" | sudo tee -a /etc/apt/sources.list && \
-    apt-get install r-base -y 
+    apt-get install r-base -y && \ 
+    apt-get clean
 
 # Install Miktex
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D6BC243565B2087BC3F897C9277A7293F59E4889 && \
     echo "deb http://miktex.org/download/ubuntu bionic universe" | sudo tee /etc/apt/sources.list.d/miktex.list && \
     apt-get update && \
     apt-get install -y \
-    miktex
+    miktex && \
+    apt-get clean
 
 # Install and setup Rstudio Server
 RUN apt-get install gdebi-core dpkg -y
@@ -85,7 +87,8 @@ RUN rm -f rs-latest.deb
 # Install and setup shiny
 RUN apt-get install -y \
     pandoc \
-    pandoc-citeproc
+    pandoc-citeproc && \
+    apt-get clean
 
 RUN wget "https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.7.907-amd64.deb" -O ss-latest.deb
 RUN gdebi -n ss-latest.deb
