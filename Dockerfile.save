@@ -4,52 +4,47 @@ FROM ubuntu:18.04
 EXPOSE 8000
 EXPOSE 8787
 EXPOSE 3838
-EXPOSE 54321
-EXPOSE 54322
 
 # Set variables
 ENV NEWUSER=newuser
 ENV PASSWD=password
 ENV GITREPO=https://github.com/riazarbi/workspace_template.git
-ENV JUPYTER=yes
-ENV RSTUDIO=yes
-ENV SHINY=yes
-ENV H2O=yes
+RUN useradd -ms /bin/bash $NEWUSER
+RUN echo 'newuser:password' | chpasswd
+RUN adduser $NEWUSER sudo
 
-# Install base utility packages
-RUN apt-get update && \
-    apt-get dist-upgrade
+# Install base packages
+RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get -qq install tzdata apt-utils
 RUN ln -fs /usr/share/zoneinfo/Africa/Johannesburg /etc/localtime
 RUN dpkg-reconfigure --frontend noninteractive tzdata
 
+RUN apt-get update
 RUN apt-get install -y \
     git \
     cron \
     sudo \
     nano \
-    wget \
-    htop && \
-    apt-get clean
+    wget
 
 # Install jupyterhub dependencies
 RUN apt-get install -y \
     nodejs \
+    htop \
     python3-pip \
-    npm && \
-    apt-get clean
+    npm
     
 RUN npm cache clean -f
 RUN npm -v
 
+# Install jupyterhub
 RUN npm install -g configurable-http-proxy
 RUN pip3 install jupyterhub
 RUN pip3 install --upgrade notebook
-RUN pip3 install jupyterlab
 
-# Configure jupyterhub
 RUN jupyterhub --generate-config
 
+RUN pip3 install jupyterlab
 RUN jupyter serverextension enable --py jupyterlab --sys-prefix
 RUN jupyter labextension install @jupyterlab/hub-extension
 
@@ -93,16 +88,8 @@ RUN cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
 RUN rm -rf /var/lib/apt/lists/*
 #COPY shiny-customized.config /etc/shiny-server/shiny-server.conf
 
-# Install additional nonessential packages
-# You can comment out these three bash scripts and still have a working container
-#RUN sudo pip3 install minio
-COPY apt_additions.sh .
-COPY R_additions.r .
-COPY Python_additions.sh .
-
-RUN bash apt_additions.sh
-RUN bash python_additions.sh
-RUN Rscript R_additions.R
+# Install minio client
+RUN sudo pip3 install minio
 
 # Install tini to run entrypoint command
 ENV TINI_VERSION v0.18.0
@@ -111,24 +98,18 @@ RUN chmod +x /tini
 ENTRYPOINT ["/tini", "--"]
 
 # Build startup script
-RUN echo 'useradd -ms /bin/bash $NEWUSER' >> /run.sh
-RUN echo 'echo $NEWUSER:$PASSWD | chpasswd' >> /run.sh
-RUN echo 'adduser $NEWUSER sudo' >> /run.sh
-RUN echo "su $NEWUSER -c 'git config --global credential.helper cache' &" >> /run.sh
-RUN echo "su $NEWUSER -c 'git config --global credential.helper cache --timeout=86400' &" >> /run.sh
-#RUN echo "git config --global user.email 'Disposable Container' &" >> /run.sh
-#RUN echo "git config --global user.name 'Disposable Container' &" >> /run.sh
+RUN echo "su $NEWUSER -c 'git config --global credent
 RUN echo "cd /home/$NEWUSER && /usr/bin/git clone $GITREPO &" >>  /run.sh
-RUN echo "chown -R $NEWUSER:$NEWUSER /home/$NEWUSER &" >> /run.sh
 RUN echo "shiny-server &" >> /run.sh
 RUN echo "rstudio-server start &" >> /run.sh
 RUN echo "jupyterhub -f /etc/jupyterhub/jupyterhub_config.py" >> /run.sh
 RUN chmod +x /run.sh
-#CMD ["/run.sh"]
+CMD ["/run.sh"]
 
+# Git config user and email
+#USER $NEWUSER
 
 # Change working directory to $NEWUSER
-#USER $NEWUSER
 #WORKDIR /home/$NEWUSER
 
 # ISSUES #
