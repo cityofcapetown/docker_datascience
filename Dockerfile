@@ -1,5 +1,7 @@
 FROM ubuntu:18.04
 
+LABEL maintainer="Riaz Arbi"
+
 # Expose ports
 EXPOSE 8000
 EXPOSE 8787
@@ -98,13 +100,14 @@ COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 
 # Install additional nonessential packages
 # You can comment out these three bash scripts and still have a working container
-#COPY apt_additions.sh .
-#COPY R_additions.R .
-#COPY python_additions.sh .
+# Maybe I should put these into a chained Docker image?
+COPY apt_additions.sh .
+COPY R_additions.R .
+COPY python_additions.sh .
 
-#RUN bash apt_additions.sh
-#RUN bash python_additions.sh
-#RUN Rscript R_additions.R
+RUN bash apt_additions.sh
+RUN bash python_additions.sh
+RUN Rscript R_additions.R
 
 # Install tini to run entrypoint command
 ENV TINI_VERSION v0.18.0
