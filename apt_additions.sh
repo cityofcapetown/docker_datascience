@@ -1,6 +1,7 @@
 # These are apt packages required to make R
 # and python packages work
 DEBIAN_FRONTEND=noninteractive \
+apt-get clean && \
 apt-get update && \
 apt-get install -y  \
 libxml2-dev \

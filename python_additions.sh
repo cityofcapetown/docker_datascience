@@ -1,11 +1,11 @@
 # Standard pip-installed packages go here
-python -m pip3 install --upgrade pip setuptools wheel
-python -m pip3 install virtualenv
-python -m pip3 install tensorflow
-python -m pip3 install botocore
-python -m pip3 install boto3
-python -m pip3 install awscli
-python -m pip3 install minio
-python -m pip3 install pyhdb
+python3 -m pip install --upgrade pip setuptools wheel
+python3 -m pip install virtualenv
+python3 -m pip install tensorflow
+python3 -m pip install botocore
+python3 -m pip install boto3
+python3 -m pip install awscli
+python3 -m pip install minio
+python3 -m pip install pyhdb
 
 # Non-standard packages go here

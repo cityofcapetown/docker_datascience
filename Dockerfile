@@ -11,13 +11,14 @@ EXPOSE 54322
 ENV NEWUSER=newuser
 ENV PASSWD=password
 ENV GITREPO=https://github.com/riazarbi/workspace_template.git
-ENV JUPYTER=yes
-ENV RSTUDIO=yes
-ENV SHINY=yes
-ENV H2O=yes
+ENV JUPYTER=no
+ENV RSTUDIO=no
+ENV SHINY=no
+ENV H2O=no
 
 # Install base utility packages
-RUN apt-get update && \
+RUN rm -rf /var/lib/apt/lists/* && \
+    apt-get update && \
     apt-get dist-upgrade
 RUN DEBIAN_FRONTEND=noninteractive apt-get -qq install tzdata apt-utils
 RUN ln -fs /usr/share/zoneinfo/Africa/Johannesburg /etc/localtime
@@ -35,11 +36,8 @@ RUN apt-get install -y \
 # Install jupyterhub dependencies
 RUN apt-get install -y \
     nodejs \
-    python3-pip && \
-    apt-get clean
-RUN apt-get install -y \
-    npm && \
-    apt-get clean
+    python3-pip \
+    npm
     
 RUN npm cache clean -f
 RUN npm -v
@@ -53,9 +51,8 @@ RUN pip3 install jupyterlab
 RUN jupyterhub --generate-config
 
 RUN jupyter serverextension enable --py jupyterlab --sys-prefix
-RUN jupyter labextension install @jupyterlab/hub-extension
+#RUN jupyter labextension install @jupyterlab/hub-extension
 
-RUN sed -i "/c.Authenticator.admin_users/c\c.Authenticator.admin_users = {\'$NEWUSER\'}" /jupyterhub_config.py
 RUN sed -i "/c.Spawner.default_url/c\c.Spawner.default_url = '/lab'" /jupyterhub_config.py
 RUN sed -i "/c.Spawner.cmd/c\c.Spawner.cmd = ['jupyter-labhub']" /jupyterhub_config.py
 RUN mkdir /etc/jupyterhub
@@ -80,7 +77,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D6BC243565B2087BC3F
 
 # Install and setup Rstudio Server
 RUN apt-get install gdebi-core dpkg -y
-RUN wget https://download2.rstudio.org/rstudio-server-1.1.456-amd64.deb -O rs-latest.deb
+RUN wget -q https://download2.rstudio.org/rstudio-server-1.1.456-amd64.deb -O rs-latest.deb
 RUN gdebi -n rs-latest.deb
 RUN rm -f rs-latest.deb
 
@@ -88,26 +85,26 @@ RUN rm -f rs-latest.deb
 RUN apt-get install -y \
     pandoc \
     pandoc-citeproc && \
-    apt-get clean
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN wget "https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.7.907-amd64.deb" -O ss-latest.deb
+RUN wget -q "https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.7.907-amd64.deb" -O ss-latest.deb
 RUN gdebi -n ss-latest.deb
 RUN rm -f ss-latest.deb
 RUN R -e "install.packages(c('shiny', 'rmarkdown'), repos='https://cran.rstudio.com/')" 
 RUN cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
 RUN rm -rf /var/lib/apt/lists/*
-#COPY shiny-customized.config /etc/shiny-server/shiny-server.conf
+COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 
 # Install additional nonessential packages
 # You can comment out these three bash scripts and still have a working container
-#RUN sudo pip3 install minio
-COPY apt_additions.sh .
-COPY R_additions.R .
-COPY python_additions.sh .
+#COPY apt_additions.sh .
+#COPY R_additions.R .
+#COPY python_additions.sh .
 
-RUN bash apt_additions.sh
-RUN bash python_additions.sh
-RUN Rscript R_additions.R
+#RUN bash apt_additions.sh
+#RUN bash python_additions.sh
+#RUN Rscript R_additions.R
 
 # Install tini to run entrypoint command
 ENV TINI_VERSION v0.18.0
@@ -115,41 +112,34 @@ ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 ENTRYPOINT ["/tini", "-g", "--"]
 
-# Build startup script
+# BUILD STARTUP SCRIPT
+COPY run.sh /
 # Create new user
-RUN echo 'useradd -ms /bin/bash $NEWUSER' >> /run.sh
+#RUN echo 'useradd -ms /bin/bash $NEWUSER' >> /run.sh
 # Change user password from default
-RUN echo 'echo $NEWUSER:$PASSWD | chpasswd' >> /run.sh
+#RUN echo 'echo $NEWUSER:$PASSWD | chpasswd' >> /run.sh
 # Grant new user sudo
-RUN echo 'adduser $NEWUSER sudo' >> /run.sh
+#RUN echo 'adduser $NEWUSER sudo' >> /run.sh
+
 # Clone a project git repo into the /home/$NEWUSER folder
-RUN echo 'cd /home/$NEWUSER && /usr/bin/git clone $GITREPO' >>  /run.sh
-# Sort out permissions
-RUN echo 'chown -R $NEWUSER:$NEWUSER /home/$NEWUSER' >> /run.sh
+#RUN echo 'cd /home/$NEWUSER && /usr/bin/git clone $GITREPO' >>  /run.sh
+# Sort out permissions for git git folder
+#RUN echo 'chown -R $NEWUSER:$NEWUSER /home/$NEWUSER' >> /run.sh
+
 # Make the new user an admin user of Jupyterhub
-RUN echo "sed -i \"/c.Authenticator.admin_users/c\\\c.Authenticator.admin_users = {\'\$NEWUSER\'}\" /etc/jupyterhub/jupyterhub_config.py" >> /run.sh
+#RUN echo "sed -i \"/c.Authenticator.admin_users/c\\\c.Authenticator.admin_users = {\'\$NEWUSER\'}\" /etc/jupyterhub/jupyterhub_config.py" >> /run.sh
+
 # Run shiny
-RUN echo 'shiny-server &' >> /run.sh
+#RUN echo 'if [[ $SHINY = "yes" ]]; then shiny-server &> /dev/null & fi' >> /run.sh
 # Run rstudio
-RUN echo 'rstudio-server start &' >> /run.sh
+#RUN echo 'if [[ $RSTUDIO = "yes" ]]; then rstudio-server start &> /dev/null & fi' >> /run.sh
 # Run jupyter
-RUN echo 'jupyterhub -f /etc/jupyterhub/jupyterhub_config.py &>/dev/null 2>&1' >> /run.sh
-#Enter bash
-RUN echo 'su $NEWUSER' >> /run.sh
-RUN echo '/bin/bash' >> /run.sh
+#RUN echo 'if [[ $JUPYTER = "yes" ]]; then jupyterhub -f /etc/jupyterhub/jupyterhub_config.py &> /dev/null  & fi' >> /run.sh
+#RUN echo 'sleep infinity'
+# Drop privileges to sudo user and enter bash
+#RUN echo 'read -n 1 -s -r -p "Press any key to quit...\n \n \n"' >> /run.sh
+#RUN echo '/bin/bash' >> /run.sh
 RUN chmod +x /run.sh
 
 # Run startup script on runtime
-CMD ["/run.sh"]
-
-
-# Change working directory to $NEWUSER
-#USER $NEWUSER
-#WORKDIR /home/$NEWUSER
-
-# ISSUES #
-# RUN MORE SECURELY, NOT AS ROOT
-# DROP DOWN PRIVILEGES TO UNPRIVILEGED USER
-# ALLOW FOR PASSWORD CHANGE FOR ADMIN USER AT RUNTIME
-# ADD ENV VARIABLES TO CHOOSE WHAT SERVICES TO EXPOSE
-# CLONE GIT REPO AUTOMATICALLY
+CMD ["/bin/bash", "./run.sh"]
