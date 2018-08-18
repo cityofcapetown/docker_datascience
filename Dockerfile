@@ -117,31 +117,6 @@ ENTRYPOINT ["/tini", "-g", "--"]
 
 # BUILD STARTUP SCRIPT
 COPY run.sh /
-# Create new user
-#RUN echo 'useradd -ms /bin/bash $NEWUSER' >> /run.sh
-# Change user password from default
-#RUN echo 'echo $NEWUSER:$PASSWD | chpasswd' >> /run.sh
-# Grant new user sudo
-#RUN echo 'adduser $NEWUSER sudo' >> /run.sh
-
-# Clone a project git repo into the /home/$NEWUSER folder
-#RUN echo 'cd /home/$NEWUSER && /usr/bin/git clone $GITREPO' >>  /run.sh
-# Sort out permissions for git git folder
-#RUN echo 'chown -R $NEWUSER:$NEWUSER /home/$NEWUSER' >> /run.sh
-
-# Make the new user an admin user of Jupyterhub
-#RUN echo "sed -i \"/c.Authenticator.admin_users/c\\\c.Authenticator.admin_users = {\'\$NEWUSER\'}\" /etc/jupyterhub/jupyterhub_config.py" >> /run.sh
-
-# Run shiny
-#RUN echo 'if [[ $SHINY = "yes" ]]; then shiny-server &> /dev/null & fi' >> /run.sh
-# Run rstudio
-#RUN echo 'if [[ $RSTUDIO = "yes" ]]; then rstudio-server start &> /dev/null & fi' >> /run.sh
-# Run jupyter
-#RUN echo 'if [[ $JUPYTER = "yes" ]]; then jupyterhub -f /etc/jupyterhub/jupyterhub_config.py &> /dev/null  & fi' >> /run.sh
-#RUN echo 'sleep infinity'
-# Drop privileges to sudo user and enter bash
-#RUN echo 'read -n 1 -s -r -p "Press any key to quit...\n \n \n"' >> /run.sh
-#RUN echo '/bin/bash' >> /run.sh
 RUN chmod +x /run.sh
 
 # Run startup script on runtime
