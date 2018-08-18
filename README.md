@@ -6,7 +6,7 @@ It contains the following environments, installed according to each project's do
 
 1. `Jupyterhub` with `jupyter lab` enabled
 2. `RStudio Server` with `MikTex`
-3. `Shiny Server` * TO DO: SERVE APPS FROM /home/<user>/ShinyApps folders...
+3. `Shiny Server`
 4. `h2o`
 
 It also has a whole lot of `R` and `python` packages installed. For a list, look at the `python_additions.sh` and `R_additions.R` files.
@@ -36,6 +36,7 @@ None of these environments are configured to spin up at runtime. Rather, use env
 -p 3838:3838 # shiny
 riazarbi/docker_datascience
 ```
+
 **Note:** There is no flag to spin up h2o, because the h2o jar wants you to specify RAM allocation at runtime. So rather spin it up from an R or python script.
 
 You can clone a git repository into the `$NEWUSER` home directory by specifying the url. 
