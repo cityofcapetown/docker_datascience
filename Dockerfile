@@ -113,7 +113,7 @@ RUN Rscript R_additions.R
 ENV TINI_VERSION v0.18.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
-ENTRYPOINT ["/tini", "--"]
+ENTRYPOINT ["/tini", "-g", "--"]
 
 # Build startup script
 # Create new user
@@ -123,19 +123,24 @@ RUN echo 'echo $NEWUSER:$PASSWD | chpasswd' >> /run.sh
 # Grant new user sudo
 RUN echo 'adduser $NEWUSER sudo' >> /run.sh
 # Clone a project git repo into the /home/$NEWUSER folder
-RUN echo "cd /home/$NEWUSER && /usr/bin/git clone $GITREPO" >>  /run.sh
+RUN echo 'cd /home/$NEWUSER && /usr/bin/git clone $GITREPO' >>  /run.sh
 # Sort out permissions
-RUN echo "chown -R $NEWUSER:$NEWUSER /home/$NEWUSER" >> /run.sh
+RUN echo 'chown -R $NEWUSER:$NEWUSER /home/$NEWUSER' >> /run.sh
+# Make the new user an admin user of Jupyterhub
+RUN echo "sed -i \"/c.Authenticator.admin_users/c\\\c.Authenticator.admin_users = {\'\$NEWUSER\'}\" /etc/jupyterhub/jupyterhub_config.py" >> /run.sh
 # Run shiny
-RUN echo "shiny-server &" >> /run.sh
+RUN echo 'shiny-server &' >> /run.sh
 # Run rstudio
-RUN echo "rstudio-server start &" >> /run.sh
+RUN echo 'rstudio-server start &' >> /run.sh
 # Run jupyter
-RUN echo "jupyterhub -f /etc/jupyterhub/jupyterhub_config.py" >> /run.sh
+RUN echo 'jupyterhub -f /etc/jupyterhub/jupyterhub_config.py &>/dev/null 2>&1' >> /run.sh
+#Enter bash
+RUN echo 'su $NEWUSER' >> /run.sh
+RUN echo '/bin/bash' >> /run.sh
 RUN chmod +x /run.sh
 
 # Run startup script on runtime
-#CMD ["/run.sh"]
+CMD ["/run.sh"]
 
 
 # Change working directory to $NEWUSER
