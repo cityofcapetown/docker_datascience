@@ -21,7 +21,7 @@ To change the defaults, change the environment variables `$NEWUSER` and `$PASSWD
 docker run -rm \
 -e NEWUSER=neweruser \
 -e PASSWD=newpassword \
-cityofcapetown/docker_datascience-1
+cityofcapetown/docker_datascience
 ```
 
 None of these environments are configured to spin up at runtime. Rather, use enviroment flags to enable services. You'll need to map the ports as well. For instance -
