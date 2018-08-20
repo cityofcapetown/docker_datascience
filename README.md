@@ -46,7 +46,7 @@ If you don't specify a directory, it will clone in the default, which is `https:
 So a command that uses all the options is - 
 
 ```
-docker run \
+docker run -it --rm \
 -e NEWUSER=neweruser \
 -e PASSWD=newpassword \
 -e JUPYTER=yes \
