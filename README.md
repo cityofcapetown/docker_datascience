@@ -34,7 +34,7 @@ None of these environments are configured to spin up at runtime. Rather, use env
 -p 8000:8000 \ # jupyterhub
 -p 8787:8787 \ # rstudio
 -p 3838:3838 \ # shiny
-cityofcapetown/docker_datascience-1
+cityofcapetown/docker_datascience
 ```
 
 **Note:** There is no flag to spin up h2o, because the h2o jar wants you to specify RAM allocation at runtime. So rather spin it up from an R or python script.
@@ -58,5 +58,5 @@ docker run -it --rm \
 -p 54321:54321 \
 -p 54322:54321 \
 -e GIT_REPO=https://github.com/riazarbi/workspace_template.git \
-cityofcapetown/docker_datascience-1
+cityofcapetown/docker_datascience
 ```
