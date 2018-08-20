@@ -46,17 +46,17 @@ If you don't specify a directory, it will clone in the default, which is `https:
 So a command that uses all the options is - 
 
 ```
-docker run -rm \
+docker run \
 -e NEWUSER=neweruser \
 -e PASSWD=newpassword \
 -e JUPYTER=yes \
 -e RSTUDIO=yes \
 -e SHINY=yes \
--p 8000:8000 # jupyterhub \      
--p 8787:8787 # rstudio \          
--p 3838:3838 # shiny \     
--p 54321:54321 # h2o if you want other hosts to access, or clustering\
--p 54322:54321 # h2o if you want other hosts ot access, or clustering\
+-p 8000:8000 \
+-p 8787:8787 \
+-p 3838:3838 \
+-p 54321:54321 \
+-p 54322:54321 \
 -e GIT_REPO=https://github.com/riazarbi/workspace_template.git \
-riazarbi/docker_datascience'
+riazarbi/docker_datascience
 ```

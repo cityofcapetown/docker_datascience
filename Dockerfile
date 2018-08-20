@@ -66,6 +66,7 @@ RUN chmod 0644 /etc/jupyterhub/jupyterhub_config.py
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 && \
     echo "# CRAN Repo" | sudo tee -a /etc/apt/sources.list && \
     echo "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" | sudo tee -a /etc/apt/sources.list && \
+    apt-get update && \
     apt-get install r-base -y && \ 
     apt-get clean
 
