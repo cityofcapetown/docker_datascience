@@ -18,6 +18,9 @@ ENV RSTUDIO=no
 ENV SHINY=no
 ENV H2O=no
 
+# DELETE
+RUN echo ""
+
 # Install base utility packages
 RUN rm -rf /var/lib/apt/lists/* && \
     apt-get update && \
