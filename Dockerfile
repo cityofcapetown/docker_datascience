@@ -21,7 +21,7 @@ ENV H2O=no
 # Install base utility packages
 RUN rm -rf /var/lib/apt/lists/* && \
     apt-get update && \
-    apt-get dist-upgrade
+    apt-get dist-upgrade -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get -qq install tzdata apt-utils
 RUN ln -fs /usr/share/zoneinfo/Africa/Johannesburg /etc/localtime
 RUN dpkg-reconfigure --frontend noninteractive tzdata
