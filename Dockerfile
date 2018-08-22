@@ -21,7 +21,7 @@ ENV H2O=no
 # Install base utility packages
 RUN rm -rf /var/lib/apt/lists/* && \
     apt-get update && \
-    apt-get dist-upgrade
+    apt-get dist-upgrade -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get -qq install tzdata apt-utils
 RUN ln -fs /usr/share/zoneinfo/Africa/Johannesburg /etc/localtime
 RUN dpkg-reconfigure --frontend noninteractive tzdata
@@ -66,6 +66,7 @@ RUN chmod 0644 /etc/jupyterhub/jupyterhub_config.py
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 && \
     echo "# CRAN Repo" | sudo tee -a /etc/apt/sources.list && \
     echo "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" | sudo tee -a /etc/apt/sources.list && \
+    apt-get update && \
     apt-get install r-base -y && \ 
     apt-get clean
 
