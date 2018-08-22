@@ -12,6 +12,7 @@ python3 -m pip install scipy
 python3 -m pip install sklearn
 python3 -m pip install ipyleaflet
 python3 -m pip install geojson-utils
+python3 -m pip install pyodbc
 
 # Non-standard packages go here
 jupyter nbextension enable --py --sys-prefix ipyleaflet
