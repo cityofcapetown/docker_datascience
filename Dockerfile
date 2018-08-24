@@ -12,6 +12,7 @@ EXPOSE 54322
 # Set variables
 ENV NEWUSER=newuser
 ENV PASSWD=password
+ENV SUDO=no
 ENV GITREPO=https://github.com/riazarbi/workspace_template.git
 ENV JUPYTER=no
 ENV RSTUDIO=no
