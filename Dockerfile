@@ -3,11 +3,17 @@ FROM ubuntu:18.04
 LABEL maintainer="Riaz Arbi"
 
 # Expose ports
+# Jupyter
 EXPOSE 8000
+# Rstudio
 EXPOSE 8787
+# Shiny
 EXPOSE 3838
+# h2o
 EXPOSE 54321
 EXPOSE 54322
+# ODBC
+EXPOSE 1433
 
 # Set variables
 ENV NEWUSER=newuser
