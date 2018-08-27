@@ -25,3 +25,16 @@ apt-get install -y \
 default-jre \
 default-jdk && \
 apt-get clean
+
+# INSTALL ODBC
+# More specifically, the Microsoft driver
+
+DEBIAN_FRONTEND=noninteractive \
+wget https://packages.microsoft.com/keys/microsoft.asc -O microsoft.asc && \
+apt-key add microsoft.asc && \
+wget https://packages.microsoft.com/config/ubuntu/18.04/prod.list -O prod.list && \
+cp prod.list /etc/apt/sources.list.d/mssql-release.list && \
+apt-get update && \
+ACCEPT_EULA=Y apt-get install -y \
+msodbcsql17 \
+unixodbc-dev

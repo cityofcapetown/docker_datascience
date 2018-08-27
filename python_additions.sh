@@ -7,7 +7,7 @@ python3 -m pip install boto3
 python3 -m pip install awscli
 python3 -m pip install minio
 python3 -m pip install pyhdb
-python3 -m pip install geojson-utils
+python3 -m pip install pyodbc
 python3 -m pip install shapely
 ## Machine Learning
 python3 -m pip install tensorflow
@@ -21,6 +21,7 @@ python3 -m pip install python-Levenshtein
 python3 -m pip install matplotlib
 python3 -m pip install ipyleaflet
 python3 -m pip install wordcloud
+python3 -m pip install geojson-utils
 
 # Non-standard packages go here
 jupyter nbextension enable --py --sys-prefix ipyleaflet
