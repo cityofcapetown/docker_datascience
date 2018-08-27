@@ -13,7 +13,8 @@ libxml2-dev \
 libssl-dev \
 ibpython2.7 \
 python-pip \
-python-virtualenv
+python-virtualenv \
+enchant
 
 # INSTALL JAVA
 # Oracle PPA doesnt work so we are using OpenJDK
