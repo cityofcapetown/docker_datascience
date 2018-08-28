@@ -27,3 +27,5 @@ unzip -o chromedriver.zip
 rm chromedriver.zip
 mv chromedriver /usr/bin/chromedriver
 apt install -y chromium-browser
+apt install xvfb
+python3 -m pip install PyVirtualDisplay
