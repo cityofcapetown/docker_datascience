@@ -3,7 +3,7 @@ useradd -ms /bin/bash $NEWUSER
 # Change user password from default
 echo $NEWUSER:$PASSWD | chpasswd
 # Grant new user sudo if ENV says so
-if [[ $SUDO = "yes" ]]; then adduser $NEWUSER sudo fi
+if [[ $SUDO = "yes" ]]; then adduser $NEWUSER sudo ; fi
 
 # Clone a project git repo into the /home/$NEWUSER folder
 cd /home/$NEWUSER && /usr/bin/git clone $GITREPO
