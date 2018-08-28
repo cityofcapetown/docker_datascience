@@ -21,11 +21,24 @@ jupyter labextension install jupyter-leaflet
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
 # Selenium web browser
-python3 -m pip install selenium
+# Chrome driver
+# This actually doesn't work for some reason
 wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip -O chromedriver.zip
 unzip -o chromedriver.zip
 rm chromedriver.zip
 mv chromedriver /usr/bin/chromedriver
-apt install -y chromium-browser
-apt install xvfb
-python3 -m pip install PyVirtualDisplay
+# Firefox driver
+wget https://github.com/mozilla/geckodriver/releases/download/v0.21.0/geckodriver-v0.21.0-linux64.tar.gz -O geckodriver.tar.gz
+tar -xzf geckodriver.tar.gz
+# Headless X environment
+apt-get update
+apt install -y chromium-browser \
+               xvfb \
+               firefox \
+               libdbus-glib-1-2 \
+               libgtk2.0-0 \
+               libasound2
+# Python packages
+python3 -m pip install pyvirtualdisplay
+python3 -m pip install selenium
+
