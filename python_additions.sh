@@ -19,3 +19,10 @@ jupyter nbextension enable --py --sys-prefix ipyleaflet
 jupyter nbextension enable --py widgetsnbextension
 jupyter labextension install jupyter-leaflet
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
+
+# Selenium web browser
+python3 -m pip install selenium
+wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip -O chromedriver.zip
+unzip -o chromedriver.zip
+rm chromedriver.zip
+mv chromedriver /usr/bin/chromedriver
