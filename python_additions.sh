@@ -26,3 +26,4 @@ wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip -
 unzip -o chromedriver.zip
 rm chromedriver.zip
 mv chromedriver /usr/bin/chromedriver
+apt install -y chromium-browser
