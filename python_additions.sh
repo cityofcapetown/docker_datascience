@@ -13,7 +13,9 @@ python3 -m pip install sklearn
 python3 -m pip install ipyleaflet
 python3 -m pip install geojson-utils
 python3 -m pip install pyodbc
-pthyon3 -m pip install bs4
+python3 -m pip install bs4
+python3 -m pip install pandas, setuptools, Xlsxwriter, openpyxl, xlrd, pyexcel
+
 
 # Non-standard packages go here
 jupyter nbextension enable --py --sys-prefix ipyleaflet
