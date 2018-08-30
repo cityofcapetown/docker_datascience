@@ -14,8 +14,31 @@ python3 -m pip install ipyleaflet
 python3 -m pip install geojson-utils
 python3 -m pip install pyodbc
 python3 -m pip install bs4
-python3 -m pip install pandas, setuptools, Xlsxwriter, openpyxl, xlrd, pyexcel
 
+# ADDING JUPYTER DOCKER STACKS PYTHON PACKAGES: SCIPY NOTEBOOK
+python3 -m pip install \
+    pandas, \
+    numexpr, \
+    matplotlib, \
+    scipy, \
+    seaborn, \
+    scikit-learn, \
+    scikit-image, \
+    sympy, \
+    cython, \
+    patsy, \
+    statsmodels, \
+    cloudpickle, \
+    dill, \
+    numba, \
+    bokeh, \
+    sqlalchemy, \
+    hdf5, \
+    h5py, \
+    vincent, \
+    beautifulsoup4, \
+    protobuf, \
+    xlrd
 
 # Non-standard packages go here
 jupyter nbextension enable --py --sys-prefix ipyleaflet
