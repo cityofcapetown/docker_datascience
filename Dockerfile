@@ -113,10 +113,23 @@ COPY apt_additions.sh .
 COPY R_additions.R .
 COPY python_additions.sh .
 
-RUN bash apt_additions.sh
-RUN bash python_additions.sh
-RUN Rscript R_additions.R
+#RUN bash apt_additions.sh
+#RUN bash python_additions.sh
+#RUN Rscript R_additions.R
 
+# SET UP NGINX
+EXPOSE 80
+EXPOSE 443
+RUN apt-get update && \
+    apt-get install nginx -y && \
+    apt-get clean
+COPY nginx.conf /
+COPY default /
+RUN mv nginx.conf /etc/nginx/nginx.conf
+RUN mv default /etc/nginx/sites-available/default
+RUN sed -i "/c.JupyterHub.base_url/c\c.JupyterHub.base_url = '/jupyter'" /etc/jupyterhub/jupyterhub_config.py
+
+# STARTUP SCRIPT
 # Install tini to run entrypoint command
 ENV TINI_VERSION v0.18.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
@@ -129,3 +142,5 @@ RUN chmod +x /run.sh
 
 # Run startup script on runtime
 CMD ["/bin/bash", "./run.sh"]
+
+#c.JupyterHub.base_url = '/jupyter'
