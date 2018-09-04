@@ -31,7 +31,8 @@ list.of.packages <- c("evaluate",
                      "visNetwork",
                      "threejs",
                      "networkD3",
-                     "ndtv")
+                     "ndtv",
+                     "bupaR)
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 
