@@ -13,6 +13,8 @@ chown -R $NEWUSER:$NEWUSER /home/$NEWUSER
 # Make the new user an admin user of Jupyterhub
 sed -i "/c.Authenticator.admin_users/c\c.Authenticator.admin_users = {'\$NEWUSER\'}" /etc/jupyterhub/jupyterhub_config.py
 
+# Run cron
+cron &
 # Run shiny
 if [[ $SHINY = "yes" ]]; then shiny-server &> /dev/null & fi
 # Run Rstudio
