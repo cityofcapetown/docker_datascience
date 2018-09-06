@@ -38,6 +38,9 @@ new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"
 
 if(length(new.packages)) install.packages(new.packages)
 
+# package to interact with s3
+install.packages("aws.s3", repos = c("cloudyr" = "http://cloudyr.github.io/drat"))
+
 # Non-standard packages go here
 
 # INSTALL TINYTEX
