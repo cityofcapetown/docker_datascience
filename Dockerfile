@@ -112,10 +112,12 @@ COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 COPY apt_additions.sh .
 COPY R_additions.R .
 COPY python_additions.sh .
+COPY selenium_setup.sh .
 
 RUN bash apt_additions.sh
 RUN bash python_additions.sh
 RUN Rscript R_additions.R
+RUN bash selenium_setup.sh
 
 # Install tini to run entrypoint command
 ENV TINI_VERSION v0.18.0
