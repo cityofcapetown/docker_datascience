@@ -14,7 +14,14 @@ libssl-dev \
 ibpython2.7 \
 python-pip \
 python-virtualenv \
-enchant
+enchant \
+libprotobuf-dev \
+libv8-3.14-dev \
+libjq-dev \
+libudunits2-dev \
+protobuf-compiler \
+libgdal-dev
+
 
 # INSTALL JAVA
 # Oracle PPA doesnt work so we are using OpenJDK
