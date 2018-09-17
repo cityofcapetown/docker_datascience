@@ -39,7 +39,8 @@ list.of.packages <- c("evaluate",
                       "arules",
                       "arulesViz", "kohonen", "dummies", "tempR", "WDI", 
                       "smacof", "cluster", "ggmap", "googleway", "RJSONIO",
-                      "geojsonio", "bupaR")
+                      "geojsonio", "bupaR", "edeaR", "eventdataR", "processmapR",
+                     "processmonitR", "xesreadR", "petrinetR")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 
