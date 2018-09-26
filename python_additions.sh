@@ -25,6 +25,8 @@ python3 -m pip install pandas
 python3 -m pip install pyenchant
 python3 -m pip install nltk
 python3 -m pip install python-Levenshtein
+python3 -m pip install pystan
+python3 -m pip install fbprophet
 
 ## Plotting
 python3 -m pip install matplotlib
