@@ -42,7 +42,7 @@ list.of.packages <- c("evaluate",
                       "geojsonio", "bupaR", "edeaR", "eventdataR", "processmapR",
                      "processmonitR", "xesreadR", "petrinetR",
                      "prophet", "timevis", "kableExtra",
-                     "repr", "IRdisplay", 'evaluate", "crayon", "pbdZMQ", "devtools", "uuid", "digest")
+                     "repr", "IRdisplay", "evaluate", "crayon", "pbdZMQ", "devtools", "uuid", "digest")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 
@@ -56,7 +56,7 @@ tinytex::install_tinytex(force=TRUE)
 
 # INSTALL R KERNEL
 devtools::install_github('IRkernel/IRkernel')
-#IRKernel:installspec(user = FALSE)
+IRKernel:installspec(user = FALSE)
 
 # INSTALL XARINGAN
 devtools::install_github('yihui/xaringan')
