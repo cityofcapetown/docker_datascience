@@ -56,7 +56,7 @@ tinytex::install_tinytex(force=TRUE)
 
 # INSTALL R KERNEL
 devtools::install_github('IRkernel/IRkernel')
-IRKernel:installspec(user = FALSE)
+#IRKernel:installspec(user = FALSE)
 
 # INSTALL XARINGAN
 devtools::install_github('yihui/xaringan')
