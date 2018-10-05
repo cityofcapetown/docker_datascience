@@ -14,3 +14,5 @@ RUN bash apt_additions.sh
 RUN bash python_additions.sh
 RUN Rscript R_additions.R
 RUN bash selenium_setup.sh
+
+RUN R CMD IRkernel::installspec(user = FALSE)
