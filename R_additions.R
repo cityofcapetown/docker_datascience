@@ -43,7 +43,8 @@ list.of.packages <- c("evaluate",
                       "geojsonio", "bupaR", "edeaR", "eventdataR", "processmapR",
                      "processmonitR", "xesreadR", "petrinetR",
                      "prophet", "timevis", "kableExtra",
-                     "repr", "IRdisplay", "evaluate", "crayon", "pbdZMQ", "devtools", "uuid", "digest")
+                     "repr", "IRdisplay", "evaluate", "crayon", "pbdZMQ", "devtools", "uuid", "digest",
+                     "equisse", "flexdashboard", "shinydashboard")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 
