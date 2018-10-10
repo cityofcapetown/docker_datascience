@@ -32,7 +32,8 @@ python3 -m pip install ipyleaflet
 python3 -m pip install wordcloud
 
 ## Geospatial
-pip install h3
+python3 -m pip install h3
+python3 -m pip install folium
 
 # Non-standard packages go here
 jupyter nbextension enable --py --sys-prefix ipyleaflet
