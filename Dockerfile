@@ -17,4 +17,4 @@ RUN bash selenium_setup.sh
 
 # Add jupyter to path
 RUN PATH=$PATH:/usr/local/bin
-RUN R CMD IRkernel::installspec(user = FALSE)
+RUN R -e "IRkernel::installspec(user = FALSE)"
