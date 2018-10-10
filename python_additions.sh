@@ -31,6 +31,9 @@ python3 -m pip install matplotlib
 python3 -m pip install ipyleaflet
 python3 -m pip install wordcloud
 
+## Geospatial
+pip install h3
+
 # Non-standard packages go here
 jupyter nbextension enable --py --sys-prefix ipyleaflet
 jupyter nbextension enable --py widgetsnbextension
