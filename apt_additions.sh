@@ -20,7 +20,11 @@ libv8-3.14-dev \
 libjq-dev \
 libudunits2-dev \
 protobuf-compiler \
-libgdal-dev
+libgdal-dev \
+cmake \
+make \
+gcc \
+libtool
 
 
 # INSTALL JAVA
