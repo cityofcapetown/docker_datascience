@@ -5,7 +5,7 @@ LABEL maintainer="Riaz Arbi"
 # Install additional nonessential packages
 # You can comment out these three bash scripts and still have a working container
 # Maybe I should put these into a chained Docker image?
-COPY apt_additions.sh .
+COPY apt_additiohttp://localhost:8787/ns.sh .
 COPY R_additions.R .
 COPY python_additions.sh .
 COPY selenium_setup.sh .
@@ -15,4 +15,6 @@ RUN bash python_additions.sh
 RUN Rscript R_additions.R
 RUN bash selenium_setup.sh
 
+# Add jupyter to path
+RUN PATH=$PATH:/usr/local/bin
 RUN R CMD IRkernel::installspec(user = FALSE)
