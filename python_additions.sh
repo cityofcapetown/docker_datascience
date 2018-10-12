@@ -35,6 +35,18 @@ python3 -m pip install wordcloud
 python3 -m pip install h3
 python3 -m pip install folium
 
+# jupyter labhub
+apt-get install npm
+jupyter labextension install @jupyterlab/hub-extension
+jupyter labextension enable @jupyterlab/hub-extension
+
+#jupyter git
+jupyter labextension install @jupyterlab/git
+jupyter labextension enable @jupyterlab/git
+
+# jupyterlab-dicovery
+python3 -m pip install jupyterlab-discovery
+
 # Non-standard packages go here
 jupyter nbextension enable --py --sys-prefix ipyleaflet
 jupyter nbextension enable --py widgetsnbextension
