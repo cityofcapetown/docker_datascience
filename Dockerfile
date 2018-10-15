@@ -13,8 +13,18 @@ COPY selenium_setup.sh .
 RUN bash apt_additions.sh
 RUN bash python_additions.sh
 RUN Rscript R_additions.R
-RUN bash selenium_setup.sh
 
-# Add jupyter to path
 RUN PATH=$PATH:/usr/local/bin
 RUN R -e "IRkernel::installspec(user = FALSE)"
+
+# SET UP NGINX
+EXPOSE 80
+EXPOSE 443
+RUN apt-get update && \
+    apt-get install nginx -y && \
+    apt-get clean
+COPY nginx.conf /
+COPY default /
+RUN mv nginx.conf /etc/nginx/nginx.conf
+RUN mv default /etc/nginx/sites-available/default
+RUN sed -i "/c.JupyterHub.base_url/c\c.JupyterHub.base_url = '/jupyter'" /etc/jupyterhub/jupyterhub_config.py
