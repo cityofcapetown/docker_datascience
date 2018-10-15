@@ -17,6 +17,8 @@ sed -i "/c.Authenticator.admin_users/c\c.Authenticator.admin_users = {'\$NEWUSER
 nginx &
 
 # Use this code block in production
+# Run cron
+cron &
 # Run shiny
 #if [[ $SHINY = "yes" ]]; then shiny-server &> /dev/null & fi
 # Run Rstudio
@@ -33,5 +35,3 @@ shiny-server &
 rstudio-server start &
 # Run jupyter
 jupyterhub -f /etc/jupyterhub/jupyterhub_config.py
-
-
