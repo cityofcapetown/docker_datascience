@@ -13,6 +13,7 @@ COPY selenium_setup.sh .
 RUN bash apt_additions.sh
 RUN bash python_additions.sh
 RUN Rscript R_additions.R
+RUN bash selenium_setup.sh
 
 RUN PATH=$PATH:/usr/local/bin
 RUN R -e "IRkernel::installspec(user = FALSE)"
