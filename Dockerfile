@@ -29,3 +29,7 @@ COPY default /
 RUN mv nginx.conf /etc/nginx/nginx.conf
 RUN mv default /etc/nginx/sites-available/default
 RUN sed -i "/c.JupyterHub.base_url/c\c.JupyterHub.base_url = '/jupyter'" /etc/jupyterhub/jupyterhub_config.py
+
+# BUILD STARTUP SCRIPT
+COPY run.sh /
+RUN chmod +x /run.sh
