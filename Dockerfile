@@ -24,11 +24,15 @@ EXPOSE 443
 RUN apt-get update && \
     apt-get install nginx -y && \
     apt-get clean
+
+# COPY IN NGINX TEMPLATES
+ENV VIRTUAL_PATH=/
 COPY nginx.conf /
 COPY default /
+
+# MOVE TEMPLATES TO CORRECT PLACE
 RUN mv nginx.conf /etc/nginx/nginx.conf
 RUN mv default /etc/nginx/sites-available/default
-RUN sed -i "/c.JupyterHub.base_url/c\c.JupyterHub.base_url = '/jupyter'" /etc/jupyterhub/jupyterhub_config.py
 
 # BUILD STARTUP SCRIPT
 COPY run.sh /
