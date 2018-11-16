@@ -15,6 +15,7 @@ RUN bash python_additions.sh
 RUN Rscript R_additions.R
 RUN bash selenium_setup.sh
 
+# INstalling R kernel for Jupyter - can;t get it to work in bash file
 RUN PATH=$PATH:/usr/local/bin
 RUN R -e "IRkernel::installspec(user = FALSE)"
 

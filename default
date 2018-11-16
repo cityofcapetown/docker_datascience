@@ -11,7 +11,6 @@ server {
 	# See: https://bugs.debian.org/773332
 	#
 	
-
 	root /var/www/html;
 
 	# Add index.php to the list if you are using PHP
@@ -31,21 +30,6 @@ server {
                 proxy_set_header Upgrade $http_upgrade;
                 proxy_set_header Connection "upgrade";
         }                
-
-        location ~* /(user/[^/]*)/(api/kernels/[^/]+/channels|terminals/websocket)/? {
-            proxy_pass http://localhost:8000;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-NginX-Proxy true;
-
-            # WebSocket support
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-            proxy_read_timeout 86400;
-
-        }
 
         # RStudio Config
         location /rstudio/ {
