@@ -29,7 +29,8 @@ if [[ $VIRTUAL_PATH = "/" ]]; then
 else
     echo The url subpath for this container is $VIRTUAL_PATH
     # Fix RStudio redirect
-    sed -i "\/proxy_redirect http\:\/\/localhost\:8787\//c\proxy_redirect http\:\/\/localhost\:8787\/ \$scheme\:\/\/\$host$VIRTUAL_PATH\/rstudio\/\;" /etc/nginx/sites-available/default
+    sed -i "\/proxy_redirect http\:\/\/localhost\:8787\//c\proxy_redirect http\:\/\/localhost\:8787\/ http\:\/\/\$host$VIRTUAL_PATH\/rstudio\/\;" /etc/nginx/sites-available/default
+    sed -i "\/proxy_redirect https\:\/\/localhost\:8787\//c\proxy_redirect https\:\/\/localhost\:8787\/ https\:\/\/\$host$VIRTUAL_PATH\/rstudio\/\;" /etc/nginx/sites-available/default
     # Fix Jupyter redirect
     sed -i "\/proxy_pass http\:\/\/localhost\:8000/c\proxy_pass http\:\/\/\localhost\:\8000$VIRTUAL_PATH\/jupyter\/\;" /etc/nginx/sites-available/default
     sed -i "/c.JupyterHub.bind_url/c\c.JupyterHub.bind_url = 'http://:8000$VIRTUAL_PATH/jupyter/'" /etc/jupyterhub/jupyterhub_config.py
