@@ -32,11 +32,13 @@ python3 -m pip install fbprophet
 python3 -m pip install matplotlib
 python3 -m pip install ipyleaflet
 python3 -m pip install wordcloud
+python3 -m pip install bokeh
 
 # Non-standard packages go here
 jupyter nbextension enable --py --sys-prefix ipyleaflet
 jupyter nbextension enable --py widgetsnbextension
 jupyter labextension install jupyter-leaflet
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
+jupyter labextension install jupyterlab_bokeh
 python3 -c "import nltk;nltk.download('averaged_perceptron_tagger');nltk.download('punkt');nltk.download('stopwords')"
 

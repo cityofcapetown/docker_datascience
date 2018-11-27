@@ -54,3 +54,9 @@ apt install -y chromium-browser \
                libdbus-glib-1-2 \
                libgtk2.0-0 \
                libasound2
+
+# Latex (Mostly for generating PDFs)
+apt install -y texlive-latex-base \
+	       texlive-fonts-recommended \
+	       texlive-fonts-extra \
+	       texlive-latex-extra
