@@ -19,7 +19,7 @@ EXPOSE 1433
 ENV NEWUSER=newuser
 ENV PASSWD=password
 ENV SUDO=no
-ENV GITREPO=https://github.com/riazarbi/workspace_template.git
+ENV GITREPO=no
 ENV JUPYTER=no
 ENV RSTUDIO=no
 ENV SHINY=no
