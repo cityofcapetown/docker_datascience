@@ -42,6 +42,8 @@ if(length(new.packages)) install.packages(new.packages)
 install.packages("aws.s3", repos = c("cloudyr" = "http://cloudyr.github.io/drat"))
 
 # Non-standard packages go here
+# INSTALL h3FORR
+devtools::install_github("cityofcapetown/h3forr")
 
 # INSTALL TINYTEX
 library(tinytex)
