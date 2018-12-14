@@ -115,7 +115,7 @@ COPY python_additions.sh .
 
 RUN bash apt_additions.sh
 RUN bash python_additions.sh
-RUN Rscript R_additions.R
+#RUN Rscript R_additions.R
 
 # Install tini to run entrypoint command
 ENV TINI_VERSION v0.18.0
