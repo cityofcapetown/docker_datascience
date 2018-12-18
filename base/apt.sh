@@ -14,6 +14,7 @@ DEBIAN_FRONTEND=noninteractive \
   gcc \
   wget \
   apt-utils \
+  git \
   tzdata
 
 # Setting the timezone

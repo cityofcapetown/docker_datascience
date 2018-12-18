@@ -21,10 +21,14 @@ COPY base.conf .
 RUN mv nginx.conf /etc/nginx/nginx.conf
 RUN mv base.conf /etc/nginx/conf.d/base.conf
 RUN rm /etc/nginx/sites-enabled/default
+RUN mkdir -p /etc/nginx/paths-available/
 
 # BUILD STARTUP SCRIPT
 COPY run.sh /
 RUN chmod +x /run.sh
+
+# CREATING STARTUP SCRIPT HOOK LOCATION
+RUN mkdir /run_scripts
 
 # RUN STARTUP SCRIPT
 ENV NEWUSER "newuser" 

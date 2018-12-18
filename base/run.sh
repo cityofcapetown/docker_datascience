@@ -30,7 +30,12 @@ else
     echo The url subpath for this container is $VIRTUAL_PATH
 fi
 
+# RUN any startup scripts in the hook location
+for startup_script in $(ls /run_scripts); do
+    echo 'Running "$startup_script"...)'
+    timeout 60 /run_scripts/"$startup_script"
+done
+
 # Start nginx
 echo starting nginx...
-nginx -g 'daemon off;' 
-
+nginx -g 'daemon off;'

@@ -9,3 +9,6 @@ COPY selenium_setup.sh .
 RUN bash apt.sh
 RUN bash python_additions.sh
 RUN bash selenium_setup.sh
+
+# ODBC
+EXPOSE 1433
