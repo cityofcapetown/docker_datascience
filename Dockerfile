@@ -1,7 +1,3 @@
-#FROM cityofcapetown/docker_datascience
-#
-#LABEL maintainer="Riaz Arbi"
-#
 ## Install additional nonessential packages
 ## You can comment out these three bash scripts and still have a working container
 ## Maybe I should put these into a chained Docker image?

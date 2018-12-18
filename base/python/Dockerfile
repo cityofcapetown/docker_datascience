@@ -1,4 +1,4 @@
-FROM gordonei/docker_datascience:base
+FROM cityofcapetown/datascience:base
 
 LABEL authors="Riaz Arbi,Gordon Inggs"
 
