@@ -15,5 +15,6 @@ DEBIAN_FRONTEND=noninteractive \
   libjq-dev \
   libudunits2-dev \
   protobuf-compiler \
+  libprotobuf-dev \
   libgdal-dev \
   libtool
