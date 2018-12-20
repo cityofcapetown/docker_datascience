@@ -22,7 +22,7 @@ sed -i "/c.JupyterHub.bind_url/c\c.JupyterHub.bind_url = 'http://:8000/jupyter/'
 
 # Fix NGINX hostname for dynamic routing
 if [[ $VIRTUAL_PATH = "/" ]]; then
-    echo "VIRTUAL PATH IS ROOT. NOT MODIFYING NGINX CONF..."
+    echo "VIRTUAL PATH IS ROOT. NOT MODIFYING JUPYTER NGINX CONF..."
 else
     echo 'The url subpath for this container is "$VIRTUAL_PATH"'
     sed -i "\/proxy_pass http\:\/\/localhost\:8000/c\proxy_pass http\:\/\/\localhost\:\8000$VIRTUAL_PATH\/jupyter\/\;" $JUPYTER_NGINX

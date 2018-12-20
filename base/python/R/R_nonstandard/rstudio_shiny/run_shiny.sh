@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Fixing Shiny redirect
 if [[ $VIRTUAL_PATH = "/" ]]; then
     echo "VIRTUAL PATH IS ROOT. NOT MODIFYING SHINY NGINX CONF..."
 else
