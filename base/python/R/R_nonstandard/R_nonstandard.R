@@ -25,7 +25,8 @@ list.of.packages <- c("caTools",
                       "processmonitR", "xesreadR", "petrinetR",
                       "prophet", "timevis", "kableExtra",
                       "IRdisplay", "evaluate", "crayon", "pbdZMQ",
-                      "esquisse", "flexdashboard", "shinydashboard", "reticulate")
+                      "esquisse", "flexdashboard", "shinydashboard", "reticulate",
+                     "lwgeom")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 
