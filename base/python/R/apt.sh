@@ -2,8 +2,8 @@
 
 # Install R
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-echo "# CRAN Repo" | sudo tee -a /etc/apt/sources.list
-echo "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" | sudo tee -a /etc/apt/sources.list
+echo "# CRAN Repo" | tee -a /etc/apt/sources.list
+echo "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" | tee -a /etc/apt/sources.list
 
 DEBIAN_FRONTEND=noninteractive \
   apt-get clean && \
