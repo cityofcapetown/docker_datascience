@@ -13,7 +13,6 @@ RUN apt-get update && \
     apt-get clean
 
 # COPY IN NGINX TEMPLATES
-ENV VIRTUAL_PATH=/
 COPY nginx.conf .
 COPY base.conf .
 
