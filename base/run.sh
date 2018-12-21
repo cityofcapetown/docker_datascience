@@ -18,10 +18,10 @@ fi
 if [[ $GITREPO != "" ]]; then
   echo cloning $GITREPO...
   cd /home/$NEWUSER && /usr/bin/git clone $GITREPO
-  # Sort out permissions for git folder
-  chown -R $NEWUSER:$NEWUSER /home/$NEWUSER
-  echo
 fi
+
+# Sort out permissions for home dir
+chown -R $NEWUSER:$NEWUSER /home/$NEWUSER
 
 # Fix NGINX hostname for dynamic routing
 if [[ $VIRTUAL_PATH = "/" ]]; then
@@ -32,7 +32,7 @@ fi
 
 # RUN any startup scripts in the hook location
 for startup_script in $(ls /run_scripts); do
-    echo 'Running "$startup_script"...)'
+    echo "Running '$startup_script'...)"
     timeout 60 /run_scripts/"$startup_script"
 done
 
