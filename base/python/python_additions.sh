@@ -8,6 +8,8 @@ python3 -m pip install botocore
 python3 -m pip install boto3
 python3 -m pip install awscli
 python3 -m pip install bs4
+python3 -m pip install convertdate
+python3 -m pip install holidays=='0.9.8'
 
 ## Data Extraction/Managing
 python3 -m pip install minio
