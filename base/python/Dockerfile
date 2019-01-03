@@ -32,6 +32,14 @@ RUN wget https://packages.microsoft.com/keys/microsoft.asc -O microsoft.asc && \
   ACCEPT_EULA=Y apt-get install -y \
   msodbcsql17
 
+# Python dependencies
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get install -y \
+    enchant enchant-dev \
+    libfreetype6-dev \
+    pkg-config \
+    libpng12-dev
+
 COPY python_additions.sh .
 COPY selenium_setup.sh .
 
