@@ -24,7 +24,7 @@ python3 -m pip install sklearn
 python3 -m pip install pyenchant
 python3 -m pip install nltk
 python3 -m pip install python-Levenshtein
-python3 -m pip install fbprophet
+python3 -m pip install --no-cache-dir --no-binary :all: fbprophet
 
 ## Plotting
 python3 -m pip install matplotlib
