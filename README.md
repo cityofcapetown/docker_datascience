@@ -1,62 +1,62 @@
-# docker_datascience
+# City of Cape Town's Datascience Docker Images
 
-This docker image is based on `Ubuntu 18.04`.
+This repository contains cascading images used for Datascience at the City of Cape Town by the Organisational 
+Performance Management branch.
 
-It contains the following environments, installed according to each project's documented installation instructions:
+## Overview
 
-1. `Jupyterhub` with `jupyter lab` enabled
-2. `RStudio Server` with `MikTex`
-3. `Shiny Server`
-4. `h2o`
+The current structure of these images (and the repo):
+```
+.
+└── base
+    └── python
+        ├── jupyter
+        └── R
+            └── R_nonstandard
+                └── rstudio_shiny
+```
 
-It also has a whole lot of `R` and `python` packages installed. For a list, look at the `python_additions.sh` and `R_additions.R` files.
+Overview of the images:
+* `base` - based on `Ubuntu 18.04`. Contains various utilities, a NGINX reverse proxy and a run script.
+* `python` - Installs Python3 and many Python packages (see `./base/python/python_additions.sh`). It also install `selenium`.
+* `jupyter` - Installs and runs Jupyterlab + Jupyterhub.
+* `R` and `R_nonstandard` - Installs R, and many R packages, including `MixTex` and `h2o`  (see `./base/python/R/R_additions.R` and `./base/python/R/R_nonstandard/R_nonstandard.R`).
+* `rstudio_shiny` - Installs and runs rstudio and shiny server.
 
 ## Usage
+### Starting Docker Images
+The default user does not have sudo privileges. These can be enabled by setting `SUDO=yes`.
 
-The default user has sudo privileges. The default username is `newuser` and the password is `password`.
+The default username is `newuser` and the password is `password`. To change the defaults, change the environment 
+variables `$NEWUSER` and `$PASSWD`.
 
-To change the defaults, change the environment variables `$NEWUSER` and `$PASSWD` -
+You can clone a git repository into the `$NEWUSER` home directory by specifying the url with `$GIREPO`. If you don't 
+specify a directory, it will not clone in anything.
 
-```
-docker run -rm \
--e NEWUSER=neweruser \
--e PASSWD=newpassword \
-cityofcapetown/docker_datascience
-```
+By default the image exposes and listens on port `80`. This can be overridden using Docker's `-p` flags, i.e. 
+`-p <desired port>:80`.
 
-None of these environments are configured to spin up at runtime. Rather, use enviroment flags to enable services. You'll need to map the ports as well. For instance -
+The NGINX proxy by default binds to `localhost` and assumes that it is serving up at `/`. This can be overridden using 
+the `$VIRTUAL_HOST` and `$VIRTUAL_PATH` variables. This is useful if the image is being served up from behind a reverse proxy.
 
-```
-<first part of docker command>
--e JUPYTER=yes \
--e RSTUDIO=yes \
--e SHINY=yes \
--p 8000:8000 \ # jupyterhub
--p 8787:8787 \ # rstudio
--p 3838:3838 \ # shiny
-cityofcapetown/docker_datascience
-```
-
-**Note:** There is no flag to spin up h2o, because the h2o jar wants you to specify RAM allocation at runtime. So rather spin it up from an R or python script.
-
-You can clone a git repository into the `$NEWUSER` home directory by specifying the url. 
-
-If you don't specify a directory, it will clone in the default, which is `https://github.com/riazarbi/workspace_template.git`.
-
-So a command that uses all the options is - 
-
+So a command that uses all the options and starts up jupyterhub:
 ```
 docker run -it --rm \
 -e NEWUSER=neweruser \
 -e PASSWD=newpassword \
--e JUPYTER=yes \
--e RSTUDIO=yes \
--e SHINY=yes \
--p 8000:8000 \
--p 8787:8787 \
--p 3838:3838 \
--p 54321:54321 \
--p 54322:54321 \
--e GIT_REPO=https://github.com/riazarbi/workspace_template.git \
-cityofcapetown/docker_datascience
+-e SUDO=yes \
+-e GITREPO=https://github.com/riazarbi/workspace_template.git \
+-p 8000:80 \
+-e VIRTUAL_HOST=127.0.0.1 \
+-e VIRTUAL_PATH=/ \
+cityofcapetown/docker_datascience:jupyter
 ```
+
+### Interacting with services
+NGINX is used to proxy to various services within the Docker image:
+
+* Jupyterlab can be found at `http://localhost/jupyter/` (**NB** the trailing slash) when running the `jupyter` image.
+* RStudio can be found at `http://localhost/rstudio/` (**NB** the trailing slash) when running the `rstudio_shiny` image.
+* Shiny can be found at `http://localhost/shiny/` (**NB** the trailing slash) when running the `rstudio_shiny` image.
+
+**NB** The above assumes that the default `$VIRTUAL_HOST`, `$VIRTUAL_PATH` and port values are being used.
