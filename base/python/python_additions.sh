@@ -34,9 +34,9 @@ python3 -m pip install --no-cache-dir --no-binary :all: fbprophet
 
 ## Plotting
 python3 -m pip install matplotlib
-python3 -m pip install ipyleaflet
 python3 -m pip install wordcloud
 python3 -m pip install bokeh
+python3 -m pip install folium
 
 ## Geospatial
 python3 -m pip install h3
