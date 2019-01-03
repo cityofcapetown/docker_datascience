@@ -14,7 +14,10 @@ python3 -m pip install minio
 python3 -m pip install pyhdb
 python3 -m pip install pyodbc
 python3 -m pip install pandas
-python3 -m pip install XlsxWriter, openpyxl, xlrd, pyexcel
+python3 -m pip install XlsxWriter
+python3 -m pip install openpyxl
+python3 -m pip install xlrd
+python3 -m pip install pyexcel
 python3 -m pip install yattag
 
 ## Machine Learning
@@ -40,10 +43,5 @@ python3 -m pip install geojson-utils
 python3 -m pip install shapely
 
 # Non-standard packages go here
-jupyter nbextension enable --py --sys-prefix ipyleaflet
-jupyter nbextension enable --py widgetsnbextension
-jupyter labextension install jupyter-leaflet
-jupyter labextension install @jupyter-widgets/jupyterlab-manager
-jupyter labextension install jupyterlab_bokeh
 python3 -c "import nltk;nltk.download('averaged_perceptron_tagger');nltk.download('punkt');nltk.download('stopwords')"
 
