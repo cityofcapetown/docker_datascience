@@ -55,10 +55,14 @@ library(keras)
 keras::install_keras()
 
 #INSTALL H2O
-# The following two commands remove any previously installed H2O packages for R.
 if ("package:h2o" %in% search()) { detach("package:h2o", unload=TRUE) }
 if ("h2o" %in% rownames(installed.packages())) { remove.packages("h2o") }
-# Now we download and install h2o runtime and R h2o package.
-install.packages("h2o", type="source",
-repos="http://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/8/R")
+# Install dependencies if not already installed
+pkgs <- c("RCurl","jsonlite")
+for (pkg in pkgs) {
+  if (! (pkg %in% rownames(installed.packages()))) { install.packages(pkg) }
+}
+# Now we download and install h2o and R h2o package. 
+install.packages("h2o", type="source", repos=(c("http://h2o-release.s3.amazonaws.com/h2o/latest_stable_R")))
+
 
