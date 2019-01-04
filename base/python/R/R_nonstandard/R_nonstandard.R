@@ -34,6 +34,8 @@ options(Ncpus = 4)
 if(length(new.packages)) install.packages(new.packages)
 
 # Non-standard packages go here
+# INSTALL H3FORR
+devtools::install_github("cityofcapetown/h3forr")
 
 # INSTALL TINYTEX
 library(devtools)
