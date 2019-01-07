@@ -25,18 +25,14 @@ Overview of the images:
 
 ## Usage
 ### Starting Docker Images
-The default user does not have sudo privileges. These can be enabled by setting `SUDO=yes`.
-
-The default username is `newuser` and the password is `password`. To change the defaults, change the environment 
+* The default user does not have sudo privileges. These can be enabled by setting `SUDO=yes`.
+* The default username is `newuser` and the password is `password`. To change the defaults, change the environment 
 variables `$NEWUSER` and `$PASSWD`.
-
-You can clone a git repository into the `$NEWUSER` home directory by specifying the url with `$GIREPO`. If you don't 
+* You can clone a git repository into the `$NEWUSER` home directory by specifying the url with `$GIREPO`. If you don't 
 specify a directory, it will not clone in anything.
-
-By default the image exposes and listens on port `80`. This can be overridden using Docker's `-p` flags, i.e. 
+* By default the image exposes and listens on port `80`. This can be overridden using Docker's `-p` flags, i.e. 
 `-p <desired port>:80`.
-
-The NGINX proxy by default binds to `localhost` and assumes that it is serving up at `/`. This can be overridden using 
+* The NGINX proxy by default binds to `localhost` and assumes that it is serving up at `/`. This can be overridden using 
 the `$VIRTUAL_HOST` and `$VIRTUAL_PATH` variables. This is useful if the image is being served up from behind a reverse proxy.
 
 So a command that uses all the options and starts up jupyterhub:
@@ -60,3 +56,7 @@ NGINX is used to proxy to various services within the Docker image:
 * Shiny can be found at `http://localhost/shiny/` (**NB** the trailing slash) when running the `rstudio_shiny` image.
 
 **NB** The above assumes that the default `$VIRTUAL_HOST`, `$VIRTUAL_PATH` and port values are being used.
+
+### Recommended
+* If you're working in the City of Cape Town's data science environment, it's recommended to use the `/etc/hosts` from the
+host machine, i.e. mount the hosts file within the container `-v /etc/hosts:/etc/hosts:ro`.
