@@ -21,8 +21,9 @@ if [[ $GITREPO != "" ]]; then
 fi
 
 # Configure git username and email so that we don't have to do it every time
-sudo -u $NEWUSER git config --global user.email $NEWUSER
-sudo -u $NEWUSER git config --global user.name $NEWUSER
+cat "[user]" >> /home/$NEWUSER/.gitconfig
+cat "name = $NEWUSER" >> /home/$NEWUSER/.gitconfig
+cat "email = $NEWUSER" >> /home/$NEWUSER/.gitconfig
 
 # Sort out permissions for home dir
 chown -R $NEWUSER:$NEWUSER /home/$NEWUSER
