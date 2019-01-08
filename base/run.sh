@@ -20,6 +20,10 @@ if [[ $GITREPO != "" ]]; then
   cd /home/$NEWUSER && /usr/bin/git clone $GITREPO
 fi
 
+# Configure git username and email so that we don't have to do it every time
+sudo -u $NEWUSER git config --global user.email $NEWUSER
+sudo -u $NEWUSER git config --global user.name $NEWUSER
+
 # Sort out permissions for home dir
 chown -R $NEWUSER:$NEWUSER /home/$NEWUSER
 
