@@ -9,7 +9,7 @@ python3 -m pip install boto3
 python3 -m pip install awscli
 python3 -m pip install bs4
 python3 -m pip install convertdate
-python3 -m pip install holidays=='0.9.8'
+python3 -m pip install holidays
 
 ## Data Extraction/Managing
 python3 -m pip install minio
@@ -30,7 +30,7 @@ python3 -m pip install pyenchant
 python3 -m pip install nltk
 python3 -m pip install python-Levenshtein
 python3 -m pip install pystan
-python3 -m pip install --no-cache-dir --no-binary :all: fbprophet
+python3 -m pip install fbprophet
 
 ## Plotting
 python3 -m pip install matplotlib
