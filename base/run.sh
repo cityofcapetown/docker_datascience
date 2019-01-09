@@ -22,8 +22,13 @@ fi
 
 # Configure git username and email so that we don't have to do it every time
 echo "[user]" >> /home/$NEWUSER/.gitconfig
-echo "name = $NEWUSER" >> /home/$NEWUSER/.gitconfig
-echo "email = $NEWUSER" >> /home/$NEWUSER/.gitconfig
+if [[ $GITUSER != "" ]]; then
+  echo "name = $GITUSER" >> /home/$NEWUSER/.gitconfig
+  echo "email = $GITEMAIL" >> /home/$NEWUSER/.gitconfig
+else
+  echo "name = $NEWUSER" >> /home/$NEWUSER/.gitconfig
+  echo "email = $NEWUSER" >> /home/$NEWUSER/.gitconfig
+fi
 
 # Sort out permissions for home dir
 chown -R $NEWUSER:$NEWUSER /home/$NEWUSER
