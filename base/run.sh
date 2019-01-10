@@ -20,6 +20,20 @@ if [[ $GITREPO != "" ]]; then
   cd /home/$NEWUSER && /usr/bin/git clone $GITREPO
 fi
 
+# Configure git username and email so that we don't have to do it every time
+if [[ $GITUSER == "" ]]; then
+  echo "No GITUSER set. Assuming $NEWUSER is also the GITUSER."
+  GITUSER=$NEWUSER
+fi
+if [[ $GITEMAIL == "" ]]; then
+  echo "No GITEMAIL set. Using $GITUSER as GITEMAIL."
+  GITEMAIL=$GITUSER
+fi
+echo "Setting up .gitconfig"
+echo "[user]
+     name = $GITUSER
+     email = $GITEMAIL" >> /home/$NEWUSER/.gitconfig
+
 # Sort out permissions for home dir
 chown -R $NEWUSER:$NEWUSER /home/$NEWUSER
 

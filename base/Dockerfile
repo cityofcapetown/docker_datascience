@@ -57,6 +57,8 @@ RUN mkdir /run_scripts
 ENV NEWUSER "newuser" 
 ENV PASSWD "password"
 ENV GITREPO ""
+ENV GITUSER ""
+ENV GITEMAIL ""
 ENV SUDO "no"
 ENV VIRTUAL_PATH /
 ENV VIRTUAL_HOST "localhost"
