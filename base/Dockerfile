@@ -34,6 +34,7 @@ RUN echo $TZ > /etc/timezone && \
 RUN DEBIAN_FRONTEND=noninteractive \
   locale-gen en_ZA && \
   locale-gen en_ZA.UTF-8 && \
+  dpkg-reconfigure --frontend=noninteractive locales && \
   update-locale
 
 ENV LANGUAGE en_ZA.UTF-8
