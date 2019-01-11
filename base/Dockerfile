@@ -29,6 +29,18 @@ RUN echo $TZ > /etc/timezone && \
   dpkg-reconfigure -f noninteractive tzdata && \
   apt-get clean
 
+# Define en_ZA
+RUN DEBIAN_FRONTEND=noninteractive \
+  locale-gen en_ZA && \
+  locale-gen en_ZA.UTF-8 && \
+  update-locale
+
+ENV LANGUAGE en_ZA.UTF-8
+ENV LANG en_ZA.UTF-8
+ENV LC_ALL en_ZA.UTF-8
+ENV LC_CTYPE en_ZA.UTF-8
+ENV LC_MESSAGES en_ZA.UTF-8
+
 # SET UP NGINX
 EXPOSE 80
 EXPOSE 443
