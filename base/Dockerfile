@@ -75,5 +75,6 @@ ENV GITEMAIL ""
 ENV SUDO "no"
 ENV VIRTUAL_PATH /
 ENV VIRTUAL_HOST "localhost"
+ENV COCT_CONTAINER "yes"
 
 CMD ["/bin/bash", "./run.sh"]
