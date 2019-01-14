@@ -14,6 +14,15 @@ if [[ $SUDO = "yes" ]]; then
   adduser $NEWUSER sudo 
 fi
 
+# Clone common repos into home directory
+if [[ $COCT_CONTAINER == "yes" ]]; then
+  echo "cloning in CoCT standard repos"...
+  cd /home/$NEWUSER && /usr/bin/git clone https://ds1.capetown.gov.za/ds_gitlab/OPM/db-utils.git
+  # to do - create a samples/tutorials repo and clone it in
+  # to do - create a user manual repo and clone it in
+fi
+
+
 # Clone a project git repo into the /home/$NEWUSER folder
 if [[ $GITREPO != "" ]]; then
   echo cloning $GITREPO...
