@@ -47,7 +47,7 @@ fi
 # RUN any startup scripts in the hook location
 for startup_script in $(ls /run_scripts); do
     echo "Running '$startup_script'...)"
-    timeout 60 /run_scripts/"$startup_script"
+    timeout 300 /run_scripts/"$startup_script"
 done
 
 # Start nginx

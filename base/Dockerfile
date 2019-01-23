@@ -18,7 +18,9 @@ RUN DEBIAN_FRONTEND=noninteractive \
   apt-utils \
   git \
   sudo \
-  locales
+  locales \
+  dnsutils \
+  alien
 
 # Setting the timezone
 ENV TZ="Africa/Johannesburg"

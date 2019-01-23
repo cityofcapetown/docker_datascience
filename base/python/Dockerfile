@@ -21,7 +21,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
 # ODBC
 RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update && \
-  apt-get install -y gnupg2 unixodbc-dev
+  apt-get install -y gnupg2 unixodbc-dev unixodbc-bin unixodbc libaio1
 
 # Microsoft driver
 RUN wget https://packages.microsoft.com/keys/microsoft.asc -O microsoft.asc && \
@@ -31,6 +31,10 @@ RUN wget https://packages.microsoft.com/keys/microsoft.asc -O microsoft.asc && \
   apt-get update && \
   ACCEPT_EULA=Y apt-get install -y \
   msodbcsql17
+
+# Oracle driver
+# This is installed at run time as it needs to fetch packages from the Edge Minio
+COPY oracle_odbc_setup.sh /run_scripts/
 
 # Python dependencies
 RUN DEBIAN_FRONTEND=noninteractive \
