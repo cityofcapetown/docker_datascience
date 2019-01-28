@@ -43,7 +43,7 @@ RUN rm /oracle-instantclient18.3-basic-18.3.0.0.0-1.x86_64.rpm && \
 ENV LD_LIBRARY_PATH /usr/lib/oracle/18.3/client64/lib/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 RUN ldconfig
 
-RUN echo -e "[Oracle Driver 18.3]\nDescription=Oracle Unicode driver\nDriver=/usr/lib/oracle/18.3/client64/lib/libsqora.so.18.1\nUsageCount=1\nFileUsage=1" \
+RUN echo "[Oracle Driver 18.3]\nDescription=Oracle Unicode driver\nDriver=/usr/lib/oracle/18.3/client64/lib/libsqora.so.18.1\nUsageCount=1\nFileUsage=1" \
   >> /etc/odbcinst.ini
 
 # Python dependencies
