@@ -12,6 +12,7 @@ chmod 644 "$JUPYTER_CONFIG"
 
 sed -i "/c.Spawner.default_url/c\c.Spawner.default_url = '/lab'" "$JUPYTER_CONFIG"
 sed -i "/c.Spawner.cmd/c\c.Spawner.cmd = ['jupyter-labhub']" "$JUPYTER_CONFIG"
+sed -i "/c.Spawner.env_keep/c\c.Spawner.env_keep = ['PATH', 'PYTHONPATH', 'LANG', 'LC_ALL', 'LD_LIBRARY_PATH']" "$JUPYTER_CONFIG"
 
 # Make the new user an admin user of Jupyterhub
 sed -i "/c.Authenticator.admin_users/c\c.Authenticator.admin_users = {'$NEWUSER'}" "$JUPYTER_CONFIG"
