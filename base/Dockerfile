@@ -19,7 +19,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
   git \
   sudo \
   locales \
-  nslookup
+  dnsutils
 
 # Setting the timezone
 ENV TZ="Africa/Johannesburg"
