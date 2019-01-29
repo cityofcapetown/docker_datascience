@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 JUPYTER_CONFIG=/etc/jupyterhub/jupyterhub_config.py
-JUPYTER_NGINX=/etc/nginx/conf.d/jupyter.conf
+JUPYTER_NGINX=/etc/nginx/paths-available/jupyter.conf
 
 # Generate jupyterhub config
 mkdir -p /etc/jupyterhub
