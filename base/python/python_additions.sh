@@ -10,6 +10,7 @@ python3 -m pip install awscli
 python3 -m pip install bs4
 python3 -m pip install convertdate
 python3 -m pip install holidays
+python3 -m pip install tqdm
 
 ## Data Extraction/Managing
 python3 -m pip install minio
@@ -44,6 +45,7 @@ python3 -m pip install h3
 python3 -m pip install folium
 python3 -m pip install geojson-utils
 python3 -m pip install shapely
+python3 -m pip install geopandas
 
 # Non-standard packages go here
 python3 -c "import nltk;nltk.download('averaged_perceptron_tagger');nltk.download('punkt');nltk.download('stopwords')"
