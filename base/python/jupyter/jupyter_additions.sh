@@ -8,6 +8,9 @@ python3 -m pip install jupyter jupyterlab
 # jupyterlab
 jupyter serverextension enable --py jupyterlab --sys-prefix
 
+# jupyterlab-widgets
+jupyter labextension install @jupyter-widgets/jupyterlab-manager
+
 # jupyterhub
 python3 -m pip install jupyterhub
 jupyter labextension install @jupyterlab/hub-extension
@@ -25,4 +28,8 @@ python3 -m pip install ipyleaflet
 jupyter nbextension enable --py --sys-prefix ipyleaflet
 jupyter nbextension enable --py widgetsnbextension
 jupyter labextension install jupyter-leaflet
-jupyter labextension install @jupyter-widgets/jupyterlab-manager
+
+
+# jupyter-matplotlib
+python3 -m pip install ipympl
+jupyter labextension install jupyter-matplotlib
