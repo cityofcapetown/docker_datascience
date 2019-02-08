@@ -15,6 +15,3 @@ apt-get update && \
                      libdbus-glib-1-2 \
                      libgtk2.0-0 \
                      libasound2
-
-python3 -m pip install pyvirtualdisplay
-python3 -m pip install selenium
