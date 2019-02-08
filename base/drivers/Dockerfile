@@ -5,6 +5,7 @@ LABEL authors="Riaz Arbi,Gordon Inggs"
 # JAVA
 # OpenJDK
 RUN DEBIAN_FRONTEND=noninteractive \
+  apt-get update && \
   apt-get install -y \
   default-jre \
   default-jdk && \
@@ -48,7 +49,6 @@ EXPOSE 1433
 # Special args for nvidia-container-runtime
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
-ENV NVIDIA_REQUIRE_CUDA "cuda>=10.0 brand=tesla,driver>=384,driver<385"
 
 COPY cuda_setup.sh .
 RUN bash cuda_setup.sh
