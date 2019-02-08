@@ -37,6 +37,8 @@ python3 -m pip install nltk
 python3 -m pip install python-Levenshtein
 python3 -m pip install pystan
 python3 -m pip install fbprophet
+python3 -m pip install torch
+python3 -m pip install torchvision
 
 ## Plotting
 python3 -m pip install matplotlib
