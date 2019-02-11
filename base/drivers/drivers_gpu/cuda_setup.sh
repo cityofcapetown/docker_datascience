@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Taken from here: https://gitlab.com/nvidia/cuda/blob/ubuntu16.04/10.0/base/Dockerfile
 # Base
 apt-get update && apt-get install -y --no-install-recommends gnupg2 curl ca-certificates && \
     curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - && \
@@ -40,11 +41,6 @@ apt-get update && apt-get install -y --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 
 export LIBRARY_PATH=/usr/local/cuda/lib64/stubs
-
-#apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub && \
-#  dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb && \
-#  apt-get update && \
-#  apt-get -y install cuda
 
 
 
