@@ -9,17 +9,25 @@ The current structure of these images (and the repo):
 ```
 .
 └── base
-    └── python
-        ├── jupyter
-        └── R
-            └── R_nonstandard
-                └── rstudio_shiny
+    └── drivers
+        ├── drivers_gpu
+        │   └── python_gpu
+        │       └── jupyter_gpu
+        └── python
+            ├── jupyter
+            └── R
+                └── R_nonstandard
+                    └── rstudio_shiny
 ```
 
 Overview of the images:
 * `base` - based on `Ubuntu 18.04`. Contains various utilities, a NGINX reverse proxy and a run script.
-* `python` - Installs Python3 and many Python packages (see `./base/python/python_additions.sh`). It also install `selenium`.
+* `drivers` - Installs various drivers, include ODBC as well as Selenium.
+* `drivers_gpu` - Installs CUDA and OpenCL libraries for interacting with the NVIDIA container runtime.
+* `python` - Installs Python3 and many Python packages (see `./base/python/python_additions.sh`).
+* `python_gpu` - Identical to the python image, but descending from `drivers_gpu`.
 * `jupyter` - Installs and runs Jupyterlab + Jupyterhub.
+* `jupyter_gpu` - Identical to the `jupyter` image, but descending from `python_gpu`.
 * `R` and `R_nonstandard` - Installs R, and many R packages, including `MixTex` and `h2o`  (see `./base/python/R/R_additions.R` and `./base/python/R/R_nonstandard/R_nonstandard.R`).
 * `rstudio_shiny` - Installs and runs rstudio and shiny server.
 
