@@ -11,6 +11,10 @@ python3 -m pip install bs4
 python3 -m pip install convertdate
 python3 -m pip install holidays
 python3 -m pip install tqdm
+python3 -m pip install pyvirtualdisplay
+python3 -m pip install selenium
+python3 -m pip install pybind11
+python3 -m pip install pyopencl==2016.1 # CUDA only provides OpenCL bindings up to 1.2
 
 ## Data Extraction/Managing
 python3 -m pip install minio
@@ -33,6 +37,8 @@ python3 -m pip install nltk
 python3 -m pip install python-Levenshtein
 python3 -m pip install pystan
 python3 -m pip install fbprophet
+python3 -m pip install torch
+python3 -m pip install torchvision
 
 ## Plotting
 python3 -m pip install matplotlib

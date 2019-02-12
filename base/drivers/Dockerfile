@@ -2,21 +2,17 @@ FROM cityofcapetown/datascience:base
 
 LABEL authors="Riaz Arbi,Gordon Inggs"
 
-# These are packages used in both Python and R.
-RUN DEBIAN_FRONTEND=noninteractive \
-  apt-get clean && \
-  apt-get update && \
-  apt-get install -y \
-  python3 \
-  python3-pip
-
 # JAVA
 # OpenJDK
 RUN DEBIAN_FRONTEND=noninteractive \
+  apt-get update && \
   apt-get install -y \
   default-jre \
   default-jdk && \
   apt-get clean
+
+COPY selenium_setup.sh .
+RUN bash selenium_setup.sh
 
 # ODBC
 RUN DEBIAN_FRONTEND=noninteractive \
@@ -45,21 +41,6 @@ RUN ldconfig
 
 RUN echo "[Oracle Driver 18.3]\nDescription=Oracle Unicode driver\nDriver=/usr/lib/oracle/18.3/client64/lib/libsqora.so.18.1\nUsageCount=1\nFileUsage=1" \
   >> /etc/odbcinst.ini
-
-# Python dependencies
-RUN DEBIAN_FRONTEND=noninteractive \
-    apt-get update && \
-    apt-get install -y \
-    enchant libenchant-dev \
-    libfreetype6-dev \
-    pkg-config \
-    libpng-dev
-
-COPY python_additions.sh .
-COPY selenium_setup.sh .
-
-RUN bash python_additions.sh
-RUN bash selenium_setup.sh
 
 # ODBC
 EXPOSE 1433
