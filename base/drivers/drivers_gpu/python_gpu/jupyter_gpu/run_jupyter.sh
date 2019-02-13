@@ -1,1 +1,1 @@
-../../../python/jupyter/run_jupyter.sh
+../../../../../base/drivers/python/jupyter/run_jupyter.sh

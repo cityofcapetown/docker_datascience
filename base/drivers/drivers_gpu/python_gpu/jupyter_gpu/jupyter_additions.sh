@@ -1,1 +1,1 @@
-../../../python/jupyter/jupyter_additions.sh
+../../../../../base/drivers/python/jupyter/jupyter_additions.sh

@@ -1,1 +1,1 @@
-../../python/python_additions.sh
+../../../../base/drivers/python/python_additions.sh
