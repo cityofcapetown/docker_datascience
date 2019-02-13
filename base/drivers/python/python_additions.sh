@@ -14,7 +14,6 @@ python3 -m pip install tqdm
 python3 -m pip install pyvirtualdisplay
 python3 -m pip install selenium
 python3 -m pip install pybind11
-python3 -m pip install pyopencl==2016.1 # CUDA only provides OpenCL bindings up to 1.2
 
 ## Data Extraction/Managing
 python3 -m pip install minio

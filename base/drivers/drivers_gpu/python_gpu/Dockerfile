@@ -3,7 +3,7 @@ FROM cityofcapetown/datascience:drivers_gpu
 
 LABEL authors="Riaz Arbi,Gordon Inggs"
 
-# These are packages used in both Python and R.
+# These are packages used in both Python.
 RUN DEBIAN_FRONTEND=noninteractive \
   apt-get clean && \
   apt-get update && \
@@ -20,6 +20,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     pkg-config \
     libpng-dev
 
-COPY python_additions.sh .
+COPY ../../python/python_additions.sh /
+COPY python_gpu_additions.sh .
 
-RUN bash python_additions.sh
+RUN bash python_gpu_additions.sh
