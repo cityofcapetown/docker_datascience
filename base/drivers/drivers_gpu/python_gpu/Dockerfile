@@ -20,7 +20,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     pkg-config \
     libpng-dev
 
-COPY ../../python/python_additions.sh /
+COPY python_additions.sh /
 COPY python_gpu_additions.sh .
 
 RUN bash python_gpu_additions.sh
