@@ -3,6 +3,8 @@
 images=$(ls -d */ | cut -f1 -d'/')
 echo $images
 
+find ../.. -type d
+
 if [ -z "$TRIGGER" ] && [ -z "$BUILD_SECRET" ]; then
     echo "TRIGGER or BUILD_SECRET not set"
 else
