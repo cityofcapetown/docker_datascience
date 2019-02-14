@@ -2,6 +2,7 @@
 
 echo "Running post checkout hook at '$(pwd)'"
 
+# NB This runs in the same dir as the Dockerfile, hence any relative paths must be relative to the python_gpu Dockerfile
 cp ../../../python/jupyter/jupyter_additions.sh .
 cp ../../../python/jupyter/jupyter.conf .
 cp ../../../python/jupyter/run_jupyter.sh .
