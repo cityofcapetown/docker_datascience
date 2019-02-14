@@ -1,5 +1,5 @@
 # This Dockerfile is identical to the one in base/drivers/python/jupyter, with the exception of the FROM line
-FROM cityofcapetown/datascience:python
+FROM cityofcapetown/datascience:python_gpu
 
 LABEL authors="Riaz Arbi,Gordon Inggs"
 
