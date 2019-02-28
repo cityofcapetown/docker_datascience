@@ -20,7 +20,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
   sudo \
   locales \
   dnsutils \
-  curl
+  curl \
+  screen
 
 # Setting the timezone
 ENV TZ="Africa/Johannesburg"
