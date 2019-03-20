@@ -27,7 +27,7 @@ list.of.packages <- c("caTools",
                       "IRdisplay", "evaluate", "crayon", "pbdZMQ",
                       "esquisse", "flexdashboard", "shinydashboard", "reticulate",
                      "lwgeom", "doParallel", "rasterVis", "viridis", "ggExtra", "caret",
-                     "drake", "skimr", "hashmap")
+                     "drake", "skimr", "hashmap", "profvis")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 
