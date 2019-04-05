@@ -9,7 +9,7 @@ RUN apt-get update && \
     apt-get install cmake make gcc -y && \
     apt-get clean
 
-RUN git clone --single-branch --branch "feature/hex-ring" https://github.com/crazycapivara$
+RUN git clone --single-branch --branch "feature/hex-ring" https://github.com/crazycapivara/h3-r.git \
     && cd h3-r \
     && chmod +x install-h3c.sh \
     && bash ./install-h3c.sh \
