@@ -22,7 +22,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D6BC243565B2087BC3F
 # Install and setup Rstudio Server
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install gdebi-core dpkg -y && \
-    wget -q https://download2.rstudio.org/rstudio-server-1.1.463-amd64.deb -O rs-latest.deb && \
+    wget -q "https://download2.rstudio.org/server/trusty/amd64/rstudio-server-1.2.1335-amd64.deb" -O rs-latest.deb && \
     gdebi -n rs-latest.deb && \
     rm -f rs-latest.deb && \
     apt-get clean && \
