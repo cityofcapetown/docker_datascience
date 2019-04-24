@@ -38,12 +38,8 @@ if(length(new.packages)) install.packages(new.packages)
 # INSTALL H3FORR
 devtools::install_github("cityofcapetown/h3forr")
 
-# INSTALL TINYTEX
-library(devtools)
-library(tinytex)
-tinytex::install_tinytex(force=TRUE)
-
 # INSTALL XARINGAN
+library(devtools)
 devtools::install_github('yihui/xaringan')
 install.packages("webshot")
 library(webshot)
