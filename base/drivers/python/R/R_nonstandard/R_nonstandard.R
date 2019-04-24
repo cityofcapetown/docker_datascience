@@ -28,7 +28,7 @@ list.of.packages <- c("caTools",
                       "esquisse", "flexdashboard", "shinydashboard", "reticulate",
                      "lwgeom", "doParallel", "rasterVis", "viridis", "ggExtra", "caret",
                      "drake", "skimr", "hashmap", "profvis", "RSQLite",
-                     "writexl", "odbc", "tidyquant", "tidymodels")
+                     "writexl", "odbc", "tidyquant")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 
