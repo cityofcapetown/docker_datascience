@@ -25,6 +25,22 @@ COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 RUN cp -R /opt/shiny-server/samples/sample-apps/hello /srv/shiny-server
 RUN chmod -R 777 /srv/shiny-server
 
+# Install and setup Tex via tinytex
+ENV PATH=$PATH:/opt/TinyTeX/bin/x86_64-linux
+RUN wget -qO- \
+    "https://github.com/yihui/tinytex/raw/master/tools/install-unx.sh" | \
+    sh -s - --admin --no-path \
+    && mv ~/.TinyTeX /opt/TinyTeX \
+    && /opt/TinyTeX/bin/*/tlmgr path add \
+    && tlmgr install metafont mfware inconsolata tex ae parskip listings \
+    && tlmgr path add \
+    && Rscript -e "tinytex::r_texmf()" \
+    && chown -R root:staff /opt/TinyTeX \
+    && chown -R root:staff /usr/local/lib/R/site-library \
+    && chmod -R g+w /opt/TinyTeX \
+    && chmod -R g+wx /opt/TinyTeX/bin \
+    && echo "PATH=${PATH}" >> /usr/lib/R/etc/Renviron
+
 # Copy in the run scripts
 COPY run_rstudio.sh /run_scripts/
 RUN chmod +x /run_scripts/run_rstudio.sh
