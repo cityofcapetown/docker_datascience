@@ -2,23 +2,6 @@ FROM cityofcapetown/datascience:R_nonstandard
 
 LABEL authors="Riaz Arbi,Gordon Inggs"
 
-# Install and setup Pandoc
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    pandoc \
-    pandoc-citeproc && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-# Install Miktex
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D6BC243565B2087BC3F897C9277A7293F59E4889 && \
-    echo "deb http://miktex.org/download/ubuntu bionic universe" | tee /etc/apt/sources.list.d/miktex.list && \
-    DEBIAN_FRONTEND=noninteractive apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    miktex && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
 # Install and setup Rstudio Server
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install gdebi-core dpkg -y && \
