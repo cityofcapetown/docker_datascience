@@ -3,13 +3,17 @@ FROM cityofcapetown/datascience:R_nonstandard
 LABEL authors="Riaz Arbi,Gordon Inggs"
 
 # Install and setup Rstudio Server
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install gdebi-core dpkg -y && \
-    wget -q "https://download2.rstudio.org/server/trusty/amd64/rstudio-server-1.2.1335-amd64.deb" -O rs-latest.deb && \
-    gdebi -n rs-latest.deb && \
-    rm -f rs-latest.deb && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN DEBIAN_FRONTEND=noninteractive apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y upgrade \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y libclang-dev gdebi-core dpkg psmisc \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN wget "https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.1335-amd64.deb" -O rs-latest.deb
+RUN gdebi -n rs-latest.deb \
+    && rm -f rs-latest.deb \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install and setup Shiny Server
 RUN wget -q "https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.9.923-amd64.deb" -O ss-latest.deb && \
@@ -40,6 +44,12 @@ RUN wget -qO- \
     && chmod -R g+w /opt/TinyTeX \
     && chmod -R g+wx /opt/TinyTeX/bin \
     && echo "PATH=${PATH}" >> /usr/lib/R/etc/Renviron
+
+# Install and set up Microsoft fonts
+RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | \
+    debconf-set-selections \
+    && DEBIAN_FRONTEND=noninteractive apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ttf-mscorefonts-installer
 
 # Copy in the run scripts
 COPY run_rstudio.sh /run_scripts/
