@@ -41,6 +41,12 @@ RUN wget -qO- \
     && chmod -R g+wx /opt/TinyTeX/bin \
     && echo "PATH=${PATH}" >> /usr/lib/R/etc/Renviron
 
+# Install and set up Microsoft fonts
+RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | \
+    debconf-set-selections \
+    && DEBIAN_FRONTEND=noninteractive apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install ttf-mscorefonts-installer -y
+
 # Copy in the run scripts
 COPY run_rstudio.sh /run_scripts/
 RUN chmod +x /run_scripts/run_rstudio.sh
