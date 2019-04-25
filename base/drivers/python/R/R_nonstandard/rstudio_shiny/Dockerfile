@@ -5,7 +5,7 @@ LABEL authors="Riaz Arbi,Gordon Inggs"
 # Install and setup Rstudio Server
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get -y upgrade \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y gdebi-core dpkg \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y libclang-dev gdebi-core dpkg psmisc \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
