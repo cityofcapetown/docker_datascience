@@ -18,7 +18,7 @@ jupyter labextension enable @jupyterlab/hub-extension
 
 # jupyterlab-git
 jupyter labextension install @jupyterlab/git
-pip install jupyterlab-git
+python3 -m pip install jupyterlab-git
 jupyter serverextension enable --py jupyterlab_git --sys-prefix
 
 # jupyterlab-dicovery
