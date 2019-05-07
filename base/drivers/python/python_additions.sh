@@ -16,6 +16,7 @@ python3 -m pip install selenium
 python3 -m pip install pybind11
 python3 -m pip install shareplum
 python3 -m pip install exchangelib
+python3 -m pip install docker
 
 ## Data Extraction/Managing
 python3 -m pip install minio
