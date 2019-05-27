@@ -41,6 +41,7 @@ python3 -m pip install pystan
 python3 -m pip install fbprophet
 python3 -m pip install torch
 python3 -m pip install torchvision
+python3 -m pip install spacy
 
 ## Plotting
 python3 -m pip install matplotlib
@@ -57,4 +58,5 @@ python3 -m pip install geopandas
 
 # Non-standard packages go here
 python3 -c "import nltk;nltk.download('averaged_perceptron_tagger');nltk.download('punkt');nltk.download('stopwords')"
-
+python3 -m spacy download en
+python -m spacy download en_core_web_lg
