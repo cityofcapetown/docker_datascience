@@ -29,6 +29,7 @@ python3 -m pip install xlrd
 python3 -m pip install pyexcel
 python3 -m pip install yattag
 python3 -m pip install psycopg2-binary
+python3 -m pip install pyarrow
 
 ## Machine Learning
 python3 -m pip install tensorflow
