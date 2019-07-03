@@ -22,6 +22,7 @@ python3 -m pip install docker
 python3 -m pip install minio
 python3 -m pip install pyhdb
 python3 -m pip install pyodbc
+python3 -m pip install pymysql
 python3 -m pip install pandas
 python3 -m pip install XlsxWriter
 python3 -m pip install openpyxl
