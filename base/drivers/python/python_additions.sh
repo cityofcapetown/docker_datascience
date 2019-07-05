@@ -31,6 +31,8 @@ python3 -m pip install pyexcel
 python3 -m pip install yattag
 python3 -m pip install psycopg2-binary
 python3 -m pip install pyarrow
+python3 -m pip install elasticsearch
+python3 -m pip install elasticsearch-dsl>=7.0.0,<8.0.0
 
 ## Machine Learning
 python3 -m pip install tensorflow
