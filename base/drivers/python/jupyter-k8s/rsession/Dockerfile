@@ -25,7 +25,6 @@ RUN gpg -a --export E298A3A825C0D65DFD57CBB651716619E084DAB9 | sudo apt-key add 
 
 #RUN add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
 RUN echo deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/ >> /etc/apt/sources.list
-RUN cat /etc/apt/sources.list
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -38,13 +37,10 @@ ENV RSTUDIO_VERSION 1.2.1335
 
 # RUN wget --quiet https://download2.rstudio.org/rstudio-server-${RSTUDIO_VERSION}-amd64.deb
 RUN wget --quiet https://download2.rstudio.org/server/bionic/amd64/rstudio-server-${RSTUDIO_VERSION}-amd64.deb
-RUN gdebi -n rstudio-server-${RSTUDIO_VERSION}-amd64.deb
+RUN gdebi -n rstudio-server-${RSTUDIO_VERSION}-amd64.deb && rm rstudio-server-${RSTUDIO_VERSION}-amd64.deb
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-#USER $NB_USER
-
 RUN pip install git+https://github.com/jupyterhub/jupyter-server-proxy
-# RUN pip install git+https://github.com/ryanlovett/jupyter-server-proxy@configurable_headers
 RUN pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
 
 USER $NB_USER
