@@ -24,7 +24,7 @@ RUN apt-get update && apt-get -yq dist-upgrade \
 
 # Install all the jupyter packages
 RUN python3 -m pip install --upgrade pip && \
-    python3 -m pip install jupyter jupyterlab && \
+    python3 -m pip install jupyter jupyterhub jupyterlab && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
     jupyter labextension install @jupyterlab/git && \
     python3 -m pip install jupyterlab-git && \
