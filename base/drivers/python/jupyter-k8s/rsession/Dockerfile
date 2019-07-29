@@ -1,4 +1,4 @@
-FROM jupyter-k8s
+FROM cityofcapetown/datascience:jupyter-k8s
 
 USER root
 
