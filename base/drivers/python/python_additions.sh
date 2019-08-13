@@ -52,6 +52,7 @@ python3 -m pip install matplotlib
 python3 -m pip install wordcloud
 python3 -m pip install bokeh
 python3 -m pip install folium
+python3 -m pip install seaborn
 
 ## Geospatial
 python3 -m pip install h3
