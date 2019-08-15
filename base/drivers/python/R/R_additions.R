@@ -24,7 +24,13 @@ list.of.packages <- c("evaluate",
                       "jsonlite",
                       "RJSONIO",
                       "geojsonio",
-                      "repr", "IRdisplay", "crayon", "uuid", "digest","feather")
+                      "repr", 
+                      "IRdisplay", 
+                      "crayon", 
+                      "uuid", 
+                      "digest",
+                      "feather",
+                      "tidyquant")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 
