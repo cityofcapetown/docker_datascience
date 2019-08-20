@@ -29,8 +29,7 @@ list.of.packages <- c("evaluate",
                       "crayon", 
                       "uuid", 
                       "digest",
-                      "feather",
-                      "tidyquant")
+                      "feather")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 
