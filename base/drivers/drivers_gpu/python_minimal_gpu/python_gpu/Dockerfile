@@ -3,15 +3,7 @@ FROM cityofcapetown/datascience:drivers_gpu
 
 LABEL authors="Riaz Arbi,Gordon Inggs"
 
-# These are packages used in both Python.
-RUN DEBIAN_FRONTEND=noninteractive \
-  apt-get clean && \
-  apt-get update && \
-  apt-get install -y \
-  python3 \
-  python3-pip
-
-# Python dependencies
+# Additional Python dependencies
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update && \
     apt-get install -y \

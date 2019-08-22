@@ -16,10 +16,6 @@ python3 -m pip install selenium
 python3 -m pip install pybind11
 
 ## Data Extraction/Managing
-python3 -m pip install minio
-python3 -m pip install pyhdb
-python3 -m pip install pyodbc
-python3 -m pip install pandas
 python3 -m pip install XlsxWriter
 python3 -m pip install openpyxl
 python3 -m pip install xlrd
