@@ -3,7 +3,4 @@
 echo "Running post checkout hook at '$(pwd)'"
 
 # NB This runs in the same dir as the Dockerfile, hence any relative paths must be relative to the python_gpu Dockerfile
-cp ../../python/python_additions.sh .
-
-find .
-echo ""
+cp ../../../python/python_additions.sh .
