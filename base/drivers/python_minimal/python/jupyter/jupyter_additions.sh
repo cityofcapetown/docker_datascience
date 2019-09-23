@@ -40,16 +40,13 @@ jupyter labextension install jupyter-matplotlib
 export NODE_OPTIONS=--max-old-space-size=4096
 
 ## jupyterlab renderer support
-jupyter labextension install jupyterlab-plotly@1.1.0 --no-build
+jupyter labextension install jupyterlab-plotly@1.1.0
 
 ## FigureWidget support
-jupyter labextension install plotlywidget@1.1.0 --no-build
+jupyter labextension install plotlywidget@1.1.0
 
 ## JupyterLab chart editor support (optional)
-jupyter labextension install jupyterlab-chart-editor@1.2 --no-build
-
-## Build extensions (must be done to activate extensions since --no-build is used above)
-jupyter lab build
+jupyter labextension install jupyterlab-chart-editor@1.2
 
 ## Unset NODE_OPTIONS environment variable
 unset NODE_OPTIONS
