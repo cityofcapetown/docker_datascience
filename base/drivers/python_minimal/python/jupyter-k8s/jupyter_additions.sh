@@ -30,7 +30,22 @@ jupyter nbextension enable --py --sys-prefix ipyleaflet
 jupyter nbextension enable --py widgetsnbextension
 jupyter labextension install jupyter-leaflet
 
-
 # jupyter-matplotlib
 python3 -m pip install ipympl
 jupyter labextension install jupyter-matplotlib
+
+# plotly
+## Avoid "JavaScript heap out of memory" errors during extension installation
+export NODE_OPTIONS=--max-old-space-size=4096
+
+## jupyterlab renderer support
+jupyter labextension install jupyterlab-plotly@1.1.0
+
+## FigureWidget support
+jupyter labextension install plotlywidget@1.1.0
+
+## JupyterLab chart editor support (optional)
+#jupyter labextension install jupyterlab-chart-editor@1.2
+
+## Unset NODE_OPTIONS environment variable
+unset NODE_OPTIONS
