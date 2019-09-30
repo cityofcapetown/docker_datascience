@@ -46,7 +46,7 @@ jupyter labextension install jupyterlab-plotly@1.1.0
 jupyter labextension install plotlywidget@1.1.0
 
 ## JupyterLab chart editor support (optional)
-jupyter labextension install jupyterlab-chart-editor@1.2
+#jupyter labextension install jupyterlab-chart-editor@1.2
 
 ## Unset NODE_OPTIONS environment variable
 unset NODE_OPTIONS
