@@ -50,6 +50,7 @@ python3 -m pip install seaborn
 python3 -m pip install plotly==4.1.0
 python3 -m pip install dash==1.3.0
 python3 -m pip install dash-daq==0.1.0
+python3 -m pip install dash-bootstrap-components
 
 ## Geospatial
 python3 -m pip install h3
