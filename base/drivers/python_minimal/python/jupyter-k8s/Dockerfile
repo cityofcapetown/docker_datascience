@@ -35,7 +35,12 @@ RUN python3 -m pip install --upgrade pip && \
     jupyter nbextension enable --py widgetsnbextension && \
     jupyter labextension install jupyter-leaflet && \
     python3 -m pip install ipympl && \
-    jupyter labextension install jupyter-matplotlib
+    jupyter labextension install jupyter-matplotlib && \
+    export NODE_OPTIONS=--max-old-space-size=4096 && \
+    jupyter labextension install jupyterlab-plotly@1.1.0 && \
+    jupyter labextension install plotlywidget@1.1.0 && \
+    unset NODE_OPTIONS && \
+    export NODE_OPTIONS=""
 
 # Sort out locales
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
