@@ -39,6 +39,7 @@ RUN python3 -m pip install --upgrade pip && \
     export NODE_OPTIONS=--max-old-space-size=4096 && \
     jupyter labextension install jupyterlab-plotly@1.1.0 && \
     jupyter labextension install plotlywidget@1.1.0 && \
+    python3 -m pip install nbgitpuller && \
     unset NODE_OPTIONS && \
     export NODE_OPTIONS=""
 
