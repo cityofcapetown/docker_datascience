@@ -9,7 +9,10 @@ RUN DEBIAN_FRONTEND=noninteractive \
     enchant libenchant-dev \
     libfreetype6-dev \
     pkg-config \
-    libpng-dev
+    libpng-dev \
+    texlive-xetex \
+    texlive-fonts-recommended \
+    texlive-generic-recommended
 
 COPY python_additions.sh .
 
