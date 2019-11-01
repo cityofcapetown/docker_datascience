@@ -12,7 +12,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
     libpng-dev \
     texlive-xetex \
     texlive-fonts-recommended \
-    texlive-generic-recommended
+    texlive-generic-recommended \
+    pandoc
 
 COPY python_additions.sh .
 
