@@ -29,6 +29,7 @@ python3 -m pip install elasticsearch
 python3 -m pip install "elasticsearch-dsl>=7.0.0,<8.0.0"
 
 ## Machine Learning
+python3 -m pip install statsmodels
 python3 -m pip install tensorflow
 python3 -m pip install scipy
 python3 -m pip install sklearn
