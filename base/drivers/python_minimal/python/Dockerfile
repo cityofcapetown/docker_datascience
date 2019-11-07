@@ -13,7 +13,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
     texlive-xetex \
     texlive-fonts-recommended \
     texlive-generic-recommended \
-    pandoc
+    pandoc \
+    libspatialindex-dev
 
 COPY python_additions.sh .
 
