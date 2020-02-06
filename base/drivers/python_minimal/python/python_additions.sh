@@ -61,6 +61,7 @@ python3 -m pip install geojson-utils
 python3 -m pip install shapely
 python3 -m pip install geopandas
 python3 -m pip install descartes
+python3 -m pip install geocoder
 
 # Non-standard packages go here
 python3 -c "import nltk;nltk.download('averaged_perceptron_tagger');nltk.download('punkt');nltk.download('stopwords')"
