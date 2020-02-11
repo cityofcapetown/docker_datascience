@@ -14,8 +14,6 @@ python3 -m pip install tqdm
 python3 -m pip install pyvirtualdisplay
 python3 -m pip install selenium
 python3 -m pip install pybind11
-python3 -m pip install shareplum
-python3 -m pip install exchangelib
 python3 -m pip install docker
 
 ## Data Extraction/Managing
@@ -27,6 +25,11 @@ python3 -m pip install yattag
 python3 -m pip install psycopg2-binary
 python3 -m pip install elasticsearch
 python3 -m pip install "elasticsearch-dsl>=7.0.0,<8.0.0"
+python3 -m pip install shareplum
+python3 -m pip install exchangelib
+python3 -m pip install requests
+python3 -m pip install requests_ntlm
+python3 -m pip install beautifulsoup4
 
 ## Machine Learning
 python3 -m pip install statsmodels
