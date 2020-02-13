@@ -12,8 +12,9 @@ else
         if [ "$image" != "hooks" ]; then
             echo "Triggering "$image""
             curl -v \
+                 -L \
                  -H "Content-Type: application/json" --data "{\"docker_tag\": \"$image\"}" \
-                 -X POST https://cloud.docker.com/api/build/v1/source/"$TRIGGER"/trigger/"$BUILD_SECRET"/call/
+                 -X POST https://hub.docker.com/api/build/v1/source/"$TRIGGER"/trigger/"$BUILD_SECRET"/call/
         fi
     done
 fi
