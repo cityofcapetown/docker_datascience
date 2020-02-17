@@ -65,6 +65,7 @@ python3 -m pip install shapely
 python3 -m pip install geopandas
 python3 -m pip install descartes
 python3 -m pip install geocoder
+python3 -m pip install rtree
 
 # Non-standard packages go here
 python3 -m spacy download en
