@@ -14,7 +14,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
     texlive-fonts-recommended \
     texlive-generic-recommended \
     pandoc \
-    libspatialindex-dev
+    libspatialindex-dev \
+    nmap
 
 COPY python_additions.sh .
 
