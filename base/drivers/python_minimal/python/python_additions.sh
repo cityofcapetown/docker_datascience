@@ -15,6 +15,8 @@ python3 -m pip install pyvirtualdisplay
 python3 -m pip install selenium
 python3 -m pip install pybind11
 python3 -m pip install docker
+python3 -m pip install paramiko
+python3 -m pip install pysftp
 
 ## Data Extraction/Managing
 python3 -m pip install XlsxWriter
