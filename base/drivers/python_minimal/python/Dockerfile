@@ -15,7 +15,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
     texlive-generic-recommended \
     pandoc \
     libspatialindex-dev \
-    nmap
+    nmap \
+    gfortran
 
 COPY python_additions.sh .
 

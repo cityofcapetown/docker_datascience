@@ -46,6 +46,7 @@ python3 -m pip install fbprophet
 python3 -m pip install torch
 python3 -m pip install torchvision
 python3 -m pip install spacy
+python3 -m pip install pymc3
 
 ## Plotting
 python3 -m pip install matplotlib
