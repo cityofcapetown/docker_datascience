@@ -22,7 +22,6 @@ RUN apt-get update && apt-get -yq dist-upgrade \
     sudo \
     locales \
     fonts-liberation \
-    npm \
     nodejs \
  && rm -rf /var/lib/apt/lists/*
 
