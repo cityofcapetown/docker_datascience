@@ -11,4 +11,6 @@ python3 -m pip install numpy
 python3 -m pip install pyarrow
 python3 -m pip install pandas
 python3 -m pip install python-magic
+python3 -m pip install pyhive
+python3 -m pip install prestodb
 
