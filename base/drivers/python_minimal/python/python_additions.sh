@@ -52,7 +52,7 @@ python3 -m pip install pymc3
 ## Plotting
 python3 -m pip install matplotlib
 python3 -m pip install wordcloud
-python3 -m pip install bokeh
+python3 -m pip install bokeh==2.1.1
 python3 -m pip install folium
 python3 -m pip install seaborn
 python3 -m pip install plotly==4.1.0
