@@ -72,6 +72,7 @@ python3 -m pip install geocoder
 python3 -m pip install rtree
 python3 -m pip install geopy
 python3 -m pip install git+https://github.com/opendatadurban/geocode-array.git
+python3 -m pip install mapclassify
 
 # Non-standard packages go here
 python3 -m spacy download en
