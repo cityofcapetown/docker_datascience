@@ -46,41 +46,5 @@ ENV LC_ALL en_ZA.UTF-8
 ENV LC_CTYPE en_ZA.UTF-8
 ENV LC_MESSAGES en_ZA.UTF-8
 
-# SET UP NGINX
-EXPOSE 80
-EXPOSE 443
-RUN apt-get update && \
-    apt-get install nginx -y && \
-    apt-get clean
-
-# COPY IN NGINX TEMPLATES
-COPY nginx.conf .
-COPY base.conf .
-
-# MOVE TEMPLATES TO CORRECT PLACE
-RUN mv nginx.conf /etc/nginx/nginx.conf
-RUN mv base.conf /etc/nginx/conf.d/base.conf
-RUN rm /etc/nginx/sites-enabled/default
-RUN mkdir -p /etc/nginx/paths-available/
-
-# BUILD STARTUP SCRIPT
-COPY run.sh /
-RUN chmod +x /run.sh
-
-# CREATING STARTUP SCRIPT HOOK LOCATION
-RUN mkdir /run_scripts
-
-# RUN STARTUP SCRIPT
-ENV NEWUSER "newuser" 
-ENV PASSWD "password"
-ENV GITREPO ""
-ENV GITUSER ""
-ENV GITEMAIL ""
-ENV SUDO "no"
-ENV VIRTUAL_PATH /
-ENV VIRTUAL_HOST "localhost"
-
-CMD ["/bin/bash", "./run.sh"]
-
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
