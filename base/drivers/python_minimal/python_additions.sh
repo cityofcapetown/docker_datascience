@@ -2,6 +2,7 @@
 set -e
 
 # General utilities
+python3 -m pip install --upgrade pip setuptools wheel
 python3 -m pip install python-magic
 
 # Data Extraction/Managing
@@ -14,5 +15,4 @@ python3 -m pip install pyarrow
 python3 -m pip install pandas
 python3 -m pip install python-magic
 python3 -m pip install pyhive
-python3 -m pip install prestodb
 

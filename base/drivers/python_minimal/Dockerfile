@@ -8,8 +8,11 @@ RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update && \
   apt-get install -y \
   python3 \
-  python3-pip
+  python3-pip 
 
 COPY python_additions.sh .
 
 RUN bash python_additions.sh
+
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
