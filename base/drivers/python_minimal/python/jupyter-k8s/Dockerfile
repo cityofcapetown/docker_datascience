@@ -40,8 +40,8 @@ RUN python3 -m pip install --upgrade pip && \
     python3 -m pip install ipympl && \
     jupyter labextension install jupyter-matplotlib && \
     export NODE_OPTIONS=--max-old-space-size=4096 && \
-    jupyter labextension install jupyterlab-plotly@4.7.0 && \
-    jupyter labextension install plotlywidget@4.7.0 && \
+    jupyter labextension install jupyterlab-plotly@4.14.3 && \
+    jupyter labextension install plotlywidget@4.14.3 && \
     python3 -m pip install nbgitpuller && \
     unset NODE_OPTIONS && \
     export NODE_OPTIONS=""
