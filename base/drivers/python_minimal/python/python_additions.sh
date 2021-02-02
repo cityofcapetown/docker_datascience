@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 # Standard pip-installed packages go here
 ## Infrastructure/Utilities
