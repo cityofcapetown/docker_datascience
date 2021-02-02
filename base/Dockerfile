@@ -81,3 +81,6 @@ ENV VIRTUAL_PATH /
 ENV VIRTUAL_HOST "localhost"
 
 CMD ["/bin/bash", "./run.sh"]
+
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

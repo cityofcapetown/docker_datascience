@@ -101,5 +101,8 @@ COPY jupyter_notebook_config.py /etc/jupyter/
 USER root
 RUN fix-permissions /etc/jupyter/
 
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 # Switch back to jovyan to avoid accidental container runs as root
 USER $NB_UID
