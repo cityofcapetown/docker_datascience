@@ -32,6 +32,7 @@ python3 -m pip install exchangelib
 python3 -m pip install requests
 python3 -m pip install requests_ntlm
 python3 -m pip install beautifulsoup4
+python3 -m pip install html5lib
 
 ## Machine Learning
 python3 -m pip install statsmodels
@@ -51,7 +52,7 @@ python3 -m pip install pymc3
 ## Plotting
 python3 -m pip install matplotlib
 python3 -m pip install wordcloud
-python3 -m pip install bokeh
+python3 -m pip install bokeh==2.1.1
 python3 -m pip install folium
 python3 -m pip install seaborn
 python3 -m pip install plotly==4.1.0
@@ -69,6 +70,10 @@ python3 -m pip install geopandas
 python3 -m pip install descartes
 python3 -m pip install geocoder
 python3 -m pip install rtree
+python3 -m pip install geopy
+python3 -m pip install git+https://github.com/opendatadurban/geocode-array.git
+python3 -m pip install mapclassify
+python3 -m pip install cartopy
 
 # Non-standard packages go here
 python3 -m spacy download en

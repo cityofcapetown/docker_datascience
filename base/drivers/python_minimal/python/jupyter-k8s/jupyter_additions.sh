@@ -39,10 +39,10 @@ jupyter labextension install jupyter-matplotlib
 export NODE_OPTIONS=--max-old-space-size=4096
 
 ## jupyterlab renderer support
-jupyter labextension install jupyterlab-plotly@1.1.0
+jupyter labextension install jupyterlab-plotly@4.14.3
 
 ## FigureWidget support
-jupyter labextension install plotlywidget@1.1.0
+jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget@4.14.3
 
 ## JupyterLab chart editor support (optional)
 #jupyter labextension install jupyterlab-chart-editor@1.2
