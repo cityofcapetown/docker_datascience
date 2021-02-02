@@ -77,5 +77,5 @@ python3 -m pip install mapclassify
 #python3 -m pip install cartopy
 
 # Non-standard packages go here
-python3 -m spacy download en
-python3 -m spacy download en_core_web_lg
+#python3 -m spacy download en
+#python3 -m spacy download en_core_web_lg
