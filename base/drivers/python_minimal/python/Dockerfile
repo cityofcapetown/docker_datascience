@@ -1,4 +1,4 @@
-FROM cityofcapetown/datascience:python_minimal
+FROM cityofcapetown/datascience_python_minimal
 
 LABEL authors="Riaz Arbi,Gordon Inggs"
 
