@@ -40,8 +40,6 @@ python3 -m pip install statsmodels
 python3 -m pip install tensorflow
 python3 -m pip install scipy
 python3 -m pip install sklearn
-python3 -m pip install pyenchant
-python3 -m pip install nltk
 python3 -m pip install python-Levenshtein
 python3 -m pip install pystan
 python3 -m pip install fbprophet
@@ -53,12 +51,12 @@ python3 -m pip install pymc3
 ## Plotting
 python3 -m pip install matplotlib
 python3 -m pip install wordcloud
-python3 -m pip install bokeh==2.1.1
+python3 -m pip install "bokeh==2.1.1"
 python3 -m pip install folium
 python3 -m pip install seaborn
-python3 -m pip install plotly==4.1.0
-python3 -m pip install dash==1.3.0
-python3 -m pip install dash-daq==0.1.0
+python3 -m pip install "plotly==4.1.0"
+python3 -m pip install "dash==1.3.0"
+python3 -m pip install "dash-daq==0.1.0"
 python3 -m pip install dash-bootstrap-components
 python3 -m pip install pandoc
 
@@ -74,8 +72,8 @@ python3 -m pip install rtree
 python3 -m pip install geopy
 python3 -m pip install git+https://github.com/opendatadurban/geocode-array.git
 python3 -m pip install mapclassify
-#python3 -m pip install cartopy
+python3 -m pip install cartopy
 
 # Non-standard packages go here
-#python3 -m spacy download en
-#python3 -m spacy download en_core_web_lg
+python3 -m spacy download en_core_web_sm
+python3 -m spacy download en_core_web_lg

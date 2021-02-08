@@ -6,7 +6,6 @@ LABEL authors="Riaz Arbi,Gordon Inggs"
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update && \
     apt-get install -y \
-    enchant libenchant-dev \
     libfreetype6-dev \
     pkg-config \
     libpng-dev \
@@ -16,7 +15,11 @@ RUN DEBIAN_FRONTEND=noninteractive \
     pandoc \
     libspatialindex-dev \
     nmap \
-    gfortran
+    gfortran \
+    libproj-dev \
+    proj-data proj-bin \
+    unzip \
+    libgeos-dev
 
 COPY python_additions.sh .
 
