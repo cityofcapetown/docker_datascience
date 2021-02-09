@@ -1,4 +1,4 @@
-FROM cityofcapetown/datascience_python
+FROM cityofcapetown/datascience_python:latest
 
 LABEL authors="Riaz Arbi,Gordon Inggs"
 
