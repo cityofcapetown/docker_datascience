@@ -1,4 +1,4 @@
-FROM cityofcapetown/datascience_base:latest
+FROM cityofcapetown/datascience:base
 
 LABEL authors="Riaz Arbi,Gordon Inggs"
 
