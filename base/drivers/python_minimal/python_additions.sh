@@ -16,4 +16,4 @@ python3 -m pip install "pandas>=1.2.0"
 python3 -m pip install python-magic
 python3 -m pip install pyhive
 python3 -m pip install fsspec
-
+python3 -m pip install "s3fs>=0.5.2"
