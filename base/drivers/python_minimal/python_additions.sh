@@ -18,6 +18,6 @@ python3 -m pip install pyhive
 python3 -m pip install fsspec
 python3 -m pip install "s3fs>=0.5.2"
 python3 -m pip install "exchangelib>=3.3.2"
-python3 -m pip install "requests_ntlm>=2.0.0"
+python3 -m pip install "requests>=2.0.0"
 python3 -m pip install "requests_ntlm>=1.1.0"
 python3 -m pip install "SharePlum>=0.5.1"
