@@ -34,6 +34,7 @@ python3 -m pip install requests
 python3 -m pip install requests_ntlm
 python3 -m pip install beautifulsoup4
 python3 -m pip install html5lib
+python3 -m pip install numba
 
 ## Machine Learning
 python3 -m pip install statsmodels
