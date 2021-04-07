@@ -14,6 +14,7 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 
 # Install base packages
 ENV DEBIAN_FRONTEND noninteractive
+ENV ACCEPT_EULA Y 
 RUN apt-get update && apt-get -yq dist-upgrade \
  && apt-get install -yq --no-install-recommends \
     wget \
