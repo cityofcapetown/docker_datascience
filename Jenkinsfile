@@ -15,14 +15,18 @@ podTemplate(yaml: """
     node(POD_LABEL) {
         stage('base-image') {
             container('docker-buildkit') {
-                git 'https://ds1.capetown.gov.za/ds_gitlab/OPM/db-utils.git'
+                git 'https://ds1.capetown.gov.za/ds_gitlab/OPM/docker_datascience.git'
 
-                container('cct-datascience-python') {
-                    sh '''
-                    ./buildctl-daemonless.sh build --frontend dockerfile.v0 \\
-                                                   --local context=/home/jenkins/agent \\
-                                                   --local dockerfile=/home/jenkins/agent
-                    '''
+                container('docker-buildkit') {
+                    withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
+                                     usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
+                        sh '''
+                        ./bin/buildkit-docker.sh ${OPM_DATA_USER} ${OPM_DATA_PASSWORD} \\
+                                                 ${DOCKER_USER} ${DOCKER_PASS} \\
+                                                 "${PWD}/base" \\
+                                                 "docker.io/cityofcapetown/datascience:base"
+                        '''
+                    }
                 }
                 updateGitlabCommitStatus name: 'base', state: 'success'
             }
