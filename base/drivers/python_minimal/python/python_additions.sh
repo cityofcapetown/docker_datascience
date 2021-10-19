@@ -18,6 +18,7 @@ python3 -m pip install pybind11
 python3 -m pip install docker
 python3 -m pip install paramiko
 python3 -m pip install pysftp
+python3 -m pip install LunarCalendar
 
 ## Data Extraction/Managing
 python3 -m pip install XlsxWriter
