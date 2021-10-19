@@ -71,7 +71,21 @@ podTemplate(yaml: """
                                              "docker.io/cityofcapetown/datascience:python"
                     '''
                 }
-                updateGitlabCommitStatus name: 'python_minimal', state: 'success'
+                updateGitlabCommitStatus name: 'python', state: 'success'
+            }
+        }
+        stage('jupyter-k8s-image') {
+            container('docker-buildkit') {
+                withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
+                                 usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
+                    sh '''
+                    ./bin/buildkit-docker.sh ${OPM_DATA_USER} ${OPM_DATA_PASSWORD} \\
+                                             ${DOCKER_USER} ${DOCKER_PASS} \\
+                                             "${PWD}/base/drivers/python_minimal/python/jupyter-k8s" \\
+                                             "docker.io/cityofcapetown/datascience:jupyter-k8s"
+                    '''
+                }
+                updateGitlabCommitStatus name: 'jupyter-k8s', state: 'success'
             }
         }
     }
