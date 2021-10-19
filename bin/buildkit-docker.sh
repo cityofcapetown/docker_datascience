@@ -18,7 +18,7 @@ export NO_PROXY=datascience.capetown.gov.za,lake.capetown.gov.za
 # Setting up docker auth
 export BASE64_USER_PASS=$(echo -n "${DOCKER_USER}:${DOCKER_PASS}" | base64)
 export DOCKER_CONFIG=${PWD}/.docker
-mkdir ${DOCKER_CONFIG}
+mkdir -p ${DOCKER_CONFIG}
 echo '{"auths": {"https://index.docker.io/v1/": {"auth": "'${BASE64_USER_PASS}'"}}}' > ${PWD}/.docker/config.json
 
 # Here we go!
