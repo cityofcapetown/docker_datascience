@@ -4,6 +4,8 @@ set -e
 # General utilities
 python3 -m pip install --upgrade pip setuptools wheel
 python3 -m pip install python-magic
+python3 -m pip install apache-airflow==1.10.12
+python3 -m pip install apache-airflow[kubernetes]==1.10.12
 
 # Data Extraction/Managing
 python3 -m pip install minio
