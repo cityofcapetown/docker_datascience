@@ -23,17 +23,17 @@ echo '{"auths": {"https://index.docker.io/v1/": {"auth": "'${BASE64_USER_PASS}'"
 
 # Here we go!
 export BUILDKITD_FLAGS=--oci-worker-no-process-sandbox
-buildctl-daemonless.sh build --frontend dockerfile.v0 \\
-                             --local context="${CONTEXT_PATH}" \\
-                             --local dockerfile="${CONTEXT_PATH}" \\
-                             --opt build-arg:http_proxy=${http_proxy} \\
-                             --opt build-arg:https_proxy=${http_proxy} \\
-                             --opt build-arg:no_proxy=${no_proxy} \\
-                             --opt build-arg:HTTP_PROXY=${http_proxy} \\
-                             --opt build-arg:HTTPS_PROXY=${http_proxy} \\
-                             --opt build-arg:NO_PROXY=${no_proxy} \\
-                             --export-cache type=inline \\
-                             --import-cache type=registry,ref="${IMAGE_TAG}" \\
+buildctl-daemonless.sh build --frontend dockerfile.v0 \
+                             --local context="${CONTEXT_PATH}" \
+                             --local dockerfile="${CONTEXT_PATH}" \
+                             --opt build-arg:http_proxy=${http_proxy} \
+                             --opt build-arg:https_proxy=${http_proxy} \
+                             --opt build-arg:no_proxy=${no_proxy} \
+                             --opt build-arg:HTTP_PROXY=${http_proxy} \
+                             --opt build-arg:HTTPS_PROXY=${http_proxy} \
+                             --opt build-arg:NO_PROXY=${no_proxy} \
+                             --export-cache type=inline \
+                             --import-cache type=registry,ref="${IMAGE_TAG}" \
                              --output type=image,name="${IMAGE_TAG}",push=true
 
 exit $?
