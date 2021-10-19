@@ -9,6 +9,8 @@ podTemplate(yaml: """
         command:
         - cat
         tty: true
+        securityContext:
+          privileged: true
     """,
     slaveConnectTimeout: 3600
   ) {
