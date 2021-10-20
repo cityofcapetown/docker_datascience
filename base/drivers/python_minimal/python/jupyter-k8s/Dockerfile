@@ -30,9 +30,6 @@ RUN apt-get update && apt-get -yq dist-upgrade \
 RUN python3 -m pip install --upgrade pip && \
     python3 -m pip install jupyter jupyterhub jupyterlab && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
-    jupyter labextension install @jupyterlab/git && \
-    python3 -m pip install jupyterlab-git && \
-    jupyter serverextension enable --py jupyterlab_git --sys-prefix && \
     python3 -m pip install jupyterlab-discovery && \
     python3 -m pip install ipyleaflet && \
     jupyter nbextension enable --py --sys-prefix ipyleaflet && \
