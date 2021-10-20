@@ -19,7 +19,7 @@ podTemplate(label: label, yaml: """
     """,
     slaveConnectTimeout: 3600
   ) {
-    node(POD_LABEL) {
+    node(label) {
         stage('setup') {
             git 'https://ds1.capetown.gov.za/ds_gitlab/OPM/docker_datascience.git'
         }
