@@ -1,16 +1,21 @@
-podTemplate(yaml: """
+def label = "docker-datascience-${UUID.randomUUID().toString()}"
+podTemplate(label: label, yaml: """
     apiVersion: v1
     kind: Pod
+    metadata:
+        name: ${label}
+        annotations:
+            container.apparmor.security.beta.kubernetes.io/${label}: unconfined
+    labels:
+        app: ${label}
     spec:
       containers:
-      - name: docker-buildkit
+      - name: ${label}
         image: moby/buildkit:master-rootless
         imagePullPolicy: IfNotPresent
         command:
         - cat
         tty: true
-        securityContext:
-          privileged: true
     """,
     slaveConnectTimeout: 3600
   ) {
@@ -19,7 +24,7 @@ podTemplate(yaml: """
             git 'https://ds1.capetown.gov.za/ds_gitlab/OPM/docker_datascience.git'
         }
         stage('base-image') {
-            container('docker-buildkit') {
+            container(label) {
                 withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                  usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                     sh '''
@@ -33,7 +38,7 @@ podTemplate(yaml: """
             }
         }
         stage('drivers-image') {
-            container('docker-buildkit') {
+            container(label) {
                 withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                  usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                     sh '''
@@ -47,7 +52,7 @@ podTemplate(yaml: """
             }
         }
         stage('python_minimal-image') {
-            container('docker-buildkit') {
+            container(label) {
                 withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                  usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                     sh '''
@@ -61,7 +66,7 @@ podTemplate(yaml: """
             }
         }
         stage('python-image') {
-            container('docker-buildkit') {
+            container(label) {
                 withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                  usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                     sh '''
@@ -75,7 +80,7 @@ podTemplate(yaml: """
             }
         }
         stage('jupyter-k8s-image') {
-            container('docker-buildkit') {
+            container(label) {
                 withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                  usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                     sh '''
