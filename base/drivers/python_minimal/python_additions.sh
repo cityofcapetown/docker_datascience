@@ -13,7 +13,7 @@ python3 -m pip install pyhdb
 python3 -m pip install pyodbc
 python3 -m pip install numpy
 python3 -m pip install Cython 
-python3 -m pip install "pyarrow>=3.0.0"
+python3 -m pip install "pyarrow>=5.0.0"
 python3 -m pip install "pandas>=1.2.0"
 python3 -m pip install python-magic
 python3 -m pip install pyhive
@@ -23,3 +23,4 @@ python3 -m pip install "exchangelib>=3.3.2"
 python3 -m pip install "requests>=2.0.0"
 python3 -m pip install "requests_ntlm>=1.1.0"
 python3 -m pip install "SharePlum>=0.5.1"
+python3 -m pip install "trino>=0.306.0"
