@@ -62,6 +62,8 @@ python3 -m pip install "dash-daq==0.1.0"
 python3 -m pip install dash-bootstrap-components
 python3 -m pip install pandoc
 python3 -m pip install pretty_html_table
+python3 -m pip install treelib
+python3 -m pip install ujson
 
 ## Geospatial
 python3 -m pip install h3
