@@ -29,21 +29,18 @@ RUN wget https://packages.microsoft.com/keys/microsoft.asc -O microsoft.asc && \
   msodbcsql17
 
 # Oracle driver
-COPY oracle-instantclient18.3-basic-18.3.0.0.0-1.x86_64.rpm /
-COPY oracle-instantclient18.3-odbc-18.3.0.0.0-1.x86_64.rpm /
-RUN alien -i /oracle-instantclient18.3-basic-18.3.0.0.0-1.x86_64.rpm && \
-    alien -i /oracle-instantclient18.3-odbc-18.3.0.0.0-1.x86_64.rpm
-RUN rm /oracle-instantclient18.3-basic-18.3.0.0.0-1.x86_64.rpm && \
-    rm /oracle-instantclient18.3-odbc-18.3.0.0.0-1.x86_64.rpm
+COPY oracle-instantclient-basic-21.4.0.0.0-1.el8.x86_64.rpm /
+COPY oracle-instantclient-odbc-21.4.0.0.0-1.el8.x86_64.rpm /
+RUN alien -i /oracle-instantclient-basic-21.4.0.0.0-1.el8.x86_64.rpm && \
+    alien -i /oracle-instantclient-odbc-21.4.0.0.0-1.el8.x86_64.rpm
+RUN rm /oracle-instantclient-basic-21.4.0.0.0-1.el8.x86_64.rpm && \
+    rm /oracle-instantclient-odbc-21.4.0.0.0-1.el8.x86_64.rpm
 
-ENV LD_LIBRARY_PATH /usr/lib/oracle/18.3/client64/lib/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+ENV LD_LIBRARY_PATH /usr/lib/oracle/21.4/client64/lib/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 RUN ldconfig
 
-RUN echo "[Oracle Driver 18.3]\nDescription=Oracle Unicode driver\nDriver=/usr/lib/oracle/18.3/client64/lib/libsqora.so.18.1\nUsageCount=1\nFileUsage=1" \
+RUN echo "[Oracle Driver 21.4]\nDescription=Oracle Unicode driver\nDriver=/usr/lib/oracle/21.4/client64/lib/libsqora.so.19.1\nUsageCount=1\nFileUsage=1" \
   >> /etc/odbcinst.ini
-
-# ODBC
-EXPOSE 1433
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
