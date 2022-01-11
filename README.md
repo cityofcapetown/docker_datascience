@@ -18,7 +18,7 @@ The current structure of these image tags (and the repo):
 ```
 
 Overview of the tags:
-* `base` - based on `Ubuntu 18.04`. Contains various utilities, a NGINX reverse proxy and a run script.
+* `base` - based on `Ubuntu 18.04`. Contains various utilities.
 * `drivers` - Installs various drivers, include ODBC as well as Selenium.
 * `python_minimal` - Installs Python3 and a limited selection of python packages (see 
   [here](./base/drivers/python_minimal/python_additions.sh)).
