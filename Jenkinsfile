@@ -11,7 +11,7 @@ podTemplate(label: label, yaml: """
     spec:
       containers:
       - name: ${label}
-        image: moby/buildkit:master-rootless
+        image: moby/buildkit:rootless
         imagePullPolicy: IfNotPresent
         command:
         - cat
