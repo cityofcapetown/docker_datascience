@@ -16,24 +16,24 @@ export no_proxy=datascience.capetown.gov.za,lake.capetown.gov.za
 export NO_PROXY=datascience.capetown.gov.za,lake.capetown.gov.za
 
 # Setting up config file
-export DOCKER_CONFIG_DIR=${PWD}/.docker
-mkdir -p ${DOCKER_CONFIG_DIR}
-export DOCKER_CONFIG=${DOCKER_CONFIG_DIR}/config.json
+export DOCKER_CONFIG=${PWD}/.docker
+mkdir -p ${DOCKER_CONFIG}
+export DOCKER_CONFIG_FILE=${DOCKER_CONFIG}/config.json
 
-echo '{' > ${DOCKER_CONFIG}
+echo '{' > ${DOCKER_CONFIG_FILE}
 
 # Setting up docker auth
 export BASE64_USER_PASS=$(echo -n "${DOCKER_USER}:${DOCKER_PASS}" | base64)
-echo '"auths": {"https://index.docker.io/v1/": {"auth": "'${BASE64_USER_PASS}'"}},' >> ${DOCKER_CONFIG}
+echo '"auths": {"https://index.docker.io/v1/": {"auth": "'${BASE64_USER_PASS}'"}},' >> ${DOCKER_CONFIG_FILE}
 
 # Setting up docker proxy
-echo "\"proxies\": {\"default\": { \"http_proxy\": \"${http_proxy}\", \"https_proxy\": \"${http_proxy}\", \"no_proxy\": \"${no_proxy}\"}}" >> ${DOCKER_CONFIG}
+echo "\"proxies\": {\"default\": { \"http_proxy\": \"${http_proxy}\", \"https_proxy\": \"${http_proxy}\", \"no_proxy\": \"${no_proxy}\"}}" >> ${DOCKER_CONFIG_FILE}
 
-echo '}' >> ${DOCKER_CONFIG}
+echo '}' >> ${DOCKER_CONFIG_FILE}
 
 # Getting output of dockerfile
-echo "Contents of ${DOCKER_CONFIG}"
-cat ${DOCKER_CONFIG}
+echo "Contents of ${DOCKER_CONFIG_FILE}"
+cat ${DOCKER_CONFIG_FILE}
 
 # Here we go!
 export BUILDKITD_FLAGS=--oci-worker-no-process-sandbox
