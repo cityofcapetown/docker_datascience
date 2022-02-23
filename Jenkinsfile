@@ -24,7 +24,7 @@ podTemplate(label: label, yaml: """
             git 'https://ds1.capetown.gov.za/ds_gitlab/OPM/docker_datascience.git'
         }
         stage('base-image') {
-            retry(5) {
+            retry(10) {
                 container(label) {
                     withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                      usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
@@ -40,7 +40,7 @@ podTemplate(label: label, yaml: """
             }
         }
         stage('drivers-image') {
-            retry(5) {
+            retry(10) {
                 container(label) {
                     withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                      usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
@@ -56,7 +56,7 @@ podTemplate(label: label, yaml: """
             }
         }
         stage('python_minimal-image') {
-            retry(5) {
+            retry(10) {
                 container(label) {
                     withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                      usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
@@ -72,7 +72,7 @@ podTemplate(label: label, yaml: """
             }
         }
         stage('python-image') {
-            retry(5){
+            retry(10){
                 container(label) {
                     withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                      usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
@@ -88,7 +88,7 @@ podTemplate(label: label, yaml: """
             }
         }
         stage('jupyter-k8s-image') {
-            retry(5){
+            retry(10){
                 container(label) {
                     withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                      usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
