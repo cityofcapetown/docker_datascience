@@ -33,6 +33,7 @@ podTemplate(label: label, yaml: """
                                                  ${DOCKER_USER} ${DOCKER_PASS} \\
                                                  "${PWD}/base" \\
                                                  "docker.io/cityofcapetown/datascience:base"
+                        sleep 60
                         '''
                     }
                     updateGitlabCommitStatus name: 'base', state: 'success'
@@ -49,6 +50,7 @@ podTemplate(label: label, yaml: """
                                                  ${DOCKER_USER} ${DOCKER_PASS} \\
                                                  "${PWD}/base/drivers" \\
                                                  "docker.io/cityofcapetown/datascience:drivers"
+                        sleep 60
                         '''
                     }
                     updateGitlabCommitStatus name: 'drivers', state: 'success'
@@ -65,6 +67,7 @@ podTemplate(label: label, yaml: """
                                                  ${DOCKER_USER} ${DOCKER_PASS} \\
                                                  "${PWD}/base/drivers/python_minimal" \\
                                                  "docker.io/cityofcapetown/datascience:python_minimal"
+                        sleep 60
                         '''
                     }
                     updateGitlabCommitStatus name: 'python_minimal', state: 'success'
@@ -81,6 +84,7 @@ podTemplate(label: label, yaml: """
                                                  ${DOCKER_USER} ${DOCKER_PASS} \\
                                                  "${PWD}/base/drivers/python_minimal/python" \\
                                                  "docker.io/cityofcapetown/datascience:python"
+                        sleep 60
                         '''
                     }
                     updateGitlabCommitStatus name: 'python', state: 'success'
@@ -97,6 +101,7 @@ podTemplate(label: label, yaml: """
                                                  ${DOCKER_USER} ${DOCKER_PASS} \\
                                                  "${PWD}/base/drivers/python_minimal/python/jupyter-k8s" \\
                                                  "docker.io/cityofcapetown/datascience:jupyter-k8s"
+                        sleep 60
                         '''
                     }
                     updateGitlabCommitStatus name: 'jupyter-k8s', state: 'success'
