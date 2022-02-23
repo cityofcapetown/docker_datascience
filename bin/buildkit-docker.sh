@@ -21,6 +21,9 @@ export DOCKER_CONFIG=${PWD}/.docker
 mkdir -p ${DOCKER_CONFIG}
 echo '{"auths": {"https://index.docker.io/v1/": {"auth": "'${BASE64_USER_PASS}'"}}}' > ${PWD}/.docker/config.json
 
+# Setting up docker proxy
+echo "{\"proxies\": {\"default\": { \"http_proxy\": \"${http_proxy}\", \"https_proxy\": \"${http_proxy}\", \"no_proxy\": \"${no_proxy}\"}}}" >> ${PWD}/.docker/config.json
+
 # Here we go!
 export BUILDKITD_FLAGS=--oci-worker-no-process-sandbox
 buildctl-daemonless.sh build --frontend dockerfile.v0 \
