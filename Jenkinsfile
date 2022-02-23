@@ -24,17 +24,19 @@ podTemplate(label: label, yaml: """
             git 'https://ds1.capetown.gov.za/ds_gitlab/OPM/docker_datascience.git'
         }
         stage('base-image') {
-            container(label) {
-                withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
-                                 usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
-                    sh '''
-                    ./bin/buildkit-docker.sh ${OPM_DATA_USER} ${OPM_DATA_PASSWORD} \\
-                                             ${DOCKER_USER} ${DOCKER_PASS} \\
-                                             "${PWD}/base" \\
-                                             "docker.io/cityofcapetown/datascience:base"
-                    '''
+            retry(5) {
+                container(label) {
+                    withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
+                                     usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
+                        sh '''
+                        ./bin/buildkit-docker.sh ${OPM_DATA_USER} ${OPM_DATA_PASSWORD} \\
+                                                 ${DOCKER_USER} ${DOCKER_PASS} \\
+                                                 "${PWD}/base" \\
+                                                 "docker.io/cityofcapetown/datascience:base"
+                        '''
+                    }
+                    updateGitlabCommitStatus name: 'base', state: 'success'
                 }
-                updateGitlabCommitStatus name: 'base', state: 'success'
             }
         }
         stage('drivers-image') {
