@@ -77,7 +77,7 @@ python3 -m pip install rtree
 python3 -m pip install geopy
 # python3 -m pip install git+https://github.com/opendatadurban/geocode-array.git
 python3 -m pip install mapclassify
-python3 -m pip install cartopy
+# python3 -m pip install cartopy
 
 # Internal Packages
 python3 -m pip install "https://lake.capetown.gov.za/pipeline-utils/pipeline_utils-0.1-py2.py3-none-any.whl"
