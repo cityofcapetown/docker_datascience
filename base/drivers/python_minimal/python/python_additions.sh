@@ -77,13 +77,19 @@ python3 -m pip install descartes
 python3 -m pip install geocoder
 python3 -m pip install rtree
 python3 -m pip install geopy
-python3 -m pip install git+https://github.com/opendatadurban/geocode-array.git
+
+if [ $(host lake.capetown.gov.za) -neq 0 ]; then
+  python3 -m pip install git+https://github.com/opendatadurban/geocode-array.git
+fi
+
 python3 -m pip install mapclassify
 # python3 -m pip install cartopy
 
 # Internal Packages
-# python3 -m pip install "https://lake.capetown.gov.za/pipeline-utils/pipeline_utils-0.1-py2.py3-none-any.whl"
-# python3 -m pip install "https://lake.capetown.gov.za/geospatial-utils/geospatial_utils-0.3.0rc1-py3-none-any.whl"
+if [ $(host lake.capetown.gov.za) -eq 0 ]; then
+  python3 -m pip install "https://lake.capetown.gov.za/pipeline-utils/pipeline_utils-0.1-py2.py3-none-any.whl"
+  python3 -m pip install "https://lake.capetown.gov.za/geospatial-utils/geospatial_utils-0.3.0rc1-py3-none-any.whl"
+fi
 
 # Non-standard packages go here
 python3 -m spacy download en_core_web_sm
