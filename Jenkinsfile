@@ -78,7 +78,7 @@ podTemplate(label: label, yaml: """
         }
         stage('python-image') {
             retry(100){
-                timeout(45) {
+                timeout(60) {
                     container(label) {
                         withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                          usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
