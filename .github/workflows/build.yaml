@@ -1,0 +1,56 @@
+name: docker_build_server
+
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      # base
+      - name: Build and push base
+        uses: docker/build-push-action@v2
+        with:
+          context: base/
+          push: true
+          tags: |
+            cityofcapetown/datascience:base
+      # drivers
+      - name: Build and push drivers
+        uses: docker/build-push-action@v2
+        with:
+          context: base/drivers/
+          push: true
+          tags: |
+            cityofcapetown/datascience:drivers
+      # python_minimal
+      - name: Build and push python_minimal
+        uses: docker/build-push-action@v2
+        with:
+          context: base/drivers/python_minimal
+          push: true
+          tags: |
+            cityofcapetown/datascience:python_minimal
+      # python
+      - name: Build and push python
+        uses: docker/build-push-action@v2
+        with:
+          context: base/drivers/python_minimal/python
+          push: true
+          tags: |
+            cityofcapetown/datascience:python
+      # jupyter-k8s
+      - name: Build and push jupyter-k8s
+        uses: docker/build-push-action@v2
+        with:
+          context: base/drivers/python_minimal/python/jupyter-k8s/
+          push: true
+          tags: |
+            cityofcapetown/datascience:jupyter-k8s
