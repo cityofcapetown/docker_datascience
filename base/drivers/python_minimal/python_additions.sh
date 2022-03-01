@@ -26,4 +26,4 @@ python3 -m pip install "SharePlum>=0.5.1"
 python3 -m pip install "trino>=0.306.0"
 
 # Internal Packages
-python3 -m pip install "https://lake.capetown.gov.za/db-utils/db_utils-0.4.2rc1-py2.py3-none-any.whl"
+# python3 -m pip install "https://lake.capetown.gov.za/db-utils/db_utils-0.4.2rc1-py2.py3-none-any.whl"
