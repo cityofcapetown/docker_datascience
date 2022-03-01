@@ -19,6 +19,7 @@ python3 -m pip install docker
 python3 -m pip install paramiko
 python3 -m pip install pysftp
 python3 -m pip install LunarCalendar
+python3 -m pip install "markupsafe==2.0.1"
 
 ## Data Extraction/Managing
 python3 -m pip install XlsxWriter
