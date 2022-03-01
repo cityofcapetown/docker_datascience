@@ -38,6 +38,7 @@ python3 -m pip install html5lib
 python3 -m pip install numba
 python3 -m pip install treelib
 python3 -m pip install ujson
+python3 -m pip install sxl
 
 ## Machine Learning
 python3 -m pip install statsmodels
