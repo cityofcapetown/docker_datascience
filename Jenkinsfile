@@ -16,6 +16,8 @@ podTemplate(label: label, yaml: """
         command:
         - cat
         tty: true
+      nodeSelector:
+        workload: batch
     """,
     slaveConnectTimeout: 3600
   ) {
