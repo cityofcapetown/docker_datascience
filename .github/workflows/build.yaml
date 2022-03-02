@@ -21,7 +21,7 @@ jobs:
           context: base/
           push: true
           tags: |
-            cityofcapetown/datascience:base
+            cityofcapetown/datascience:base-gha
       # drivers
       - name: Build and push drivers
         uses: docker/build-push-action@v2
@@ -29,7 +29,7 @@ jobs:
           context: base/drivers/
           push: true
           tags: |
-            cityofcapetown/datascience:drivers
+            cityofcapetown/datascience:drivers-gha
       # python_minimal
       - name: Build and push python_minimal
         uses: docker/build-push-action@v2
@@ -37,15 +37,15 @@ jobs:
           context: base/drivers/python_minimal
           push: true
           tags: |
-            cityofcapetown/datascience:python_minimal
+            cityofcapetown/datascience:python_minimal-gha
       # python
       - name: Build and push python
         uses: docker/build-push-action@v2
         with:
-          context: base/drivers/python_minimal/python
+          context: base/drivers/python_minimal/python/
           push: true
           tags: |
-            cityofcapetown/datascience:python
+            cityofcapetown/datascience:python-gha
       # jupyter-k8s
       - name: Build and push jupyter-k8s
         uses: docker/build-push-action@v2
@@ -53,4 +53,4 @@ jobs:
           context: base/drivers/python_minimal/python/jupyter-k8s/
           push: true
           tags: |
-            cityofcapetown/datascience:jupyter-k8s
+            cityofcapetown/datascience:jupyter-k8s-gha
