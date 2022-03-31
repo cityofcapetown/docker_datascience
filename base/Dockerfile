@@ -21,7 +21,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
   locales \
   dnsutils \
   curl \
-  screen
+  screen \
+  rename
 
 # Setting the timezone
 ENV TZ="Africa/Johannesburg"

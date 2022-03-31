@@ -19,7 +19,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
     libproj-dev \
     proj-data proj-bin \
     unzip \
-    libgeos-dev
+    libgeos-dev \
+    graphviz
 
 COPY python_additions.sh .
 
