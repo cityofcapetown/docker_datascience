@@ -54,6 +54,7 @@ python3 -m pip install torchvision
 python3 -m pip install spacy
 python3 -m pip install pymc3
 python3 -m pip install PM4Py
+python3 -m pip install darts
 
 ## Plotting
 python3 -m pip install matplotlib
