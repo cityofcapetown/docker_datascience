@@ -31,4 +31,5 @@ python3 -m pip install "trino>=0.306.0"
 host lake.capetown.gov.za
 if [ $? -eq 0 ]; then
   python3 -m pip install "https://lake.capetown.gov.za/db-utils/db_utils-0.4.4-py2.py3-none-any.whl"
+  python3 -m pip install "https://lake.capetown.gov.za/pipeline-utils/pipeline_utils-0.2rc1-py2.py3-none-any.whl"
 fi

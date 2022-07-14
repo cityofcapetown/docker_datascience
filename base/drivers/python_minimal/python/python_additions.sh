@@ -92,7 +92,6 @@ python3 -m pip install mapclassify
 # Internal Packages
 host lake.capetown.gov.za
 if [ $? -eq 0 ]; then
-  python3 -m pip install "https://lake.capetown.gov.za/pipeline-utils/pipeline_utils-0.2rc1-py2.py3-none-any.whl"
   python3 -m pip install "https://lake.capetown.gov.za/geospatial-utils/geospatial_utils-0.3.0rc1-py3-none-any.whl"
 fi
 
