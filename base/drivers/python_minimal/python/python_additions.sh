@@ -60,7 +60,7 @@ python3 -m pip install "fastai==2.7.4"
 ## Plotting
 python3 -m pip install matplotlib
 python3 -m pip install wordcloud
-python3 -m pip install "bokeh==2.1.1"
+python3 -m pip install "bokeh==2.4.3"
 python3 -m pip install folium
 python3 -m pip install seaborn
 python3 -m pip install "plotly==4.1.0"
