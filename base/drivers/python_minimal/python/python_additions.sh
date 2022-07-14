@@ -55,6 +55,7 @@ python3 -m pip install spacy
 python3 -m pip install pymc3
 python3 -m pip install PM4Py
 python3 -m pip install darts
+python3 -m pip install "fastai==2.7.4"
 
 ## Plotting
 python3 -m pip install matplotlib
