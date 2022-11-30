@@ -78,20 +78,18 @@ podTemplate(label: label, yaml: """
         }
         stage('python-image') {
             retry(10){
-                timeout(60) {
-                    container(label) {
-                        withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
-                                         usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
-                            sh '''
-                            ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
-                                                     "${DOCKER_USER}" "${DOCKER_PASS}" \\
-                                                     "${PWD}/base/drivers/python_minimal/python" \\
-                                                     "docker.io/cityofcapetown/datascience:python"
-                            sleep 60
-                            '''
-                        }
-                        updateGitlabCommitStatus name: 'python', state: 'success'
+                container(label) {
+                    withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
+                                     usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
+                        sh '''
+                        ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
+                                                 "${DOCKER_USER}" "${DOCKER_PASS}" \\
+                                                 "${PWD}/base/drivers/python_minimal/python" \\
+                                                 "docker.io/cityofcapetown/datascience:python"
+                        sleep 60
+                        '''
                     }
+                    updateGitlabCommitStatus name: 'python', state: 'success'
                 }
             }
         }
