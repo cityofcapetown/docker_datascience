@@ -17,12 +17,12 @@ RUN bash selenium_setup.sh
 # ODBC
 RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update && \
-  apt-get install -y gnupg2 unixodbc-dev unixodbc-bin unixodbc libaio1 alien
+  apt-get install -y gnupg2 unixodbc-dev unixodbc libaio1 alien
 
 # Microsoft driver
 RUN wget https://packages.microsoft.com/keys/microsoft.asc -O microsoft.asc && \
   apt-key add microsoft.asc && \
-  wget https://packages.microsoft.com/config/ubuntu/18.04/prod.list -O prod.list && \
+  wget https://packages.microsoft.com/config/ubuntu/22.04/prod.list -O prod.list && \
   cp prod.list /etc/apt/sources.list.d/mssql-release.list && \
   apt-get update && \
   ACCEPT_EULA=Y apt-get install -y \

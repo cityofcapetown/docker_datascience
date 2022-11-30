@@ -1,6 +1,13 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 LABEL authors="Riaz Arbi,Gordon Inggs"
+
+# Changing to ZA servers
+RUN sed -i 's|archive.ubuntu.com|ubuntu.mirror.ac.za|g' /etc/apt/sources.list
+
+# Increasing APT timeout and retries
+RUN echo 'Acquire::http::Timeout "100";\nAcquire::ftp::Timeout "100";\nAcquire::Retries "10";' > /etc/apt/apt.conf.d/99-timeout && \
+    echo 'Acquire::https::Verify-Peer "false";\nAcquire::https::Verify-Host "false";' > /etc/apt/apt.conf.d/98-verify-peer
 
 # Utility packages
 RUN DEBIAN_FRONTEND=noninteractive \
@@ -15,7 +22,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
   make \
   gcc \
   wget \
-  apt-utils \
+  apt \
   git \
   sudo \
   locales \

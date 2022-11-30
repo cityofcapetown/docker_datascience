@@ -12,13 +12,13 @@ export http_proxy=http://${OPM_DATA_USER}:${OPM_DATA_PASSWORD}@internet.capetown
 export https_proxy=http://${OPM_DATA_USER}:${OPM_DATA_PASSWORD}@internet.capetown.gov.za:8080
 export HTTP_PROXY=http://${OPM_DATA_USER}:${OPM_DATA_PASSWORD}@internet.capetown.gov.za:8080
 export HTTPS_PROXY=http://${OPM_DATA_USER}:${OPM_DATA_PASSWORD}@internet.capetown.gov.za:8080
-export no_proxy=datascience.capetown.gov.za,lake.capetown.gov.za
-export NO_PROXY=datascience.capetown.gov.za,lake.capetown.gov.za
+export no_proxy=datascience.capetown.gov.za,lake.capetown.gov.za,ds1.capetown.gov.za,ds2.capetown.gov.za
+export NO_PROXY=datascience.capetown.gov.za,lake.capetown.gov.za,ds1.capetown.gov.za,ds2.capetown.gov.za
 
 # Setting up config file
-export DOCKER_CONFIG=${PWD}/.docker
+export DOCKER_CONFIG="${PWD}/.docker"
 mkdir -p ${DOCKER_CONFIG}
-export DOCKER_CONFIG_FILE=${DOCKER_CONFIG}/config.json
+export DOCKER_CONFIG_FILE="${DOCKER_CONFIG}/config.json"
 
 echo '{' > ${DOCKER_CONFIG_FILE}
 
@@ -40,12 +40,12 @@ export BUILDKITD_FLAGS=--oci-worker-no-process-sandbox
 buildctl-daemonless.sh build --frontend dockerfile.v0 \
                              --local context="${CONTEXT_PATH}" \
                              --local dockerfile="${CONTEXT_PATH}" \
-                             --opt build-arg:http_proxy=${http_proxy} \
-                             --opt build-arg:https_proxy=${http_proxy} \
-                             --opt build-arg:no_proxy=${no_proxy} \
-                             --opt build-arg:HTTP_PROXY=${http_proxy} \
-                             --opt build-arg:HTTPS_PROXY=${http_proxy} \
-                             --opt build-arg:NO_PROXY=${no_proxy} \
+                             --opt build-arg:http_proxy="${http_proxy}" \
+                             --opt build-arg:https_proxy="${http_proxy}" \
+                             --opt build-arg:no_proxy="${no_proxy}" \
+                             --opt build-arg:HTTP_PROXY="${http_proxy}" \
+                             --opt build-arg:HTTPS_PROXY="${http_proxy}" \
+                             --opt build-arg:NO_PROXY="${no_proxy}" \
                              --export-cache type=inline \
                              --import-cache type=registry,ref="${IMAGE_TAG}" \
                              --output type=image,name="${IMAGE_TAG}",push=true

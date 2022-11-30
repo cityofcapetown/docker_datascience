@@ -26,13 +26,13 @@ podTemplate(label: label, yaml: """
             git 'https://ds1.capetown.gov.za/ds_gitlab/OPM/docker_datascience.git'
         }
         stage('base-image') {
-            retry(100) {
+            retry(10) {
                 container(label) {
                     withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                      usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                         sh '''
-                        ./bin/buildkit-docker.sh ${OPM_DATA_USER} ${OPM_DATA_PASSWORD} \\
-                                                 ${DOCKER_USER} ${DOCKER_PASS} \\
+                        ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
+                                                 "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base" \\
                                                  "docker.io/cityofcapetown/datascience:base"
                         sleep 60
@@ -43,13 +43,13 @@ podTemplate(label: label, yaml: """
             }
         }
         stage('drivers-image') {
-            retry(100) {
+            retry(10) {
                 container(label) {
                     withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                      usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                         sh '''
-                        ./bin/buildkit-docker.sh ${OPM_DATA_USER} ${OPM_DATA_PASSWORD} \\
-                                                 ${DOCKER_USER} ${DOCKER_PASS} \\
+                        ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
+                                                 "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base/drivers" \\
                                                  "docker.io/cityofcapetown/datascience:drivers"
                         sleep 60
@@ -60,13 +60,13 @@ podTemplate(label: label, yaml: """
             }
         }
         stage('python_minimal-image') {
-            retry(100) {
+            retry(10) {
                 container(label) {
                     withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                      usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                         sh '''
-                        ./bin/buildkit-docker.sh ${OPM_DATA_USER} ${OPM_DATA_PASSWORD} \\
-                                                 ${DOCKER_USER} ${DOCKER_PASS} \\
+                        ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
+                                                 "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base/drivers/python_minimal" \\
                                                  "docker.io/cityofcapetown/datascience:python_minimal"
                         sleep 60
@@ -77,14 +77,14 @@ podTemplate(label: label, yaml: """
             }
         }
         stage('python-image') {
-            retry(100){
+            retry(10){
                 timeout(60) {
                     container(label) {
                         withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                          usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                             sh '''
-                            ./bin/buildkit-docker.sh ${OPM_DATA_USER} ${OPM_DATA_PASSWORD} \\
-                                                     ${DOCKER_USER} ${DOCKER_PASS} \\
+                            ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
+                                                     "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                      "${PWD}/base/drivers/python_minimal/python" \\
                                                      "docker.io/cityofcapetown/datascience:python"
                             sleep 60
@@ -96,13 +96,13 @@ podTemplate(label: label, yaml: """
             }
         }
         stage('jupyter-k8s-image') {
-            retry(100){
+            retry(10){
                 container(label) {
                     withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                      usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                         sh '''
-                        ./bin/buildkit-docker.sh ${OPM_DATA_USER} ${OPM_DATA_PASSWORD} \\
-                                                 ${DOCKER_USER} ${DOCKER_PASS} \\
+                        ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
+                                                 "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base/drivers/python_minimal/python/jupyter-k8s" \\
                                                  "docker.io/cityofcapetown/datascience:jupyter-k8s"
                         sleep 60

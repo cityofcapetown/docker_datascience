@@ -10,8 +10,9 @@ RUN DEBIAN_FRONTEND=noninteractive \
     pkg-config \
     libpng-dev \
     texlive-xetex \
+    texlive-base  \
     texlive-fonts-recommended \
-    texlive-generic-recommended \
+    texlive-latex-recommended \
     pandoc \
     libspatialindex-dev \
     nmap \
