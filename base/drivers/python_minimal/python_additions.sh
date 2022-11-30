@@ -30,6 +30,7 @@ python3 -m pip install "trino>=0.306.0"
 # Internal Packages
 host lake.capetown.gov.za
 if [ $? -eq 0 ]; then
+  python3 -m pip install -r "https://ds1.capetown.gov.za/ds_gitlab/OPM/db-utils/raw/28c1a697eea860e9ce9ffda450a62775978e0463/requirements.txt"
   python3 -m pip install "https://lake.capetown.gov.za/db-utils/db_utils-0.4.4-py2.py3-none-any.whl"
   python3 -m pip install "https://lake.capetown.gov.za/pipeline-utils/pipeline_utils-0.2rc1-py2.py3-none-any.whl"
 fi

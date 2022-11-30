@@ -14,6 +14,7 @@ python3 -m pip install holidays
 python3 -m pip install tqdm
 python3 -m pip install pyvirtualdisplay
 python3 -m pip install selenium
+python3 -m pip install selenium-wire
 python3 -m pip install pybind11
 python3 -m pip install docker
 python3 -m pip install paramiko
