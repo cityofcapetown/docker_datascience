@@ -18,6 +18,7 @@ python3 -m pip install selenium-wire
 python3 -m pip install pybind11
 python3 -m pip install docker
 python3 -m pip install paramiko
+python3 -m pip install progressbar
 python3 -m pip install pysftp
 python3 -m pip install LunarCalendar
 python3 -m pip install "markupsafe==2.0.1"
@@ -76,6 +77,7 @@ python3 -m pip install graphviz
 python3 -m pip install h3
 python3 -m pip install folium
 python3 -m pip install geojson-utils
+python3 -m pip install pystac_client
 python3 -m pip install shapely
 python3 -m pip install geopandas
 python3 -m pip install descartes
