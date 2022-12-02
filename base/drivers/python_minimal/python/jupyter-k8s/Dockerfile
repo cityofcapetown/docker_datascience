@@ -42,7 +42,8 @@ RUN python3 -m pip install --upgrade pip && \
     jupyter labextension install plotlywidget@4.14.3 && \
     python3 -m pip install nbgitpuller && \
     unset NODE_OPTIONS && \
-    export NODE_OPTIONS=""
+    export NODE_OPTIONS="" && \
+    python3 -m pip install jupyter-resource-usage
 
 # Sort out locales
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
