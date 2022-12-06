@@ -13,6 +13,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
 
 COPY selenium_setup.sh .
 RUN bash selenium_setup.sh
+COPY openssl.cnf /usr/lib/
 
 # ODBC
 RUN DEBIAN_FRONTEND=noninteractive \
