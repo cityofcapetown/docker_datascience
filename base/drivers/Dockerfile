@@ -2,18 +2,24 @@ FROM cityofcapetown/datascience:base
 
 LABEL authors="Riaz Arbi,Gordon Inggs"
 
+# OpenSSL
+RUN DEBIAN_FRONTEND=noninteractive \
+  apt-get update && \
+  apt-get install -y \
+  openssl
+COPY openssl.cnf /etc/ssl/
+
 # JAVA
 # OpenJDK
 RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update && \
   apt-get install -y \
   default-jre \
-  default-jdk && \
-  apt-get clean
+  default-jdk
 
+# Selenium
 COPY selenium_setup.sh .
 RUN bash selenium_setup.sh
-COPY openssl.cnf /usr/lib/
 
 # ODBC
 RUN DEBIAN_FRONTEND=noninteractive \
