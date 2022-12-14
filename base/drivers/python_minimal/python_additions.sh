@@ -4,9 +4,9 @@ set -e
 # General utilities
 python3 -m pip install --upgrade pip setuptools wheel
 python3 -m pip install python-magic
-python3 -m pip install apache-airflow==2.2.3
-python3 -m pip install apache-airflow[kubernetes]==2.2.3
-python3 -m pip install apache-airflow-providers-cncf-kubernetes==3.1.2
+python3 -m pip install apache-airflow==2.5.0
+python3 -m pip install apache-airflow[kubernetes]==2.5.0
+python3 -m pip install apache-airflow-providers-cncf-kubernetes==5.0.0
 python3 -m pip install "markupsafe==2.0.1"
 
 # Data Extraction/Managing
@@ -32,5 +32,6 @@ host lake.capetown.gov.za
 if [ $? -eq 0 ]; then
   python3 -m pip install -r "https://ds1.capetown.gov.za/ds_gitlab/OPM/db-utils/raw/28c1a697eea860e9ce9ffda450a62775978e0463/requirements.txt"
   python3 -m pip install "https://lake.capetown.gov.za/db-utils/db_utils-0.4.4-py2.py3-none-any.whl"
+  python3 -m pip install -r "https://ds1.capetown.gov.za/ds_gitlab/OPM/pipeline-utils/raw/wip/v2/requirements.txt"
   python3 -m pip install "https://lake.capetown.gov.za/pipeline-utils/pipeline_utils-0.2rc1-py2.py3-none-any.whl"
 fi
