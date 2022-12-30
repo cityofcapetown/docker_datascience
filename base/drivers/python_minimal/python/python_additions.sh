@@ -25,6 +25,7 @@ python3 -m pip install LunarCalendar
 python3 -m pip install "markupsafe==2.0.1"
 
 ## Data Extraction/Managing
+python3 -m pip install polars
 python3 -m pip install XlsxWriter
 python3 -m pip install openpyxl
 python3 -m pip install xlrd
