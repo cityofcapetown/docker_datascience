@@ -7,7 +7,10 @@ RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update && \
   apt-get install -y \
   openssl
-COPY openssl.cnf /etc/ssl/
+COPY openssl.cnf /tmp/
+RUN cat /etc/ssl/openssl.cnf /tmp/openssl.cnf > /tmp/openssl.cnf.new && \
+    cp /tmp/openssl.cnf.new /etc/ssl/openssl.cnf && \
+    rm /tmp/openssl.cnf /tmp/openssl.cnf.new
 
 # JAVA
 # OpenJDK
