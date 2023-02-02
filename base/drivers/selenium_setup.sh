@@ -8,6 +8,11 @@ wget https://github.com/mozilla/geckodriver/releases/download/v0.31.0/geckodrive
   rm -rf geckodriver.tar.xz && \
   mv geckodriver /usr/bin/geckodriver
 
+# Firefox deb install
+apt-get install -y software-properties-common && \
+  add-apt-repository -y ppa:mozillateam/ppa && \
+  echo $'Package: *\nPin: release o=LP-PPA-mozillateam\nPin-Priority: 1001' > /etc/apt/preferences.d/mozilla-firefox
+
 # Headless X environment
 apt-get update && \
   apt-get install -y chromium-browser \
