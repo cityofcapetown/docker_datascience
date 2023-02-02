@@ -90,6 +90,7 @@ python3 -m pip install geopy
 ## Continuous Integration and Continuous Delivery 
 python3 -m pip install coverage
 python3 -m pip install ruff
+python3 -m pip install black
 
 
 
