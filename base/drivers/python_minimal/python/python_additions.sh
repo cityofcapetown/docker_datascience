@@ -87,6 +87,12 @@ python3 -m pip install geocoder
 python3 -m pip install rtree
 python3 -m pip install geopy
 
+## Continuous Integration and Continuous Delivery 
+python3 -m pip install coverage
+python3 -m pip install ruff
+
+
+
 if [ $(host lake.capetown.gov.za) -neq 0 ]; then
   python3 -m pip install git+https://github.com/opendatadurban/geocode-array.git
 fi
