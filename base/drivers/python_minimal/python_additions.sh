@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 
 # General utilities
 python3 -m pip install --upgrade pip setuptools wheel
