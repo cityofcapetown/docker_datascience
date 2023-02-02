@@ -3,10 +3,6 @@
 # General utilities
 python3 -m pip install --upgrade pip setuptools wheel
 python3 -m pip install python-magic
-python3 -m pip install apache-airflow==2.5.0
-python3 -m pip install apache-airflow[kubernetes]==2.5.0
-python3 -m pip install apache-airflow-providers-cncf-kubernetes==5.0.0
-python3 -m pip install "markupsafe==2.0.1"
 
 # Data Extraction/Managing
 python3 -m pip install minio
