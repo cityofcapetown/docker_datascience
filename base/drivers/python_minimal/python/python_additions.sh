@@ -50,7 +50,7 @@ python3 -m pip install sxl
 python3 -m pip install statsmodels
 python3 -m pip install tensorflow
 python3 -m pip install scipy
-python3 -m pip install sklearn
+python3 -m pip install sklearn-learn
 python3 -m pip install python-Levenshtein
 python3 -m pip install "pystan==2.19.1.1"
 python3 -m pip install fbprophet
