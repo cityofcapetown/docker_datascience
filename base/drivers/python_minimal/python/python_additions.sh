@@ -15,6 +15,7 @@ python3 -m pip install tqdm
 python3 -m pip install pyvirtualdisplay
 python3 -m pip install selenium
 python3 -m pip install selenium-wire
+python3 -m pip install "cryptography==38.0.4"
 python3 -m pip install "pyopenssl==22.0.0"
 python3 -m pip install pybind11
 python3 -m pip install docker
