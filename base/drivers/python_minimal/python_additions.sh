@@ -31,6 +31,7 @@ python3 -m pip install "trino>=0.306.0"
 python3 -m pip install coverage
 python3 -m pip install ruff
 python3 -m pip install black
+python3 -m pip install pytest
 
 # Internal Packages
 host lake.capetown.gov.za
