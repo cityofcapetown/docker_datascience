@@ -26,18 +26,6 @@ podTemplate(label: label, yaml: """
     node(label) {
         stage('setup') {
             git url: 'https://ds1.capetown.gov.za/ds_gitlab/OPM/docker_datascience.git', branch: env.BRANCH_NAME
-
-            // guardrail to stop image being pushed into docker hub if not master
-            if (env.BRANCH_NAME == 'master') {
-                sh '''
-                export PUSH=true
-                '''
-            } else {
-                sh '''
-                export PUSH=false
-                '''
-            }
-
         }
         stage('base-image') {
             retry(10) {
@@ -45,6 +33,9 @@ podTemplate(label: label, yaml: """
                     withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                      usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                         sh '''
+                        # guardrail to stop push to docker hub
+                        PUSH=$([ $BRANCH_NAME == "master" ] && echo true || echo false)
+
                         ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
                                                  "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base" \\
@@ -63,6 +54,9 @@ podTemplate(label: label, yaml: """
                     withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                      usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                         sh '''
+                        # guardrail to stop push to docker hub
+                        PUSH=$([ $BRANCH_NAME == "master" ] && echo true || echo false)
+
                         ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
                                                  "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base/drivers" \\
@@ -81,6 +75,9 @@ podTemplate(label: label, yaml: """
                     withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                      usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                         sh '''
+                        # guardrail to stop push to docker hub
+                        PUSH=$([ $BRANCH_NAME == "master" ] && echo true || echo false)
+
                         ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
                                                  "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base/drivers/python_minimal" \\
@@ -99,6 +96,9 @@ podTemplate(label: label, yaml: """
                     withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                      usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                         sh '''
+                        # guardrail to stop push to docker hub
+                        PUSH=$([ $BRANCH_NAME == "master" ] && echo true || echo false)
+
                         ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
                                                  "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base/drivers/python_minimal/python" \\
@@ -117,6 +117,9 @@ podTemplate(label: label, yaml: """
                     withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
                                      usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                         sh '''
+                        # guardrail to stop push to docker hub
+                        PUSH=$([ $BRANCH_NAME == "master" ] && echo true || echo false)
+
                         ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
                                                  "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base/drivers/python_minimal/python/jupyter-k8s" \\
