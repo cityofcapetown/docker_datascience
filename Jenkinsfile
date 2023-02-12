@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 def label = "docker-datascience-${UUID.randomUUID().toString()}"
 podTemplate(label: label, yaml: """
     apiVersion: v1
