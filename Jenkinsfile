@@ -25,7 +25,7 @@ podTemplate(label: label, yaml: """
   ) {
     node(label) {
         stage('setup') {
-            git 'https://ds1.capetown.gov.za/ds_gitlab/OPM/docker_datascience.git'
+            git url: 'https://ds1.capetown.gov.za/ds_gitlab/OPM/docker_datascience.git', branch: env.BRANCH_NAME
         }
         stage('base-image') {
             retry(10) {
@@ -36,7 +36,7 @@ podTemplate(label: label, yaml: """
                         ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
                                                  "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base" \\
-                                                 "docker.io/cityofcapetown/datascience:base"
+                                                 "docker.io/cityofcapetown/datascience:base_gpu"
                         sleep 60
                         '''
                     }
@@ -53,7 +53,7 @@ podTemplate(label: label, yaml: """
                         ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
                                                  "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base/drivers" \\
-                                                 "docker.io/cityofcapetown/datascience:drivers"
+                                                 "docker.io/cityofcapetown/datascience:drivers_gpu"
                         sleep 60
                         '''
                     }
@@ -70,7 +70,7 @@ podTemplate(label: label, yaml: """
                         ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
                                                  "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base/drivers/python_minimal" \\
-                                                 "docker.io/cityofcapetown/datascience:python_minimal"
+                                                 "docker.io/cityofcapetown/datascience:python_minimal_gpu"
                         sleep 60
                         '''
                     }
@@ -87,7 +87,7 @@ podTemplate(label: label, yaml: """
                         ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
                                                  "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base/drivers/python_minimal/python" \\
-                                                 "docker.io/cityofcapetown/datascience:python"
+                                                 "docker.io/cityofcapetown/datascience:python_gpu"
                         sleep 60
                         '''
                     }
@@ -104,7 +104,7 @@ podTemplate(label: label, yaml: """
                         ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
                                                  "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base/drivers/python_minimal/python/jupyter-k8s" \\
-                                                 "docker.io/cityofcapetown/datascience:jupyter-k8s"
+                                                 "docker.io/cityofcapetown/datascience:jupyter-k8s-gpu"
                         sleep 60
                         '''
                     }

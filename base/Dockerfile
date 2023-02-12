@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM 11.8.0-cudnn8-runtime-ubuntu22.04
 
 LABEL authors="Riaz Arbi,Gordon Inggs"
 
