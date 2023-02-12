@@ -25,7 +25,19 @@ podTemplate(label: label, yaml: """
   ) {
     node(label) {
         stage('setup') {
-            git 'https://ds1.capetown.gov.za/ds_gitlab/OPM/docker_datascience.git'
+            git 'https://ds1.capetown.gov.za/ds_gitlab/OPM/docker_datascience.git', branch: env.BRANCH_NAME
+
+            // guardrail to stop image being pushed into docker hub if not master
+            if (env.BRANCH_NAME == 'master') {
+                sh '''
+                export PUSH=true
+                '''
+            } else {
+                sh '''
+                export PUSH=false
+                '''
+            }
+
         }
         stage('base-image') {
             retry(10) {
@@ -36,7 +48,8 @@ podTemplate(label: label, yaml: """
                         ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
                                                  "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base" \\
-                                                 "docker.io/cityofcapetown/datascience:base"
+                                                 "docker.io/cityofcapetown/datascience:base" \\
+                                                 "${PUSH}"
                         sleep 60
                         '''
                     }
@@ -53,7 +66,8 @@ podTemplate(label: label, yaml: """
                         ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
                                                  "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base/drivers" \\
-                                                 "docker.io/cityofcapetown/datascience:drivers"
+                                                 "docker.io/cityofcapetown/datascience:drivers" \\
+                                                 "${PUSH}"
                         sleep 60
                         '''
                     }
@@ -70,7 +84,8 @@ podTemplate(label: label, yaml: """
                         ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
                                                  "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base/drivers/python_minimal" \\
-                                                 "docker.io/cityofcapetown/datascience:python_minimal"
+                                                 "docker.io/cityofcapetown/datascience:python_minimal" \\
+                                                 "${PUSH}"
                         sleep 60
                         '''
                     }
@@ -87,7 +102,8 @@ podTemplate(label: label, yaml: """
                         ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
                                                  "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base/drivers/python_minimal/python" \\
-                                                 "docker.io/cityofcapetown/datascience:python"
+                                                 "docker.io/cityofcapetown/datascience:python" \\
+                                                 "${PUSH}"
                         sleep 60
                         '''
                     }
@@ -104,7 +120,8 @@ podTemplate(label: label, yaml: """
                         ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
                                                  "${DOCKER_USER}" "${DOCKER_PASS}" \\
                                                  "${PWD}/base/drivers/python_minimal/python/jupyter-k8s" \\
-                                                 "docker.io/cityofcapetown/datascience:jupyter-k8s"
+                                                 "docker.io/cityofcapetown/datascience:jupyter-k8s" \\
+                                                 "${PUSH}"
                         sleep 60
                         '''
                     }
