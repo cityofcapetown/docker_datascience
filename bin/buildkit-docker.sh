@@ -38,6 +38,7 @@ cat ${DOCKER_CONFIG_FILE}
 
 # Here we go!
 export BUILDKITD_FLAGS=--oci-worker-no-process-sandbox
+echo "building from "${CONTEXT_PATH}", with IMAGE_TAG="${IMAGE_TAG}" and PUSH="${PUSH}""
 buildctl-daemonless.sh build --frontend dockerfile.v0 \
                              --local context="${CONTEXT_PATH}" \
                              --local dockerfile="${CONTEXT_PATH}" \
