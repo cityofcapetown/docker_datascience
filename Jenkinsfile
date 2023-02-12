@@ -25,7 +25,7 @@ podTemplate(label: label, yaml: """
   ) {
     node(label) {
         stage('setup') {
-            git 'https://ds1.capetown.gov.za/ds_gitlab/OPM/docker_datascience.git', branch: env.BRANCH_NAME
+            git url: 'https://ds1.capetown.gov.za/ds_gitlab/OPM/docker_datascience.git', branch: env.BRANCH_NAME
 
             // guardrail to stop image being pushed into docker hub if not master
             if (env.BRANCH_NAME == 'master') {
