@@ -22,6 +22,12 @@ python3 -m pip install "requests_ntlm>=1.1.0"
 python3 -m pip install "SharePlum>=0.5.1"
 python3 -m pip install "trino>=0.306.0"
 
+#Continuous Integration and Continuous Delivery 
+python3 -m pip install coverage
+python3 -m pip install ruff
+python3 -m pip install black
+python3 -m pip install pytest
+
 # Internal Packages
 host lake.capetown.gov.za
 if [ $? -eq 0 ]; then
