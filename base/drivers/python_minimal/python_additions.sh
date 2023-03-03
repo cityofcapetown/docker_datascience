@@ -3,6 +3,7 @@
 # General utilities
 python3 -m pip install --upgrade pip setuptools wheel
 python3 -m pip install python-magic
+python3 -m pip install cffi
 
 # Data Extraction/Managing
 python3 -m pip install minio
