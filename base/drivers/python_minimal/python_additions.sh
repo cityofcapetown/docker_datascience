@@ -15,6 +15,7 @@ python3 -m pip install "pyarrow>=5.0.0"
 python3 -m pip install "pandas>=1.2.0"
 python3 -m pip install python-magic
 python3 -m pip install pyhive
+python3 -m pip install "botocore<1.28"
 python3 -m pip install fsspec
 python3 -m pip install "s3fs>=0.5.2"
 python3 -m pip install "exchangelib>=3.3.2"
