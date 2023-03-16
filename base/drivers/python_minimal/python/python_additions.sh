@@ -5,7 +5,6 @@ set -e
 ## Infrastructure/Utilities
 python3 -m pip install --upgrade pip setuptools wheel
 python3 -m pip install virtualenv
-python3 -m pip install botocore
 python3 -m pip install boto3
 python3 -m pip install awscli
 python3 -m pip install bs4
