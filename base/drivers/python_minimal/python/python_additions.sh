@@ -23,6 +23,7 @@ python3 -m pip install progressbar
 python3 -m pip install pysftp
 python3 -m pip install LunarCalendar
 python3 -m pip install "markupsafe==2.0.1"
+python3 -m pip install "botocore<1.28"
 
 ## Data Extraction/Managing
 python3 -m pip install polars
