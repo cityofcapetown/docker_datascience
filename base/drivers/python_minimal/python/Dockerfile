@@ -21,7 +21,9 @@ RUN DEBIAN_FRONTEND=noninteractive \
     proj-data proj-bin \
     unzip \
     libgeos-dev \
-    graphviz
+    graphviz \
+    gdal-bin \
+    libgdal-dev
 
 COPY python_additions.sh .
 
