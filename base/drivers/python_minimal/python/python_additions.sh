@@ -52,8 +52,7 @@ python3 -m pip install tensorflow
 python3 -m pip install scipy
 python3 -m pip install scikit-learn
 python3 -m pip install python-Levenshtein
-python3 -m pip install "pystan==2.19.1.1"
-python3 -m pip install fbprophet
+python3 -m pip install prophet
 python3 -m pip install torch
 python3 -m pip install torchvision
 python3 -m pip install spacy
