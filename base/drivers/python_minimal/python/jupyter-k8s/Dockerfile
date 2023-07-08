@@ -10,7 +10,7 @@ ARG NB_GID="100"
 USER root
 
 # Setting up nodejs source list
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
 
 # Install base packages
 ENV DEBIAN_FRONTEND noninteractive
