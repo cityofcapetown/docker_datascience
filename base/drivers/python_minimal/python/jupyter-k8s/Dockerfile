@@ -10,7 +10,7 @@ ARG NB_GID="100"
 USER root
 
 # Setting up nodejs source list
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 
 # Install base packages
 ENV DEBIAN_FRONTEND noninteractive
@@ -28,8 +28,10 @@ RUN apt-get update && apt-get -yq dist-upgrade \
 
 # Install all the jupyter packages
 RUN python3 -m pip install --upgrade pip && \
-    python3 -m pip install jupyter jupyterhub jupyterlab && \
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
+    python3 -m pip install jupyter jupyterhub jupyterlab jupyter_core
+
+# Extensions, etc.
+RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
     python3 -m pip install jupyterlab-discovery && \
     python3 -m pip install ipyleaflet && \
     jupyter nbextension enable --py --sys-prefix ipyleaflet && \
@@ -38,8 +40,7 @@ RUN python3 -m pip install --upgrade pip && \
     python3 -m pip install ipympl && \
     jupyter labextension install jupyter-matplotlib && \
     export NODE_OPTIONS=--max-old-space-size=4096 && \
-    jupyter labextension install jupyterlab-plotly@4.14.3 && \
-    jupyter labextension install plotlywidget@4.14.3 && \
+    jupyter labextension install plotlywidget && \
     python3 -m pip install nbgitpuller && \
     unset NODE_OPTIONS && \
     export NODE_OPTIONS="" && \
