@@ -31,16 +31,12 @@ RUN python3 -m pip install --upgrade pip && \
     python3 -m pip install jupyter jupyterhub jupyterlab jupyter_core
 
 # Extensions, etc.
-RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
+RUN python3 -m pip insstall jupyterlab_widgets && \
     python3 -m pip install jupyterlab-discovery && \
     python3 -m pip install ipyleaflet && \
-    jupyter nbextension enable --py --sys-prefix ipyleaflet && \
-    jupyter nbextension enable --py widgetsnbextension && \
-    jupyter labextension install jupyter-leaflet && \
     python3 -m pip install ipympl && \
-    jupyter labextension install jupyter-matplotlib && \
+    python3 -m pip install plotly && \
     export NODE_OPTIONS=--max-old-space-size=4096 && \
-    jupyter labextension install plotlywidget && \
     python3 -m pip install nbgitpuller && \
     unset NODE_OPTIONS && \
     export NODE_OPTIONS="" && \
