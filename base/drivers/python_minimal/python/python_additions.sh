@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 
 # Standard pip-installed packages go here
 ## Infrastructure/Utilities
@@ -96,7 +95,7 @@ python3 -m pip install mapclassify
 
 # Internal Packages
 host lake.capetown.gov.za
-if [ $? -eq 0 ]; then
+if [ $(host lake.capetown.gov.za) -eq 0 ]; then
   python3 -m pip install "https://lake.capetown.gov.za/geospatial-utils/geospatial_utils-0.3.0rc1-py3-none-any.whl"
 fi
 
