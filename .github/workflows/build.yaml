@@ -45,7 +45,12 @@ jobs:
           context: base/drivers/python_minimal/python/
           push: true
           tags: |
-            cityofcapetown/datascience:python-gha
+            cityofcapetown/datascience:python-ghax
+      - name: Check disk space
+        run: |
+          sudo dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -nr | head
+          df . -h
+          sudo du /usr/ -hx -d 4 --threshold=1G | sort -hr | head
       # jupyter-k8s
       - name: Build and push jupyter-k8s
         uses: docker/build-push-action@v2
