@@ -32,7 +32,7 @@ RUN python3 -m pip install --upgrade pip && \
     python3 -m pip install jupyter jupyterhub jupyterlab jupyter_core
 
 # Extensions, etc.
-RUN python3 -m pip insstall jupyterlab_widgets && \
+RUN python3 -m pip install jupyterlab_widgets && \
     python3 -m pip install jupyterlab-discovery && \
     python3 -m pip install ipyleaflet && \
     python3 -m pip install ipympl && \
