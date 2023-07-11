@@ -78,13 +78,14 @@ python3 -m pip install graphviz
 python3 -m pip install h3
 python3 -m pip install folium
 python3 -m pip install geojson-utils
-python3 -m pip install pystac_client
+python3 -m pip install "pystac_client==0.6.1"
 python3 -m pip install shapely
 python3 -m pip install geopandas
 python3 -m pip install descartes
 python3 -m pip install geocoder
 python3 -m pip install rtree
 python3 -m pip install geopy
+python3 -m pip install "pygdal==3.4.3.11"
 
 if [ $(host lake.capetown.gov.za) -neq 0 ]; then
   python3 -m pip install git+https://github.com/opendatadurban/geocode-array.git
