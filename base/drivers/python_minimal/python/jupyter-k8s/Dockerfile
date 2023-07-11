@@ -24,7 +24,6 @@ RUN apt-get update && apt-get -yq dist-upgrade \
     locales \
     fonts-liberation \
     nodejs \
-    npm \
  && rm -rf /var/lib/apt/lists/*
 
 # Install all the jupyter packages
