@@ -57,7 +57,7 @@ ADD install-pycharm.sh /usr/local/bin/install-pycharm.sh
 RUN chmod +x /usr/local/bin/install-pycharm.sh
 RUN install-pycharm.sh $NB_UID $NB_GID
 
-# PyCharm jupyter extensions
+# PyCharm jupyter packages
 RUN python3 -m pip install jupyter-projector-proxy jupyter-server-proxy
 
 # Back to jupyter setup
@@ -121,3 +121,5 @@ RUN apt-get clean && \
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER $NB_UID
+
+RUN pip3 install projector-installer
