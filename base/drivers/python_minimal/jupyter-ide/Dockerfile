@@ -122,4 +122,4 @@ RUN apt-get clean && \
 # Switch back to jovyan to avoid accidental container runs as root
 USER $NB_UID
 
-RUN pip3 install projector-installer
+RUN pip3 install projector-installer --user
