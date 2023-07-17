@@ -90,7 +90,6 @@ podTemplate(label: label, yaml: """
                 }
             }
         }
-        # In theory, these could be in parallel, but the jupyter container doesn't seem to like it
         stage('jupyter-ide-image') {
             retry(10){
                 container(label) {
