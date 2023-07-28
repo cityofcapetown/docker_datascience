@@ -87,6 +87,7 @@ python3 -m pip install geocoder
 python3 -m pip install rtree
 python3 -m pip install geopy
 python3 -m pip install "pygdal==3.4.3.11"
+python3 -m pip install rioxarray
 
 if [ $(host lake.capetown.gov.za) -neq 0 ]; then
   python3 -m pip install git+https://github.com/opendatadurban/geocode-array.git
