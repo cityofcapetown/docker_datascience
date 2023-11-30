@@ -4,7 +4,7 @@
 ## Infrastructure/Utilities
 python3 -m pip install --upgrade pip setuptools wheel
 python3 -m pip install virtualenv
-python3 -m pip install "boto3<1.28"
+python3 -m pip install boto3
 python3 -m pip install awscli
 python3 -m pip install bs4
 python3 -m pip install convertdate
@@ -22,7 +22,7 @@ python3 -m pip install progressbar
 python3 -m pip install pysftp
 python3 -m pip install LunarCalendar
 python3 -m pip install "markupsafe==2.0.1"
-python3 -m pip install "botocore<1.28"
+python3 -m pip install botocore
 
 ## Data Extraction/Managing
 python3 -m pip install polars
