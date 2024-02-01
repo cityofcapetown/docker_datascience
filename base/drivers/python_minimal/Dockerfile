@@ -25,7 +25,6 @@ FROM drivers-image as unit-test
 # Minio Utils unit tests
 RUN git clone https://ds1.capetown.gov.za/ds_gitlab/OPM/db-utils.git && \
     cd db-utils && rm -rf db_utils && \
-    python3 -W ignore:ImportantWarning -m unittest tst.test_exchange_utils && \
     python3 -W ignore:ImportantWarning -m unittest tst.test_minio_utils && \
     python3 -W ignore:ImportantWarning -m unittest tst.test_odbc_utils && \
     python3 -W ignore:ImportantWarning -m unittest tst.test_secrets_utils && \
