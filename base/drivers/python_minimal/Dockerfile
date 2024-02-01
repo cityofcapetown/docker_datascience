@@ -10,8 +10,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
   add-apt-repository -y ppa:ubuntugis/ppa && \
   add-apt-repository -y ppa:deadsnakes/ppa && \
   apt-get update && \
-  apt-get install -y python3.8 python3.8-distutils python3.8-dev && \
-  update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
+  apt-get install -y python3.9 python3.9-distutils python3.9-dev && \
+  update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && \
     python3 /tmp/get-pip.py
