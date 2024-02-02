@@ -31,12 +31,14 @@ RUN git clone https://ds1.capetown.gov.za/ds_gitlab/OPM/db-utils.git && \
     python3 -W ignore:ImportantWarning -m unittest tst.test_sharepoint_utils && \
     python3 -W ignore:ImportantWarning -m unittest tst.test_trino_utils && \
     python3 -W ignore:ImportantWarning -m unittest tst.test_minio_utils_base_funcs && \
-    python3 -W ignore:ImportantWarning -m unittest tst.test_minio_utils_df_funcs
+    python3 -W ignore:ImportantWarning -m unittest tst.test_minio_utils_df_funcs && \
+    cd / && rm -rf /db-utils
 
 # Pipeline Utils unit tests
 RUN git clone https://ds1.capetown.gov.za/ds_gitlab/OPM/pipeline-utils.git && \
     cd pipeline-utils && rm -rf pipeline_utils && \
-    python3 -W ignore:ImportantWarning -m unittest tst.test_kubernetes_dag
+    python3 -W ignore:ImportantWarning -m unittest tst.test_kubernetes_dag && \
+    cd / && rm -rf pipeline-utils/
 
 
 FROM unit-test as final-image
