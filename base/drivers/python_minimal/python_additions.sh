@@ -36,5 +36,5 @@ if [ $? -eq 0 ]; then
   python3 -m pip install -r "https://ds1.capetown.gov.za/ds_gitlab/OPM/db-utils/raw/1230f071b31c9e4a2402b98b3f8db7d38fadd899/requirements.txt"
   python3 -m pip install "https://lake.capetown.gov.za/db-utils/db_utils-0.4.5rc2-py2.py3-none-any.whl"
   python3 -m pip install -r "https://ds1.capetown.gov.za/ds_gitlab/OPM/pipeline-utils/raw/130c4918bf531120f85471aee9c365d40a47262f/requirements.txt"
-  python3 -m pip install "https://lake.capetown.gov.za/pipeline-utils/pipeline_utils-0.2-py2.py3-none-any.whl"
+  python3 -m pip install "https://lake.capetown.gov.za/pipeline-utils/pipeline_utils-0.3-py2.py3-none-any.whl"
 fi
