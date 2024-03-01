@@ -90,6 +90,28 @@ podTemplate(label: label, yaml: """
                 }
             }
         }
+        stage('jupyter-ide-image') {
+            retry(10){
+                container(label) {
+                    withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
+                                     usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
+                        sh '''
+                        # guardrail to stop push to docker hub
+                        # ToDo change to "master" after dev
+                        PUSH=$([ $BRANCH_NAME == "wip/jupyter-ides" ] && echo true || echo false)
+
+                        ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
+                                                 "${DOCKER_USER}" "${DOCKER_PASS}" \\
+                                                 "${PWD}/base/drivers/python_minimal/jupyter-ide" \\
+                                                 "docker.io/cityofcapetown/datascience:jupyter-ide" \\
+                                                 "${PUSH}"
+                        sleep 60
+                        '''
+                    }
+                    updateGitlabCommitStatus name: 'jupyter-ide', state: 'success'
+                }
+            }
+        }
         stage('python-image') {
             retry(10){
                 container(label) {
