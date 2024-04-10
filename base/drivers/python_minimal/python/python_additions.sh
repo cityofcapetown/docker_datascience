@@ -45,6 +45,7 @@ python3 -m pip install treelib
 python3 -m pip install ujson
 python3 -m pip install sxl
 python3 -m pip install python-gitlab
+python3 -m pip install great-expectations
 
 ## Machine Learning
 python3 -m pip install statsmodels
