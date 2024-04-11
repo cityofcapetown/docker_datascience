@@ -46,6 +46,7 @@ python3 -m pip install ujson
 python3 -m pip install sxl
 python3 -m pip install python-gitlab
 python3 -m pip install great-expectations
+python3 -m pip install 'great_expectations[trino]'
 
 ## Machine Learning
 python3 -m pip install statsmodels
