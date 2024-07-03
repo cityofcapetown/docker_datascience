@@ -58,7 +58,7 @@ RUN chmod +x /usr/local/bin/install-pycharm.sh
 RUN install-pycharm.sh $NB_UID $NB_GID
 
 # PyCharm jupyter packages
-RUN python3 -m pip install jupyter-projector-proxy jupyter-server-proxy
+RUN python3 -m pip install jupyter-projector-proxy jupyter-server-proxy projector_installer
 
 # Back to jupyter setup
 # Sort out locales
