@@ -98,7 +98,7 @@ podTemplate(label: label, yaml: """
                         sh '''
                         # guardrail to stop push to docker hub
                         # ToDo change to "master" after dev
-                        PUSH=$([ $BRANCH_NAME == "wip/jupyter-ides" ] && echo true || echo false)
+                        PUSH=$([ $BRANCH_NAME == "master" ] && echo true || echo false)
 
                         ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
                                                  "${DOCKER_USER}" "${DOCKER_PASS}" \\
