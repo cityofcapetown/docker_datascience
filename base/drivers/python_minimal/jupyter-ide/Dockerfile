@@ -58,7 +58,7 @@ RUN chmod +x /usr/local/bin/install-pycharm.sh
 RUN install-pycharm.sh $NB_UID $NB_GID
 
 # Webstorm
-ADD install-pycharm.sh /usr/local/bin/install-webstorm.sh
+ADD install-webstorm.sh /usr/local/bin/install-webstorm.sh
 RUN chmod +x /usr/local/bin/install-webstorm.sh
 RUN install-webstorm.sh $NB_UID $NB_GID
 
