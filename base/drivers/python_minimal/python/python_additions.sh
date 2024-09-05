@@ -89,7 +89,8 @@ python3 -m pip install descartes
 python3 -m pip install geocoder
 python3 -m pip install rtree
 python3 -m pip install geopy
-python3 -m pip install "pygdal==3.4.3.11"
+gdal_version=$(gdal-config --version); echo $gdal_version
+python3 -m pip install pygdal>=${gdal_version}.0,<=${gdal_version}.999
 python3 -m pip install rioxarray
 
 if [ $(host lake.capetown.gov.za) -neq 0 ]; then
