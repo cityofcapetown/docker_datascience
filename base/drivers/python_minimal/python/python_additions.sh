@@ -25,7 +25,7 @@ python3 -m pip install "markupsafe==2.0.1"
 python3 -m pip install botocore
 
 ## Data Extraction/Managing
-python3 -m pip install "numpy<2.0"
+python3 -m pip install "numpy<2.0,>=1.23"
 python3 -m pip install polars
 python3 -m pip install XlsxWriter
 python3 -m pip install openpyxl
