@@ -25,7 +25,7 @@ python3 -m pip install "markupsafe==2.0.1"
 python3 -m pip install botocore
 
 ## Data Extraction/Managing
-python3 -m pip install "numpy<2.0,>=1.23"
+python3 -m pip install "numpy<2.0,>=1.23.5"
 python3 -m pip install polars
 python3 -m pip install XlsxWriter
 python3 -m pip install openpyxl
@@ -59,7 +59,7 @@ python3 -m pip install prophet
 python3 -m pip install torch
 python3 -m pip install torchvision
 python3 -m pip install spacy
-python3 -m pip install pymc3
+# python3 -m pip install pymc3
 python3 -m pip install PM4Py
 python3 -m pip install darts
 python3 -m pip install "fastai==2.7.4"
