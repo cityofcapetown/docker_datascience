@@ -25,7 +25,6 @@ python3 -m pip install "markupsafe==2.0.1"
 python3 -m pip install botocore
 
 ## Data Extraction/Managing
-python3 -m pip install "numpy<2.0,>=1.23.5"
 python3 -m pip install polars
 python3 -m pip install XlsxWriter
 python3 -m pip install openpyxl
@@ -90,6 +89,7 @@ python3 -m pip install geocoder
 python3 -m pip install rtree
 python3 -m pip install geopy
 gdal_version=$(gdal-config --version); echo $gdal_version
+echo "gdal_version={$gdal_version}"
 python3 -m pip install pygdal>=${gdal_version}.0,<=${gdal_version}.999
 python3 -m pip install rioxarray
 
