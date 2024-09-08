@@ -50,7 +50,7 @@ python3 -m pip install 'great_expectations[trino]'
 
 ## Machine Learning
 python3 -m pip install statsmodels
-python3 -m pip install tensorflow
+python3 -m pip install "numpy<2.0,>=1.23.5" tensorflow
 python3 -m pip install scipy
 python3 -m pip install scikit-learn
 python3 -m pip install python-Levenshtein
@@ -90,7 +90,7 @@ python3 -m pip install rtree
 python3 -m pip install geopy
 gdal_version=$(gdal-config --version); echo $gdal_version
 echo "gdal_version={$gdal_version}"
-python3 -m pip install pygdal>=${gdal_version}.0,<=${gdal_version}.999
+python3 -m pip install "pygdal>=${gdal_version}.0,<=${gdal_version}.999"
 python3 -m pip install rioxarray
 
 if [ $(host lake.capetown.gov.za) -neq 0 ]; then
