@@ -9,7 +9,7 @@ The current structure of these image tags (and the repo):
 └── base
     └── drivers
         └── python_minimal
-            ├── jupyter-ide
+            |   ├── jupyter-ide
             |   └── python
             |       └── jupyter-k8s
             └── r
