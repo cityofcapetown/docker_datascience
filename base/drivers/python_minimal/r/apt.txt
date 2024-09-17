@@ -1,0 +1,3 @@
+libcurl4-openssl-dev
+apt-file
+libx11-dev
