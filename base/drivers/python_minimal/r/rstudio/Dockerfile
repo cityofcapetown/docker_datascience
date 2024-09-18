@@ -42,10 +42,7 @@ RUN apt-get update --fix-missing > /dev/null \
 # Clean up
  && rm -rf /var/lib/apt/lists/* \
  && rm -rf /tmp/downloaded_packages \
- && rm -rf rstudio-server-2024.04.2-764-amd64.deb \
-# Install VSCode
- && curl -fsSL https://code-server.dev/install.sh | sh \
- && pip3 install jupyter-vscode-proxy 
+ && rm -rf rstudio-server-2024.04.2-764-amd64.deb 
 
 # Back to non privileged user
 # These env vars are in FROM image
@@ -62,10 +59,6 @@ RUN chown -R ${NB_USER} ${HOME}
 USER ${NB_USER}
 WORKDIR ${HOME}
 
-# Install VSCode extensions
-RUN code-server --install-extension ms-python.python \
- && code-server --install-extension innoverio.vscode-dbt-power-user \
- && code-server --install-extension REditorSupport.r
 
 # Set NB_USER ENV vars
 ENV PATH="${PATH}:/usr/lib/rstudio-server/bin" 
