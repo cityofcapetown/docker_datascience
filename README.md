@@ -8,13 +8,13 @@ The current structure of these image tags (and the repo):
 ```
 └── base
     └── drivers
-        ├── python_minimal
-        ├── jupyter-ide
-        ├── python
-        │   └── jupyter-k8s
-        └── r_minimal
+        └── python_minimal
+            |   ├── jupyter-ide
+            |   └── python
+            |       └── jupyter-k8s
             └── r
                 └── rstudio
+
 ```
 
 Overview of the tags:
@@ -24,13 +24,12 @@ Overview of the tags:
   [here](./base/drivers/python_minimal/python_additions.sh)).
 * `python` - Installs many Python packages (see [here](./base/drivers/python_minimal/python/python_additions.sh)).
 * `jupyter-k8s` - Installs and runs Jupyterlab on top of `python`
-* `r_minimal` - (coming soon) Installs R and a limited section of packages. On top of `python_minimal`.
-* `r` - (coming soon) Installs many R packages
-* `rstudio` - (coming soon) Install and runs RStudio via rsession proxy on top of `r`.
+* `r` - Installs R base, ubuntu system packages for common R packages, `renv`, `pak`, `rspm` and `remotes`.
+* `rstudio` -  Installs Jupyterlab, Rstudio, and VSCode on top of `r`. Automatically launches to jupyterlab. Use `renv` to manage R packages on a per-project basis.
 * `jupyter-ide` - Makes various IDEs (PyCharm, VSCode) available on top of `python_minimal`.
 
 ## Usage
-These images are intented to be used either as part of a Jupyterhub setup, or as the base for airflow Kubernetes 
+These images are intended to be used either as part of a Jupyterhub setup, or as the base for airflow Kubernetes 
 operator jobs. 
 
 To enter an image and poke around (useful for checking whether a dependency is statisfied), use the `docker exec` 
@@ -38,4 +37,10 @@ or `kubectl exec` command to start a bash shell, e.g.
 
 ```bash
 docker exec -it -rm cityofcapetown/datascience:python bash
+```
+
+To launch a jupyter-based web server from `jupyter-ide`, `jupyter-k8s` or `rstudio` enter something like the following:
+
+```bash
+docker run -it --rm -p 8888:8888 cityofcapetown/datascience:{jupyter-ide,jupyter-k8s,rstudio}
 ```
