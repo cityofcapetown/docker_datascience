@@ -112,6 +112,27 @@ podTemplate(label: label, yaml: """
                 }
             }
         }
+        stage('r') {
+            retry(10) {
+                container(label) {
+                    withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
+                                     usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
+                        sh '''
+                        # guardrail to stop push to docker hub
+                        PUSH=$([ $BRANCH_NAME == "master" ] && echo true || echo false)
+
+                        ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
+                                                 "${DOCKER_USER}" "${DOCKER_PASS}" \\
+                                                 "${PWD}/base/drivers/python_minimal/r" \\
+                                                 "docker.io/cityofcapetown/datascience:r" \\
+                                                 "${PUSH}"
+                        sleep 60
+                        '''
+                    }
+                    updateGitlabCommitStatus name: 'r', state: 'success'
+                }
+            }
+        }
         stage('python-image') {
             retry(10){
                 container(label) {
@@ -130,6 +151,27 @@ podTemplate(label: label, yaml: """
                         '''
                     }
                     updateGitlabCommitStatus name: 'python', state: 'success'
+                }
+            }
+        }
+        stage('rstudio') {
+            retry(10) {
+                container(label) {
+                    withCredentials([usernamePassword(credentialsId: 'opm-data-proxy-user', passwordVariable: 'OPM_DATA_PASSWORD', usernameVariable: 'OPM_DATA_USER'),
+                                     usernamePassword(credentialsId: 'docker-user', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
+                        sh '''
+                        # guardrail to stop push to docker hub
+                        PUSH=$([ $BRANCH_NAME == "master" ] && echo true || echo false)
+
+                        ./bin/buildkit-docker.sh "${OPM_DATA_USER}" "${OPM_DATA_PASSWORD}" \\
+                                                 "${DOCKER_USER}" "${DOCKER_PASS}" \\
+                                                 "${PWD}/base/drivers/python_minimal/r/rstudio" \\
+                                                 "docker.io/cityofcapetown/datascience:rstudio" \\
+                                                 "${PUSH}"
+                        sleep 60
+                        '''
+                    }
+                    updateGitlabCommitStatus name: 'rstudio', state: 'success'
                 }
             }
         }
