@@ -39,10 +39,11 @@ RUN  ln -s /usr/lib/python3/dist-packages/apt_pkg.cpython-310-x86_64-linux-gnu.s
     gpg \
     gcc \
     build-essential \
+    sudo \
  && wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc \
  && sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" \
  && apt-get update \
- && apt-get install -y --no-install-recommends r-base \
+ && apt-get install -y --no-install-recommends r-base r-base-dev \
 # Install system dependencies for common R packages
 # First install known minimal system dependencies
  && echo "Checking for 'apt.txt'..." \
