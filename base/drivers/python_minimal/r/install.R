@@ -19,7 +19,8 @@ required_packages <- c(
     "quarto",
     "rmarkdown",
     "aws.s3",
-    "reticulate")
+    "reticulate",
+    "remotes")
 
 top_packages <- cranlogs::cran_top_downloads(when = "last-month", count = 100)
 
