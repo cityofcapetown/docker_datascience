@@ -4,7 +4,7 @@ USER root
 
 # Install system dependencies ==================================================
 # BOTH JUPYTER AND RSTUDIO DEPS ================================================
-RUN DEBIAN_FRONTEND=noninteractive apt-get update --fix-missing > /dev/null \
+RUN apt-get update --fix-missing > /dev/null \
  && apt-get install --yes --no-install-recommends \
     # for jupyter
     git \

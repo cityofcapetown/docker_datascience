@@ -24,7 +24,7 @@ COPY install.R .
 # Do the build in one layer to keep the image as small as possible.
 # temporary symlink to fix broken apt_inst and apt_pkg for gdebi and add-apt-repository
 # remove when the python 3.9 dependencies are removed from python_minimal
-RUN DEBIAN_FRONTEND=noninteractive ln -s /usr/lib/python3/dist-packages/apt_pkg.cpython-310-x86_64-linux-gnu.so /usr/lib/python3/dist-packages/apt_pkg.so \
+RUN  ln -s /usr/lib/python3/dist-packages/apt_pkg.cpython-310-x86_64-linux-gnu.so /usr/lib/python3/dist-packages/apt_pkg.so \
   && ln -s /usr/lib/python3/dist-packages/apt_inst.cpython-310-x86_64-linux-gnu.so /usr/lib/python3/dist-packages/apt_inst.so \
 # Install common utils
   && apt-get install -y --no-install-recommends \
@@ -41,7 +41,7 @@ RUN DEBIAN_FRONTEND=noninteractive ln -s /usr/lib/python3/dist-packages/apt_pkg.
     build-essential \
     sudo \
  && wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc \
- && add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" \
+ && sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" \
  && apt-get update \
  && apt-get install -y --no-install-recommends r-base r-base-dev \
 # Install system dependencies for common R packages
@@ -57,7 +57,7 @@ RUN DEBIAN_FRONTEND=noninteractive ln -s /usr/lib/python3/dist-packages/apt_pkg.
 # Makes use of pak to install system dependencies of CRAN top 100 packages as well
 # Use install.R to determine what apt packages are needed...
     && if [ -f install.R ]; then R --quiet -f install.R; fi \
-# ...install.R will create a bash install file called R_apt_deps.sh...
+# ...install.R will create a bash install file called R_apt_deps.txt...
 # ...and then use apt to install those packages
  && echo "Checking for 'R_apt_deps.'..." \
         ; if test -f "R_apt_deps.sh" ; then \
