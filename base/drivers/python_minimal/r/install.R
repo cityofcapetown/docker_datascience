@@ -4,7 +4,12 @@ install.packages(c("pak", "pillar"))
 # Base packages
 pak::pak_install_extra()
 
-pak::pkg_install(c("rspm", "renv", "cranlogs", "remotes", "languageserver", "jsonlite"))
+pak::pkg_install("rspm")
+pak::pkg_install("renv")
+pak::pkg_install("cranlogs")
+pak::pkg_install("remotes")
+pak::pkg_install("languageserver")
+pak::pkg_install("jsonlite")
 
 rspm::enable()
 
